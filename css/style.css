@@ -12,17 +12,26 @@
     text-align: center;
     color: #ffffff;
     padding: 15px 0;
-    transition: 1.5s;
+    transition: 1s;
 }
 
 .backgroundHeader {
-    background: #808080;
+    background: #cbcbcb;
     color: #ffffff;
 }
 
 .header a {
     color: inherit;
     text-decoration: none;
+}
+
+.navigation .navActive {
+    color: #5271ff;
+    font-weight: bold;
+}
+
+.navigation .navInactive {
+    transition: 1s;
 }
 
 .navigation a {
@@ -33,7 +42,7 @@
 /* MAIN */
 
 main {
-    background: #898989;
+    background: #cbcbcb;
 }
 
 /* PRESENTATION */
@@ -46,7 +55,7 @@ main {
 .description {
     text-align: center;
     color: #ffffff;
-    padding-top: 30%;
+    padding-top: 25%;
 }
 
 .description h3 {
@@ -68,11 +77,40 @@ main {
 
 /* VITRINE */
 
+.articleVitrine {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    padding: 70px 0 50px 0;
+}
+
+.articleVitrine ul {
+    display: flex;
+    list-style: none;
+    margin: auto;
+}
+
+.articleVitrine ul li {
+    margin: 20px;
+    cursor: pointer;
+    transition: .8s all ease-in-out;
+}
+
+.articleVitrine ul li:hover {
+    color: #5271ff;
+}
+
+.activeFiltre {
+    color: #5271ff;
+}
+
 .vitrine {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
