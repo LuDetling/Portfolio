@@ -18,12 +18,12 @@ const activeScroll = function () {
         } else {
             header.classList.remove("backgroundHeader")
         }
-        if (scrollValue > 0.76 && scrollValue < 0.87) {
+        if (scrollValue > 0.65 && scrollValue < 0.86) {
             projets.classList.add("navActive");
         } else {
             projets.classList.remove("navActive");
         }
-
+        // console.log(scrollValue);
     })
 
 }
@@ -42,6 +42,8 @@ const activeFiltre = function () {
 
     codageHtmlCss.forEach(element => console.log(element));
 
+    // ECOUTE AUCUN FILTRE
+
     allFiltre.addEventListener("click", (e) => {
         allFiltre.classList.add("activeFiltre");
         htmlCss.classList.remove("activeFiltre");
@@ -53,6 +55,8 @@ const activeFiltre = function () {
         }
 
     })
+
+    // ECOUTE FILTRE HTML/CSS
 
     htmlCss.addEventListener("click", (e) => {
 
@@ -67,6 +71,8 @@ const activeFiltre = function () {
         }
 
     })
+
+    //ECOUTE FILTRE JAVASCRIPT
 
     javaScript.addEventListener("click", (e) => {
 

@@ -17,28 +17,43 @@
 
     <header class="header">
         <nav class="navigation">
-            <a href="#projets" class="headerProjets navInactive">Projets</a>
+            <a href="#aPropos" class="headerAPropos navInactive">A Propos</a>
+            <a href="#projets" class="headerProjets navInactive">Portfolio</a>
             <a href="#cv" class="headerCv navInactive">CV</a>
-            <a href="https://github.com/LuDetling" target="_blank" class="">GitHub</a>
-            <a href="#" class="headerContact navInactive">Contact</a>
+            <a href="#contact" class="headerContact navInactive">Contact</a>
         </nav>
+        <div class="headerIcone">
+            <a href="mailto:lucas.detling@gmail.com"><img src="img/iconeMail.png" alt=""></a>
+            <a href="https://www.linkedin.com/in/lucas-detling/"><img src="img/iconeLinkedin.png" alt="linkedin"></a>
+            <a href="https://github.com/LuDetling" target="_blank"><img src="img/iconeGit.png" alt="github"></a>
+        </div>
     </header>
 
     <!-- PRESENTATION -->
 
     <div class="presentation">
         <div class="description">
-            <h3>Portfolio</h3>
             <h1>Lucas Detling</h1>
-            <h3>Développer web</h3>
+            <h3>Développeur web</h3>
         </div>
     </div>
 
     <main>
 
-        <!-- VITRINE -->
+        <!-- A PROPOS -->
+
+       <section class="aPropos" id="aPropos">
+            <h1>A Propos</h1>
+            <p>Développeur Web débutant.</p>
+            <p>Je suis à la recherche d'une entreprise pour effectuer mon alternance et obtenir mon diplôme en tant que développeur web. Pour mettre toutes les chances de mon côtés j'ai réalisé ce site pour pouvoir partager monexpérience. Je suis motivé, sérieux et autonome</p>
+            <p>J'ai réalisé quelques projets avec la formation préaprentissage développeur web OpenClassroom.</p>
+            <p>fleche vers le bas qui envoie en scrollant vers les projets</p>
+        </section>
+
+        <!-- PORTFOLIO -->
 
         <article class="articleVitrine" id="projets">
+            <h1>Portfolio</h1>
             <ul>
                 <li class="allFiltre activeFiltre">Tous</li>
                 <li class="htmlCss">HTML/CSS</li>
@@ -58,17 +73,48 @@
             <h1>CV</h1>
             <a href="img/Copie de lucasdetling.pdf" target="_blank"><img src="img/CV.jpg" alt=""></a>
         </article>
+        
 
+        <!-- CONTACT A FAIRE PROCHAINEMENT EN PHP--> 
 
+        <section class="contact" id="contact">
+            <h1>Contact</h1>
+            <div class="informationContact">
+                <p>téléphone : </p>
+                <p>06.68.37.28.76</p>
+                <p>mail : </p>
+                <a href="mailto:lucas.detling@gmail.com" >lucas.detling@gmail.com</a>
+            </div>
+            
+
+        </section>
+
+        <!-- <div class="boxContact">
+            <form action="php/contact.php" class="formContact" method="POST">
+                <div>
+                    <label for="inputName">votre nom</label>
+                    <input type="text" name="name" id="inputName">  
+                </div>
+                <div>
+                    <label for="inputMail">votre email</label>
+                    <input type="text" name="mail" id="inputMail">
+                </div>
+                <div>
+                    <label for="inputMesssage">Votre message</label>
+                    <textarea name="message" id="inputMesssage"></textarea>
+                </div>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div> -->
     </main>
+
+    <!-- FOOTER -->
+
     <footer class="footer">
-        <p>Copyright © 2021 All rights reserved</p>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <a href="mailto:lucas.detling@gmail.com"><img src="img/iconeMail.png" alt=""></a>
+        <a href="https://www.linkedin.com/in/lucas-detling/"><img src="img/iconeLinkedin.png" alt="linkedin"></a>
+        <a href="https://github.com/LuDetling" target="_blank"><img src="img/iconeGit.png" alt="github"></a>
+        <p>© 2021 Lucas DETLING, Tous droits réservés.</p>
     </footer>
 </body>
 <script src="js/app.js"></script>
