@@ -105,6 +105,10 @@ main {
     padding: 50px 0 ;
 }
 
+.navActive {
+    color: #5271ff;
+}
+
 .aPropos h1 {
     margin-bottom: 40px;
 }

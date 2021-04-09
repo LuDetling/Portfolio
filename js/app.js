@@ -3,7 +3,11 @@
 const activeScroll = function () {
 
     const header = document.querySelector(".header");
-    const projets = document.querySelector(".headerProjets")
+    const projets = document.querySelector(".headerProjets");
+    const headerAPropos = document.querySelector(".headerAPropos");
+    const aPropos = document.querySelector(".aPropos h1");
+    console.log(aPropos);
+
 
     window.addEventListener("scroll", (e) => {
 
@@ -13,17 +17,19 @@ const activeScroll = function () {
 
         scrollValue = (window.innerHeight + window.scrollY) / (document.body.offsetHeight)
 
-        if (scrollValue > 0.54) {
+        if (scrollValue > 0.39) {
             header.classList.add("backgroundHeader");
         } else {
             header.classList.remove("backgroundHeader")
         }
-        if (scrollValue > 0.65 && scrollValue < 0.86) {
-            projets.classList.add("navActive");
+        if (scrollValue > 0.54 && scrollValue < 0.66) {
+            headerAPropos.classList.add("navActive");
+            aPropos.classList.add("navActive");
         } else {
-            projets.classList.remove("navActive");
+            headerAPropos.classList.remove("navActive");
+            aPropos.classList.remove("navActive");
         }
-        // console.log(scrollValue);
+        console.log(scrollValue);
     })
 
 }
