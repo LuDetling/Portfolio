@@ -1,41 +1,56 @@
 // systeme de scroll
 
-const activeScroll = function () {
+const backgroundNav = () => {
+    const header = document.querySelector("header");
 
-    const header = document.querySelector(".header");
-    const projets = document.querySelector(".headerProjets");
-    const headerAPropos = document.querySelector(".headerAPropos");
-    const aPropos = document.querySelector(".aPropos h1");
-    console.log(aPropos);
+    document.addEventListener("scroll", (e) => {
+        let scrollValue = window.scrollY;
 
-
-    window.addEventListener("scroll", (e) => {
-
-        // console.log(window.innerHeight);
-        // console.log(window.scrollY);
-        // console.log(document.body.offsetHeight);
-
-        scrollValue = (window.innerHeight + window.scrollY) / (document.body.offsetHeight)
-
-        if (scrollValue > 0.39) {
+        if(scrollValue > 50) {
             header.classList.add("backgroundHeader");
         } else {
-            header.classList.remove("backgroundHeader")
+            header.classList.remove("backgroundHeader");
         }
-        if (scrollValue > 0.54 && scrollValue < 0.66) {
-            headerAPropos.classList.add("navActive");
-            aPropos.classList.add("navActive");
+    })
+}
+
+backgroundNav()
+
+// nav qui change de couleur lors du scroll
+
+const interSection = () => {
+    const sections = document.querySelectorAll("section");
+    const navigation = document.querySelectorAll(".navigation a")
+
+    document.addEventListener("scroll", (e) => {
+        let scrollValue = window.scrollY; // hauteur du scroll
+
+        if (scrollValue >= sections[0].offsetTop && scrollValue < sections[1].offsetTop){
+            navigation[0].classList.add("navActive");
         } else {
-            headerAPropos.classList.remove("navActive");
-            aPropos.classList.remove("navActive");
+            navigation[0].classList.remove("navActive");
         }
-        console.log(scrollValue);
+        if (scrollValue >= sections[1].offsetTop && scrollValue < sections[2].offsetTop - 3) {
+            navigation[1].classList.add("navActive")
+        } else {
+            navigation[1].classList.remove("navActive")
+        }
+        if (scrollValue >= sections[2].offsetTop -1 && scrollValue < sections[3].offsetTop) {
+            navigation[2].classList.add("navActive")
+        } else {
+            navigation[2].classList.remove("navActive")
+            navigation[3].classList.remove("navActive")
+        }
+        if (scrollValue > sections[3].offsetTop * 0.83) {
+            navigation[3].classList.add("navActive")
+        } else {
+            navigation[3].classList.remove("navActive")
+        }
     })
 
 }
 
-activeScroll()
-
+interSection();
 // systeme de filtre
 
 const activeFiltre = function () {

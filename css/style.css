@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* HEADER */
 
 .header {
@@ -28,7 +32,7 @@
 }
 
 .backgroundHeader {
-    background: #cbcbcb;
+    background: #8c8c94;
     color: #ffffff;
 }
 
@@ -69,14 +73,17 @@
 
 /* MAIN */
 
-main {
+.main {
     background: #cbcbcb;
+    color: #313639;
+    width: 100%;
+    height: 100%;
 }
 
 /* PRESENTATION */
 
 .presentation {
-    background: url("../img/IMG_0124noir.jpg") center / cover no-repeat fixed;
+    background: url("../img/IMG_0124noir.jpg") center / cover no-repeat;
     height: 100vh;
 }
 
@@ -98,23 +105,27 @@ main {
 /* A PROPOS */
 
 .aPropos {
-    width: 80%;
+    width: 70%;
     margin: auto;
     text-align: center;
     font-size: 21px;
-    padding: 50px 0 ;
-}
-
-.navActive {
-    color: #5271ff;
+    padding: 60px 0 ;
+    scroll-behavior: smooth;
 }
 
 .aPropos h1 {
     margin-bottom: 40px;
+    color: #5271ff;
 }
 
 .aPropos p {
     margin-top: 15px;
+}
+
+.traitSection {
+    width: 80%;
+    margin: auto;
+    border: solid 1px;
 }
 
 /* PORTFOLIO */
@@ -125,8 +136,12 @@ main {
     text-align: center;
     width: 80%;
     margin: auto;
-    padding: 50px 0;
+    padding: 60px 0;
     font-size: 21px;
+}
+
+.articleVitrine h1 {
+    color: #5271ff;
 }
 
 .articleVitrine ul {
@@ -166,19 +181,20 @@ main {
 
 .vitrine img {
     width: 250px;
-    margin: 25px 25px 0;
+    margin: 25px;
 }
 
 /* CV */
 
 .cv {
     text-align: center;
-    padding: 50px 0;
+    padding: 60px 0;
     font-size: 21px;
 }
 
 .cv h1 {
     margin-bottom: 40px;
+    color: #5271ff;
 }
 
 .cv img {
@@ -191,12 +207,13 @@ main {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 0;
     font-size: 21px;
 }
 
 .contact h1 {
     margin-bottom: 40px;
+    color: #5271ff;
 }
 
 .informationContact {
@@ -204,12 +221,16 @@ main {
     width: 50%;
     margin: auto;
     grid-template-columns: auto auto;
-    justify-content: space-around;
+    text-align: end;
 }
 
 .informationContact p {
     margin-bottom: 15px;
     white-space: nowrap;
+}
+
+.informationContact p:nth-child(2n){
+    text-align: center;
 }
 
 /* FOOTER */
