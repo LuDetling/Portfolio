@@ -25,17 +25,17 @@ const interSection = () => {
     document.addEventListener("scroll", (e) => {
         let scrollValue = window.scrollY; // hauteur du scroll
 
-        if (scrollValue >= sections[0].offsetTop && scrollValue < sections[1].offsetTop){
+        if (scrollValue >= sections[0].offsetTop * 0.9 && scrollValue < sections[1].offsetTop * 0.9){
             navigation[0].classList.add("navActive");
         } else {
             navigation[0].classList.remove("navActive");
         }
-        if (scrollValue >= sections[1].offsetTop && scrollValue < sections[2].offsetTop - 3) {
+        if (scrollValue >= sections[1].offsetTop * 0.9 && scrollValue < sections[2].offsetTop * 0.9) {
             navigation[1].classList.add("navActive")
         } else {
             navigation[1].classList.remove("navActive")
         }
-        if (scrollValue >= sections[2].offsetTop -1 && scrollValue < sections[3].offsetTop) {
+        if (scrollValue >= sections[2].offsetTop * 0.9 && scrollValue < sections[3].offsetTop * 0.9) {
             navigation[2].classList.add("navActive")
         } else {
             navigation[2].classList.remove("navActive")
