@@ -43,6 +43,7 @@ const interSection = () => {
         }
         if (scrollValue > sections[3].offsetTop * 0.83) {
             navigation[3].classList.add("navActive")
+            navigation[2].classList.remove("navActive")
         } else {
             navigation[3].classList.remove("navActive")
         }
@@ -60,8 +61,6 @@ const activeFiltre = function () {
     const javaScript = document.querySelector(".javaScript");
     const codageHtmlCss = document.querySelectorAll(".codageHtmlCss");
     const codageJavascript = document.querySelectorAll(".codageJavascript");
-
-    codageHtmlCss.forEach(element => console.log(element));
 
     // ECOUTE AUCUN FILTRE
 
@@ -112,3 +111,21 @@ const activeFiltre = function () {
 }
 
 activeFiltre()
+
+// FLECHE RETOUR HAUT DE PAGE
+
+const flecheUp = () => {
+    const flecheUp = document.querySelector(".goTop");
+
+    document.addEventListener("scroll", (e) => {
+        if(window.scrollY === 0){
+            flecheUp.style.display = "none";
+        } else {
+            flecheUp.style.display = "block";
+        }   
+    })
+}
+
+flecheUp()
+
+//afficher la fleche si la position du scroll n'est pas a 0

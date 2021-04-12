@@ -18,17 +18,8 @@ html {
     text-align: center;
     color: #ffffff;
     padding: 15px 0;
-    transition: .8s all ease-in-out;
     align-items: center;
-}
-
-.header a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.header a:hover {
-    color: #5271ff;
+    transition: .5s ease-in-out;
 }
 
 .backgroundHeader {
@@ -36,13 +27,34 @@ html {
     color: #ffffff;
 }
 
-.navigation .navActive {
-    color: #5271ff;
-    font-weight: bold;
+.header a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
 }
 
-.navigation .navInactive {
-    transition: .8s all ease-in-out;
+.navInactive::before {
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: .5s ease-in-out;
+}
+
+.navInactive:hover::before {
+    width: 100%;
+    height: 2px;
+}
+
+.navActive::before {
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
 }
 
 .navigation a {
@@ -63,21 +75,35 @@ html {
     margin: 0 3px;
     border-radius: 20%;
     padding: 2px;
-    transition: .8s all ease-in-out;
+    transition: .5s all ease-in-out;
 }
 
 .headerIcone img:hover {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 /* MAIN */
 
 .main {
-    background: #cbcbcb;
-    color: #313639;
-    width: 100%;
-    height: 100%;
+    background-image: linear-gradient(120deg, #dee7e4 0, #d4d6d5 25%, #c7c1c4 50%, #b9adb4 75%, #ad9da9 100%);
+}
+
+/* GO TOP */
+
+.goTop {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    transition: .5s;
+}
+
+.goTop:hover {
+    width: 40px;
+    height: 40px;
 }
 
 /* PRESENTATION */
@@ -88,17 +114,21 @@ html {
 }
 
 .description {
-    text-align: center;
+    display: flex;
+    width: 80%;
+    margin: auto;
     color: #ffffff;
-    padding-top: 50vh;
+    padding-top: 40vh;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .description h3 {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
 }
 
 .description h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     color: #5271ff;
 }
 
@@ -107,14 +137,21 @@ html {
 .aPropos {
     width: 70%;
     margin: auto;
-    text-align: center;
     font-size: 21px;
-    padding: 60px 0 ;
+    padding: 60px 0;
     scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+}
+
+.titre {
+    text-align: center;
+    margin: auto;
+    border-bottom: solid #5271ff;
+    margin-bottom: 40px;
 }
 
 .aPropos h1 {
-    margin-bottom: 40px;
     color: #5271ff;
 }
 
@@ -190,6 +227,8 @@ html {
     text-align: center;
     padding: 60px 0;
     font-size: 21px;
+    display: flex;
+    flex-direction: column;
 }
 
 .cv h1 {
@@ -197,13 +236,21 @@ html {
     color: #5271ff;
 }
 
-.cv img {
+.cv a {
     width: auto;
+    margin: 40px auto;
+    padding: auto;
+}
+
+.cvMobile {
+    display: none;
 }
 
 /* CONTACT */
 
 .contact {
+    display: flex;
+    flex-direction: column;
     width: 80%;
     margin: auto;
     text-align: center;
@@ -226,11 +273,10 @@ html {
 
 .informationContact p {
     margin-bottom: 15px;
-    white-space: nowrap;
 }
 
-.informationContact p:nth-child(2n){
-    text-align: center;
+.informationContact p:nth-child(2n+1) {
+    white-space: nowrap;
 }
 
 /* FOOTER */
@@ -241,24 +287,67 @@ html {
     padding: 20px 0;
 }
 
+.footerIcone {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
 .footer img {
     width: 35px;
     height: 35px;
     margin: 0 7.5px;
-    transition: .8s all ease-in-out;
+    transition: .5s all ease-in-out;
 }
 
 .footer img:hover {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 .footer p {
-    margin-top: 15px
+    margin-top: 60px
 }
 
-@media (max-width : 1330px){
+@media (max-width : 1330px) {
     .vitrine {
         height: auto;
     }
+}
+
+@media (max-width : 890px) {
+
+    /* CV */
+
+
+    .cvDesktop {
+        display: none;
+    }
+
+    .cvMobile {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .cvMobile::before {
+        content: '';
+        position: absolute;
+        bottom: 0%;
+        width: 0%;
+        height: 2px;
+        transition: .5s ease-in-out;
+    }
+
+    .cvMobile:hover::before {
+        width: 100%;
+        height: 2px;
+        background-color: black;
+    }
+
+    .cvMobile img {
+        width: 500px;
+    }
+
 }
