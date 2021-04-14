@@ -8,7 +8,7 @@
 }
 
 * {
-    font-family: "roboto", "finland_rounded", sans-serif;
+    font-family: "dosis" ,"roboto", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -33,7 +33,7 @@ html {
 }
 
 .backgroundHeader {
-    background: #8c8c94;
+    background: rgba(140, 140, 148, .85);
     color: #ffffff;
 }
 
@@ -71,6 +71,8 @@ html {
 }
 
 .headerIcone {
+    display: flex;
+    align-items: center;
     position: absolute;
     right: 0%;
     margin-right: 25px;
@@ -89,6 +91,57 @@ html {
 .headerIcone img:hover {
     width: 40px;
     height: 40px;
+}
+
+.headerIcone .iconeMailHeader {
+    height: 25px;
+}
+
+.headerIcone .iconeMailHeader:hover {
+    height: 32px;
+}
+
+.hamburger {
+    display: none;
+    position: fixed;
+    right: 1%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: #000000;
+}
+
+.hamburgerSidebar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 30vh;
+    background: rgb(140, 140, 148);
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: translateY(-100%);
+    transition: transform .2s ease-out;
+    z-index: 12;
+}
+
+.hamburgerSidebar a {
+    font-family: "finland_rounded";
+}
+
+/* MAIN */
+
+.hamburgerOverlay {
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, .7);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
 }
 
 /* GO TOP */
@@ -128,6 +181,7 @@ html {
 .description h3 {
     font-size: 50px;
     font-family: "finland_rounded";
+    color: #476a7f;
 }
 
 .description h1 {
@@ -167,6 +221,16 @@ html {
 .aPropos p {
     margin-top: 15px;
     color: #000000;
+}
+
+.aPropos p:nth-child(2) {
+    font-weight: bold;
+}
+
+.goContact {
+    color: #000000;
+    text-decoration: none;
+    font-style: italic;
 }
 
 
@@ -215,33 +279,41 @@ html {
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    margin: auto;
 }
 
 .vitrine a {
+    width: 44%;
     margin: 40px 25px 25px 25px;
 }
 
 .vitrine img {
-    width: 250px;
+    width: 100%;
+    border-radius: 20px;
 }
+
 
 /* CV */
 
+
 .cv {
+    width: 80%;
     text-align: center;
     padding: 60px 0;
     font-size: 21px;
     display: flex;
     flex-direction: column;
-    background-color: #4d86a8;
+    background-color: #ffffff;
+    margin: auto;
 }
 
-
 .cv a {
-    width: auto;
     margin: 40px auto;
-    padding: auto;
+    padding: 0;
+    width: 70%;
+}
+
+.cv a img {
+    width: 100%;
 }
 
 .cvMobile {
@@ -263,7 +335,6 @@ html {
     font-size: 21px;
 }
 
-
 .boxContact {
     display: flex;
     align-items: flex-end;
@@ -274,9 +345,26 @@ html {
     display: grid;
     width: 45%;
     margin: 40px 0;
-    grid-template-columns: auto auto;
+    grid-template-columns: 80px auto;
     height: 100%;
     line-height: 30px;
+}
+
+.iconeTel {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+}
+
+.iconeMail {
+    margin: auto;
+    width: 35px;
+    height: 25px;
+}
+
+.iconeLocation {
+    margin: auto;
+    width: 25px;
 }
 
 .informationContact p {
@@ -288,10 +376,10 @@ html {
 }
 
 .carte {
-    margin: 7.5px 0;
+    margin: 30px 7.5px 0;
     grid-column: span 2;
     width: 100%;
-    height: 300px;
+    height: 346px;
 }
 
 /* CONTACT DROITE */
@@ -350,9 +438,9 @@ html {
 }
 
 .footerIcone {
-    position: absolute;
-    left: 0;
-    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer img {
@@ -367,49 +455,96 @@ html {
     height: 40px;
 }
 
-.footer p {
-    margin-top: 60px
+.footer .iconeMailHeader {
+    height: 25px;
 }
 
-@media (max-width : 1330px) {
-    .vitrine {
-        height: auto;
+.footer .iconeMailHeader:hover {
+    height: 32px;
+}
+
+.footer p {
+    margin-top: 10px
+}
+
+@media (max-width : 1060px) {
+
+    /* DESCRIPTION */
+
+    .description {
+        flex-direction: column;
+        padding-top: 60vh;
+    }
+
+    /* VITRINE */
+
+    .vitrine a {
+        width: 70%;
+    }
+
+    /* CONTACT */
+
+    .boxContact {
+        flex-direction: column;
+        margin: auto;
+        width: 100%;
+    }
+
+    .informationContact {
+        width: 100%;
+        margin: auto;
+    }
+
+    .formulaireContact {
+        width: 100%;
     }
 }
 
-@media (max-width : 890px) {
+@media (max-width : 860px){
 
-    /* CV */
+    /* HEADER HAMBURGER */
 
-
-    .cvDesktop {
+    .header {
         display: none;
     }
 
-    .cvMobile {
+    .navigation {
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .navigation a {
+
+    }
+
+    .hamburger {
         display: block;
-        color: inherit;
-        text-decoration: none;
-        position: relative;
     }
 
-    .cvMobile::before {
-        content: '';
-        position: absolute;
-        bottom: 0%;
-        width: 0%;
-        height: 2px;
-        transition: .5s ease-in-out;
+}
+
+@media (max-width : 450px) {
+    
+    /* DESCRIPTION */
+
+    .description h1 {
+        font-size: 60px;
     }
 
-    .cvMobile:hover::before {
-        width: 100%;
-        height: 2px;
-        background-color: black;
+    .description h3 {
+        font-size: 40px;
     }
 
-    .cvMobile img {
-        width: 500px;
+    /* PORTFOLIO */
+
+    .articleVitrine ul li {
+        margin: 0 10px;
     }
+
+    /* CONTACT */
+
 
 }

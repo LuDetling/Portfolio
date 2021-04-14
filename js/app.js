@@ -129,3 +129,47 @@ const flecheUp = () => {
 flecheUp()
 
 //afficher la fleche si la position du scroll n'est pas a 0
+
+// menu burger
+
+const hamburger = () => {
+
+    let boutonHamburger = document.querySelector(".hamburger");
+    let hamburgerOverlay = document.querySelector(".hamburgerOverlay");
+    let contenuHeader = document.querySelector(".contenuNav");
+    let contenuHamburger = document.querySelector(".hamburgerSidebar");
+    contenuHamburger.innerHTML = contenuHeader.innerHTML;
+    let a = document.querySelectorAll(".hamburgerSidebar a");
+
+    boutonHamburger.addEventListener("click", (e) => {
+        e.preventDefault();
+        contenuHamburger.style.transform = "translateY(0%)";
+        hamburgerOverlay.style.display = "block";
+    })
+
+    for(let i = 0; i < a.length; i++){
+        a[i].addEventListener("click", (e) => {
+            contenuHamburger.style.transform = "translateY(-100%)";
+            hamburgerOverlay.style.display = "none";
+        })
+    }
+
+    hamburgerOverlay.addEventListener("click", (e) => {
+        e.preventDefault();
+        contenuHamburger.style.transform = "translateY(-100%)";
+        hamburgerOverlay.style.display = "none";
+
+    })
+
+    boutonHamburger.addEventListener("keydown", (e) => {
+        if(e.repeat === false && e.which === 27){
+            contenuHamburger.style.transform = "translateY(-100%)";
+            hamburgerOverlay.style.display = "none";
+        }
+    })
+
+    console.log(window);
+
+}
+
+hamburger();
