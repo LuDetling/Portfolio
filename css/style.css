@@ -1,8 +1,18 @@
+@font-face {
+    font-family: "finland_rounded";
+    src: url("../police/finland_rounded/Finland\ Rounded\ Thin.otf");
+}
+@font-face {
+    font-family: "advent";
+    src: url("../police/advent/advent-Lt1.otf");
+}
+
 * {
-    font-family: "roboto", sans-serif;
+    font-family: "roboto", "finland_rounded", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #ffffff;
 }
 
 html {
@@ -27,10 +37,13 @@ html {
     color: #ffffff;
 }
 
-.header a {
+.navigation a {
     color: inherit;
     text-decoration: none;
     position: relative;
+    font-family: "finland_rounded";
+    font-size: 40px;
+    margin: 0 20px;
 }
 
 .navInactive::before {
@@ -57,11 +70,6 @@ html {
     background-color: #fff;
 }
 
-.navigation a {
-    margin: 0 20px;
-    font-size: 22px;
-}
-
 .headerIcone {
     position: absolute;
     right: 0%;
@@ -81,12 +89,6 @@ html {
 .headerIcone img:hover {
     width: 40px;
     height: 40px;
-}
-
-/* MAIN */
-
-.main {
-    background-image: linear-gradient(120deg, #dee7e4 0, #d4d6d5 25%, #c7c1c4 50%, #b9adb4 75%, #ad9da9 100%);
 }
 
 /* GO TOP */
@@ -124,15 +126,22 @@ html {
 }
 
 .description h3 {
-    font-size: 1.7rem;
+    font-size: 50px;
+    font-family: "finland_rounded";
 }
 
 .description h1 {
-    font-size: 3rem;
-    color: #5271ff;
+    font-size: 80px;
+    color: #ff7f50;
+    font-family: "finland_rounded";
+
 }
 
 /* A PROPOS */
+
+.backgroundAPropos {
+    background-color: #ffffff;
+}
 
 .aPropos {
     width: 70%;
@@ -147,25 +156,25 @@ html {
 .titre {
     text-align: center;
     margin: auto;
-    border-bottom: solid #5271ff;
     margin-bottom: 40px;
-}
-
-.aPropos h1 {
-    color: #5271ff;
+    color: #ff7f50;
+    border-bottom: solid #ff7f50;
+    margin-bottom: 40px;
+    font-family: "finland_rounded";
+    font-size: 50px;
 }
 
 .aPropos p {
     margin-top: 15px;
+    color: #000000;
 }
 
-.traitSection {
-    width: 80%;
-    margin: auto;
-    border: solid 1px;
-}
 
 /* PORTFOLIO */
+
+.backgroundProjets {
+    background-color: #476a7f;
+}
 
 .articleVitrine {
     display: flex;
@@ -175,10 +184,7 @@ html {
     margin: auto;
     padding: 60px 0;
     font-size: 21px;
-}
-
-.articleVitrine h1 {
-    color: #5271ff;
+    color: #ffffff;
 }
 
 .articleVitrine ul {
@@ -196,11 +202,11 @@ html {
 }
 
 .articleVitrine ul li:hover {
-    color: #5271ff;
+    color: #ff7f50;
 }
 
 .activeFiltre {
-    color: #5271ff;
+    color: #ff7f50;
 }
 
 .vitrine {
@@ -213,12 +219,11 @@ html {
 }
 
 .vitrine a {
-    margin-top: 35px;
+    margin: 40px 25px 25px 25px;
 }
 
 .vitrine img {
     width: 250px;
-    margin: 25px;
 }
 
 /* CV */
@@ -229,12 +234,9 @@ html {
     font-size: 21px;
     display: flex;
     flex-direction: column;
+    background-color: #4d86a8;
 }
 
-.cv h1 {
-    margin-bottom: 40px;
-    color: #5271ff;
-}
 
 .cv a {
     width: auto;
@@ -246,37 +248,97 @@ html {
     display: none;
 }
 
-/* CONTACT */
+/* CONTACT GAUCHE*/
+
+.backgroundContact {
+    background-color: #476a7f;
+}
 
 .contact {
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: auto;
-    text-align: center;
     padding: 60px 0;
     font-size: 21px;
 }
 
-.contact h1 {
-    margin-bottom: 40px;
-    color: #5271ff;
+
+.boxContact {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 
 .informationContact {
     display: grid;
-    width: 50%;
-    margin: auto;
+    width: 45%;
+    margin: 40px 0;
     grid-template-columns: auto auto;
-    text-align: end;
+    height: 100%;
+    line-height: 30px;
 }
 
 .informationContact p {
-    margin-bottom: 15px;
+    margin: 7.5px 0;
 }
 
 .informationContact p:nth-child(2n+1) {
     white-space: nowrap;
+}
+
+.carte {
+    margin: 7.5px 0;
+    grid-column: span 2;
+    width: 100%;
+    height: 300px;
+}
+
+/* CONTACT DROITE */
+
+.formulaireContact {
+    width: 45%;
+}
+
+.formContact {
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+}
+
+.nomMail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nomMail input {
+    width: 45%;
+    margin: 7.5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px;
+
+}
+
+.inputMessage {
+    min-width: 50%;
+    max-width: 100%;
+    min-height: 25vh;
+    max-height: 50vh;
+    margin: 7.5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px;
+}
+
+.envoyerMail {
+    margin: 7.5px 0;
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: solid 1px;
+    color: #000000;
 }
 
 /* FOOTER */

@@ -41,7 +41,7 @@ const interSection = () => {
             navigation[2].classList.remove("navActive")
             navigation[3].classList.remove("navActive")
         }
-        if (scrollValue > sections[3].offsetTop * 0.83) {
+        if (scrollValue > sections[3].offsetTop * 0.9) {
             navigation[3].classList.add("navActive")
             navigation[2].classList.remove("navActive")
         } else {
