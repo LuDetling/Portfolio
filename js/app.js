@@ -59,19 +59,25 @@ const activeFiltre = function () {
     const allFiltre = document.querySelector(".allFiltre");
     const htmlCss = document.querySelector(".htmlCss");
     const javaScript = document.querySelector(".javaScript");
+    const phpMysql = document.querySelector(".phpMysql");
+
     const codageHtmlCss = document.querySelectorAll(".codageHtmlCss");
     const codageJavascript = document.querySelectorAll(".codageJavascript");
+    const codagePhpMysql = document.querySelectorAll(".codagePhpMysql");
 
     // ECOUTE AUCUN FILTRE
 
     allFiltre.addEventListener("click", (e) => {
+
         allFiltre.classList.add("activeFiltre");
         htmlCss.classList.remove("activeFiltre");
         javaScript.classList.remove("activeFiltre");
+        phpMysql.classList.remove("activeFiltre");
 
         if(allFiltre.classList[1] === "activeFiltre"){
-            codageHtmlCss.forEach(element => element.style.display = "block");
-            codageJavascript.forEach(element => element.style.display = "block");
+            codageHtmlCss.forEach(element => element.style.display = "flex");
+            codageJavascript.forEach(element => element.style.display = "flex");
+            codagePhpMysql.forEach(element => element.style.display = "flex");
         }
 
     })
@@ -83,10 +89,12 @@ const activeFiltre = function () {
         htmlCss.classList.add("activeFiltre");
         allFiltre.classList.remove("activeFiltre");
         javaScript.classList.remove("activeFiltre");
+        phpMysql.classList.remove("activeFiltre");
 
         if(htmlCss.classList[1] === "activeFiltre"){
             codageJavascript.forEach(element => element.style.display = "none");
-            codageHtmlCss.forEach(element => element.style.display = "block");
+            codagePhpMysql.forEach(element => element.style.display = "none");
+            codageHtmlCss.forEach(element => element.style.display = "flex");
 
         }
 
@@ -99,14 +107,33 @@ const activeFiltre = function () {
         javaScript.classList.add("activeFiltre");
         htmlCss.classList.remove("activeFiltre");
         allFiltre.classList.remove("activeFiltre");
+        phpMysql.classList.remove("activeFiltre");
 
         if(javaScript.classList[1] === "activeFiltre"){
             codageHtmlCss.forEach(element => element.style.display = "none");
-            codageJavascript.forEach(element => element.style.display = "block");
+            codagePhpMysql.forEach(element => element.style.display = "none");
+            codageJavascript.forEach(element => element.style.display = "flex");
 
         }
 
     })
+
+    //ECOUTE FILTRE PHP/MYSQL
+    phpMysql.addEventListener("click", (e) => {
+        phpMysql.classList.add("activeFiltre");
+        htmlCss.classList.remove("activeFiltre");
+        javaScript.classList.remove("activeFiltre");
+        allFiltre.classList.remove("activeFiltre");
+
+        if(phpMysql.classList[1] === "activeFiltre"){
+            codageHtmlCss.forEach(element => element.style.display = "none");
+            codageJavascript.forEach(element => element.style.display = "none");
+            codagePhpMysql.forEach(element => element.style.display = "flex");
+
+        }
+
+    })
+
 
 }
 
@@ -168,7 +195,7 @@ const hamburger = () => {
         }
     })
 
-    console.log(window);
+
 
 }
 

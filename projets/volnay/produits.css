@@ -1,0 +1,45 @@
+.image_description {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+    font-size: 1.5em;
+    margin-top: 70px;
+}
+
+.image_description img {
+    border: solid black 1px;
+    height: 450px;
+    width: 370px;
+}
+
+.nom_prix_ajout {
+    display: flex;
+    align-items: center;
+}
+
+.nom_prix_ajout p {
+    margin-bottom: 0;
+}
+
+.ajouter_pannier {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 50px;
+    border: solid black 1px;
+    padding: 18px;
+}
+
+.fiche_produit p:first-child {
+    margin-top: 60px;
+}
+
+.fiche_produit p::after {
+    content: "";
+    display: inline-block;
+    background: url(img/right-arrow-angle_icon-icons.com_74249.svg) center center / contain;
+    width: 25px;
+    height: 25px;
+    vertical-align: -5px;
+    float: right;
+}

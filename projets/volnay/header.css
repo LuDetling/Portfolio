@@ -1,0 +1,47 @@
+.header {
+    font-size: 1.5em;
+}
+
+.tout_en_haut {
+    display: flex;
+    justify-content: space-around;
+}
+
+.langues {
+    margin-top: 50px;
+    height: 20px;
+}
+
+.logo_volnay {
+    width: 500px;
+}
+
+.icone_shopping {
+    height: 25px;
+    width: 25px;
+    margin-top: 50px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.menu a {
+    text-decoration: none;
+    margin-right: 80px;
+    color: inherit;
+}
+.menu a:last-child {
+    margin: 0
+}
+
+.lienactif {
+    border-bottom: solid black 1px;
+}
+
+.image_top {
+    width: 100%;
+}
+

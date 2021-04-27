@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/ld.png">
     <title>Portfolio Lucas Detling</title>
 </head>
 
@@ -51,16 +52,15 @@
 
         <div class="backgroundAPropos">
             <section class="aPropos" id="aPropos">
-                <h1 class="titre">A Propos</h1>
+                <h3 class="titre">A Propos</h3>
                 <p>Recherche alternance - Développeur Web.</p>
                 <p>Actuellement en formation prep'apprentissage développeur web via OpenClassroom,
-                je suis à la recherche d'une entreprise pouvant m'accueillir pour effectuer mon alternance. Cela me permettrait d'allier enseignement théorique et formation pratique
-                 en vue d'obtenir mon diplome et développer mes expériences professionnelles.</p>
-                <p> Pour mettre toutes les chances de mon côtés j'ai souhaité réaliser mon propre site au travers duquel je partage mes projets précédemment réalisés ainsi que mon parcours
+                    je suis à la recherche d'une entreprise pouvant m'accueillir pour effectuer mon alternance. Cela me permettrait d'allier enseignement théorique et formation pratique
+                    en vue d'obtenir mon diplôme et développer mes expériences professionnelles.</p>
+                <p> Pour mettre toutes les chances de mon côté j'ai souhaité réaliser mon propre site au travers duquel je partage mes projets précédemment réalisés ainsi que mon parcours
                     et mes compétences. Ce site a été également un bon défi dans sa réalisation, il m'a permis de développer davantage mes compétences sur certains langages informatiques.
                 </p>
                 <p> Je suis passionné, assidu et autonome.</p>
-                <p>Si mon profil retient votre attention, vous trouverez mes <a href="#contact" class="goContact">coordonnées ci-dessous </a> afin de me contacter.</p>
                 <p>Au plaisir d'échanger avec vous !</p>
             </section>
         </div>
@@ -71,17 +71,43 @@
 
         <div class="backgroundProjets">
             <section class="articleVitrine" id="projets">
-                <h1 class="titre">Portfolio</h1>
+                <h3 class="titre">Portfolio</h3>
                 <ul>
                     <li class="allFiltre activeFiltre">Tous</li>
                     <li class="htmlCss">HTML/CSS</li>
                     <li class="javaScript">JavaScript</li>
+                    <li class="phpMysql">PHP/MySQL</li>
                 </ul>
+
                 <div class="vitrine">
-                    <a href="https://ludetling.github.io/LucasDetling_2_22022021/" target="_blank" class="codageHtmlCss"><img src="img/reservia.png" alt=""></a>
-                    <a href="#projets" class="codageHtmlCss"><img src="img/volnay.png" alt="" ></a>
-                    <a href="https://ludetling.github.io/Projet5/contenu%20projet/index.html" class="codageJavascript" target="_blank"><img src="img/orinoco.png" alt=""></a>
-                    <a href="https://ludetling.github.io/zozor/" target="_blank" class="codageHtmlCss"><img src="img/zozor.png" alt=""></a>
+                    <div class="image_overlay codageHtmlCss">
+                        <img src="img/reservia.png" alt="">
+                        <div class="overlay">
+                            <a href="https://ludetling.github.io/LucasDetling_2_22022021/" target="_blank" ><img src="img/hyperlien.png" alt=""></a>
+                            <a href="https://github.com/LuDetling/LucasDetling_2_22022021" target="_blank"><img src="img/iconeGit.png" alt="github"></a>
+                        </div>
+                    </div>
+                    <div class="image_overlay codagePhpMysql">
+                        <img src="img/volnay.png" alt="">
+                        <div class="overlay">
+                            <a href="http://www.lucasdetling.com/projets/volnay/" target="_blank" ><img src="img/hyperlien.png" alt=""></a>
+                            <a href="https://github.com/LuDetling/volnay" target="_blank"><img src="img/iconeGit.png" alt="github"></a>
+                        </div>
+                    </div>
+                    <div class="image_overlay codageJavascript">
+                        <img src="img/orinoco.png" alt="">
+                        <div class="overlay">
+                            <a href="https://ludetling.github.io/Projet5/contenu%20projet/index.html" target="_blank" ><img src="img/hyperlien.png" alt=""></a>
+                            <a href="https://github.com/LuDetling/Projet5" target="_blank"><img src="img/iconeGit.png" alt="github"></a>
+                        </div>
+                    </div>
+                    <div class="image_overlay codageHtmlCss">
+                        <img src="img/zozor.png" alt="">
+                        <div class="overlay">
+                            <a href="https://ludetling.github.io/zozor/" target="_blank" ><img src="img/hyperlien.png" alt=""></a>
+                            <a href="https://github.com/LuDetling/zozor" target="_blank"><img src="img/iconeGit.png" alt="github"></a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -91,7 +117,7 @@
         <!-- CV -->
         <div class="backgroundCv">
             <section class="cv" id="cv">
-                <h1 class="titre">CV</h1>
+                <h3 class="titre">CV</h3>
                 <a href="img/cv.pdf" target="_blank" class="cvDesktop"><img src="img/cv.png" alt=""></a>
             </section>
         </div>
@@ -102,7 +128,7 @@
 
         <div class="backgroundContact">
             <section class="contact" id="contact">
-                <h1 class="titre">Contact</h1>
+                <h3 class="titre">Contact</h3>
                 <div class="boxContact">
                     <div class="informationContact">
                         <img src="img/iconeTel.png" alt="" class="iconeTel">
@@ -117,29 +143,33 @@
                     <!-- FORMULAIRE DE CONTACT A REVOIR -->
 
                     <?php
-                    if (isset($_POST["sendMail"])) { // si le formulaire est envoyé
-
+                    if (isset($_POST["sendMail"])) { // si le formulaire est envoyé 
                         if (!empty($_POST["name"]) and !empty($_POST["email"]) and !empty($_POST["message"])) {
+
                             $name = $_POST["name"];
                             $email = $_POST["email"];
-                            $message = $_POST["message"];
+                            $message = $name . ",<br>" . $_POST["message"];
+                            $to = "portfolio@lucasdetling.com";
+                            $subject = "contact : ". $name;
 
-                            $to = "local.lucas.detling@gmail.com";
-                            $subject = "contact : ";
-                            $header = "FROM : ";
+                            $header = "MIME-Version: 1.0\r\n";
+                            $header .= 'From:' . $email . "\n";
+                            $header .= 'Content-Type:text/html; charset="uft-8"' . "\n";
+                            $header .= 'Content-Transfer-Encoding: 8bit';
 
                             mail($to, $subject, $message, $header);
-                            header("Location: http://localhost/Portfolio/#contact"); //permet de ne pas spam f5
+                            echo "<script> document.location.href='http://lucasdetling.com';</script>";
                         } else {
                             $msg = "tous les champs doivent être remplit petit malin ! ";
-                            header("Location: http://localhost/Portfolio/#contact");
+
+                            echo "<script> document.location.href='http://lucasdetling.com';</script>";
                         }
                     }
-
                     ?>
 
                     <div class="formulaireContact">
-                        <form action="" class="formContact" method="POST">
+                        <form class="formContact" method="POST">
+                            <p>Envoyer moi un mail : </p>
                             <div class="nomMail">
                                 <input type="text" name="name" class="inputName" placeholder="Votre nom" required value="<? if(isset($_POST[" name"])){ echo $_POST["name"]; }?>">
                                 <input type="email" name="email" class="inputEmail" placeholder="Votre email" required value="<? if(isset($_POST[" email"])){ echo $_POST["email"]; }?>">
@@ -173,7 +203,7 @@
         </div>
         <p>© 2021 Lucas DETLING, Tous droits réservés.</p>
     </footer>
+    <script src="js/app.js"></script>
 </body>
-<script src="js/app.js"></script>
 
 </html>

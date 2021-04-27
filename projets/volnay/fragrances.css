@@ -1,0 +1,42 @@
+.parfums {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.parfums {
+    padding: 0;
+}
+
+.parfums li {
+    list-style: none;
+    width: 33%;
+    text-align: center
+}
+
+.parfums a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.parfums img {    
+    border: solid black 2px;
+    height: 370px;
+    width: 370px;
+}
+
+.parfums h3 {
+    
+}
+
+.parfums hr {
+    width: 33%;
+    border: solid black 1px;
+}
+
+.parfums p {
+    margin-bottom: 100px
+}

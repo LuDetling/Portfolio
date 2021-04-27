@@ -1,0 +1,42 @@
+
+* {
+    font-family: Montserrat, sans-serif;
+}
+
+body {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+/*    HEADER    */
+
+
+/*    SECTION    */
+
+.section {
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: flex-start;
+}
+
+.article {
+    width: 70%;
+    font-size: 1.5em;
+}
+
+.article p {
+    margin-bottom: 50px;
+    line-height: 1.7rem;
+}
+
+.article a {
+    text-decoration: none;
+    color: inherit;
+    border: solid 1px;
+    padding: 10px 30px;
+}
+
+.parfum {
+    width: 40%;
+}
