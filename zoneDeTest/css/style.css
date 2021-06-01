@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "finland_rounded";
+    src: url("../../police/finland_rounded/Finland\ Rounded\ Thin.otf");
+}
+
+@font-face {
+    font-family: "advent";
+    src: url("../../police/advent/advent-Lt1.otf");
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "dosis", "roboto", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #476a7f;
+}
+
+/* NAVIGATION */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav {
+    background: rgba(140, 140, 148, .85);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-family: "finland_rounded";
+    font-size: 40px;
+    padding: 7px;
+    position: relative;
+}
+
+.nav a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: #fff;
+    width: 100%;
+    transform-origin: 1 0;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}
+
+.nav a:hover::before {
+    transform: scaleX(1);
+    transform-origin: 1 0;
+}
+
+/* SECTION ZONE DE TEST */
+
+.section-zdtest {
+    width: 80%;
+    margin: auto;
+    background-color: #ff7f50;
+    margin-top: 74px;
+    padding: 50px 0 40px;
+    border-radius: 0 0 20px 20px;
+}
+
+.section-zdtest h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 25px;
+}
+
+.box-zdtest {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.box-zdtest a {
+    text-decoration: none;
+    font-size: 25px;
+    margin: 15px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.8);
+}
+
+.box-zdtest a img {
+    height: 100%;
+    width: 300px;
+    transition: .5s;
+}
+
+.box-zdtest a:hover img {
+    width: 320px;
+    height: 320px;
+}
+
+.box-zdtest a p {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+    width: 100%;
+    color: white;
+    padding: 5px;
+}
+
+/* EXPLICATION */
+
+.explication {
+   width: 80%;
+   margin: 50px auto;
+}
+
+.explication h2 {
+    margin: auto;
+    width: 160px;
+    text-align: center;
+    color: white;
+    border-bottom: 3px solid white;
+}
+
+.explication p {
+    font-size: 20px;
+    width: 60%;
+    margin: 20px auto;
+    color: white;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #8c8c94;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: relative;
+}
+
+.footerIcone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer img {
+    width: 35px;
+    height: 35px;
+    margin: 0 7.5px;
+    transition: .5s all ease-in-out;
+}
+
+.footer img:hover {
+    width: 40px;
+    height: 40px;
+}
+
+.footer .iconeMailHeader {
+    height: 25px;
+}
+
+.footer .iconeMailHeader:hover {
+    height: 32px;
+}
+
+.footer p {
+    margin-top: 10px;
+    color: white;
+}

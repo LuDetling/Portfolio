@@ -1,0 +1,76 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 30%;
+    margin: 20vh auto;
+    position: relative;
+    background-color: #1e847f;
+    border-radius: 10px;
+    padding: 7px;
+    box-shadow: 10px 10px 30px;
+}
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 15px auto;
+}
+
+.champ label {
+    padding: 7px;
+}
+
+.champ input{
+    border: none;
+    background-color: #ecc19c;
+    outline: 0;
+    padding: 7px;
+}
+
+.champ-message {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 15px auto;
+}
+
+.champ-message label {
+    padding: 7px;
+}
+
+.champ-message textarea {
+    max-width: 100%;
+    max-height: 1000px;
+    background-color: #ecc19c;
+    padding: 7px;
+}
+
+.champ-boutton {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 15px auto;
+}
+
+.envoyer {
+    width: 30%;
+    margin-left: auto;
+    padding: 7px;
+    border: solid 2px grey;
+    background-color: hotpink;
+    border-radius: 7px;
+}
+
+.reception {
+    width: 80%;
+    margin: 15px auto;
+    color: green;
+    background-color: white;
+    padding: 7px;
+}

@@ -6,7 +6,7 @@ const backgroundNav = () => {
     document.addEventListener("scroll", (e) => {
         let scrollValue = window.scrollY;
 
-        if(scrollValue > 50) {
+        if (scrollValue > 50) {
             header.classList.add("backgroundHeader");
         } else {
             header.classList.remove("backgroundHeader");
@@ -16,122 +16,88 @@ const backgroundNav = () => {
 
 backgroundNav()
 
-// nav qui change de couleur lors du scroll
+// nav qui ajoute une barre sous la section lors du scroll
 
 const interSection = () => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll(".section");
     const navigation = document.querySelectorAll(".navigation a")
+    const boxSection = document.querySelector(".boxSection");
 
     document.addEventListener("scroll", (e) => {
+
         let scrollValue = window.scrollY; // hauteur du scroll
 
-        if (scrollValue >= sections[0].offsetTop * 0.9 && scrollValue < sections[1].offsetTop * 0.9){
-            navigation[0].classList.add("navActive");
-        } else {
+        if (scrollValue > boxSection.offsetTop * 0.9) {
+            for (let i = 0; i < sections.length; i++) {
+
+                let tailleSection = sections[i].offsetTop + sections[i].offsetHeight;
+
+                if (scrollValue >= sections[i].offsetTop * 0.9 && scrollValue < tailleSection * 0.9) { // si la hauteur du scroll est entre 2 sections
+                    navigation[i].classList.add("navActive");
+                } else {
+                    navigation[i].classList.remove("navActive");
+                }
+            }
+        }
+        else {
             navigation[0].classList.remove("navActive");
         }
-        if (scrollValue >= sections[1].offsetTop * 0.9 && scrollValue < sections[2].offsetTop * 0.9) {
-            navigation[1].classList.add("navActive")
-        } else {
-            navigation[1].classList.remove("navActive")
-        }
-        if (scrollValue >= sections[2].offsetTop * 0.9 && scrollValue < sections[3].offsetTop * 0.9) {
-            navigation[2].classList.add("navActive")
-        } else {
-            navigation[2].classList.remove("navActive")
-            navigation[3].classList.remove("navActive")
-        }
-        if (scrollValue > sections[3].offsetTop * 0.9) {
-            navigation[3].classList.add("navActive")
-            navigation[2].classList.remove("navActive")
-        } else {
-            navigation[3].classList.remove("navActive")
-        }
+
     })
 
 }
 
 interSection();
+
+// BARRE DE COMPETENCE 
+
+const barreCompetence = () => {
+    let competence = document.querySelectorAll(".competence");
+
+    document.addEventListener("scroll", (e) => {
+
+        let scrollWindow = window.scrollY / .75;
+
+        if (scrollWindow >= competence[0].offsetTop) {
+
+            let barreHtml = document.querySelector(".barreHtml");
+            let barreJs = document.querySelector(".barreJs");
+            let barrePhp = document.querySelector(".barrePhp");
+            let barreMysql = document.querySelector(".barreMysql");
+
+            barreHtml.style.width = "75%";
+            barreJs.style.width = "65%";
+            barrePhp.style.width = "55%";
+            barreMysql.style.width = "50%";
+
+
+        }
+    })
+
+}
+
+barreCompetence();
+
 // systeme de filtre
 
 const activeFiltre = function () {
 
-    const allFiltre = document.querySelector(".allFiltre");
-    const htmlCss = document.querySelector(".htmlCss");
-    const javaScript = document.querySelector(".javaScript");
-    const phpMysql = document.querySelector(".phpMysql");
+    $(document).ready(function () {
+        $(".list").click(function () {
+            const value = $(this).attr("data-filter");
+            if (value == 'tous') {
+                $(".box-projet").show("1000");
+            } else {
+                $(".box-projet").not("." + value).hide("1000");
+                $(".box-projet").filter("." + value).show("1000");
+            }
+        })
 
-    const codageHtmlCss = document.querySelectorAll(".codageHtmlCss");
-    const codageJavascript = document.querySelectorAll(".codageJavascript");
-    const codagePhpMysql = document.querySelectorAll(".codagePhpMysql");
+        // COULEUR SUR CLASS ACTIVE
 
-    // ECOUTE AUCUN FILTRE
-
-    allFiltre.addEventListener("click", (e) => {
-
-        allFiltre.classList.add("activeFiltre");
-        htmlCss.classList.remove("activeFiltre");
-        javaScript.classList.remove("activeFiltre");
-        phpMysql.classList.remove("activeFiltre");
-
-        if(allFiltre.classList[1] === "activeFiltre"){
-            codageHtmlCss.forEach(element => element.style.display = "flex");
-            codageJavascript.forEach(element => element.style.display = "flex");
-            codagePhpMysql.forEach(element => element.style.display = "flex");
-        }
-
-    })
-
-    // ECOUTE FILTRE HTML/CSS
-
-    htmlCss.addEventListener("click", (e) => {
-
-        htmlCss.classList.add("activeFiltre");
-        allFiltre.classList.remove("activeFiltre");
-        javaScript.classList.remove("activeFiltre");
-        phpMysql.classList.remove("activeFiltre");
-
-        if(htmlCss.classList[1] === "activeFiltre"){
-            codageJavascript.forEach(element => element.style.display = "none");
-            codagePhpMysql.forEach(element => element.style.display = "none");
-            codageHtmlCss.forEach(element => element.style.display = "flex");
-
-        }
-
-    })
-
-    //ECOUTE FILTRE JAVASCRIPT
-
-    javaScript.addEventListener("click", (e) => {
-
-        javaScript.classList.add("activeFiltre");
-        htmlCss.classList.remove("activeFiltre");
-        allFiltre.classList.remove("activeFiltre");
-        phpMysql.classList.remove("activeFiltre");
-
-        if(javaScript.classList[1] === "activeFiltre"){
-            codageHtmlCss.forEach(element => element.style.display = "none");
-            codagePhpMysql.forEach(element => element.style.display = "none");
-            codageJavascript.forEach(element => element.style.display = "flex");
-
-        }
-
-    })
-
-    //ECOUTE FILTRE PHP/MYSQL
-    phpMysql.addEventListener("click", (e) => {
-        phpMysql.classList.add("activeFiltre");
-        htmlCss.classList.remove("activeFiltre");
-        javaScript.classList.remove("activeFiltre");
-        allFiltre.classList.remove("activeFiltre");
-
-        if(phpMysql.classList[1] === "activeFiltre"){
-            codageHtmlCss.forEach(element => element.style.display = "none");
-            codageJavascript.forEach(element => element.style.display = "none");
-            codagePhpMysql.forEach(element => element.style.display = "flex");
-
-        }
-
+        $(".list").click(function () {
+            $(this).addClass("activeFiltre").siblings().removeClass("activeFiltre");
+        })
     })
 
 
@@ -145,11 +111,11 @@ const flecheUp = () => {
     const flecheUp = document.querySelector(".goTop");
 
     document.addEventListener("scroll", (e) => {
-        if(window.scrollY === 0){
-            flecheUp.style.display = "none";
+        if (window.scrollY === 0) {
+            flecheUp.style.transform = "translateY(150%)";
         } else {
-            flecheUp.style.display = "block";
-        }   
+            flecheUp.style.transform = "translateY(-40%)";
+        }
     })
 }
 
@@ -174,7 +140,7 @@ const hamburger = () => {
         hamburgerOverlay.style.display = "block";
     })
 
-    for(let i = 0; i < a.length; i++){
+    for (let i = 0; i < a.length; i++) {
         a[i].addEventListener("click", (e) => {
             contenuHamburger.style.transform = "translateY(-100%)";
             hamburgerOverlay.style.display = "none";
@@ -189,7 +155,7 @@ const hamburger = () => {
     })
 
     boutonHamburger.addEventListener("keydown", (e) => {
-        if(e.repeat === false && e.which === 27){
+        if (e.repeat === false && e.which === 27) {
             contenuHamburger.style.transform = "translateY(-100%)";
             hamburgerOverlay.style.display = "none";
         }
