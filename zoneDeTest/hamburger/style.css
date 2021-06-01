@@ -1,0 +1,81 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #888;
+}
+
+.box-hamburger {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(157, 160, 113);
+    margin: auto;
+    margin-top: 20vh;
+    position: relative;
+}
+
+.hamburger {
+    cursor: pointer;
+    background-color: rgb(76, 76, 95);
+    position: absolute;
+    width: 200px;
+    height: 140px;
+    top: 80px;
+    left: 50px;
+    overflow: hidden;
+}
+
+.hamburger span {
+    width: 100px;
+    height: 5px;
+    margin: auto;
+    background-color: blanchedalmond;
+    position: absolute;
+    left: 50px;
+    transition: .5s;
+}
+
+.span1{
+    top: 50px;
+}
+
+.span2{
+    top: 70px;
+}
+
+.span3{
+    top: 90px;
+}
+
+.anim1 {
+    top: 70px;
+    transform: rotate(0.1turn);
+}
+
+.anim2 {
+    transform: translateX(200px);
+    opacity: 0;
+}
+
+.anim3 {
+    top: 70px;
+    transform: rotate(-0.1turn);
+}
+
+/* .hamburgerAnim {
+    animation: test 2s;
+}
+
+@keyframes test {
+    
+    0% {
+        transform: rotate(0.0turn);
+    }
+    100% {
+        transform: rotate(0.5turn);
+    }
+
+} */

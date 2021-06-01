@@ -57,6 +57,7 @@ html {
     transform-origin: 1 0;
     transform: scaleX(0);
     transition: transform 0.5s;
+    border-radius: 20px;
 }
 
 .navInactive:hover::before {
@@ -72,6 +73,7 @@ html {
     background: #fff;
     width: 100%;
     transform: scaleX(1);
+    border-radius: 20px;
 }
 
 .navEnMoin::before {
