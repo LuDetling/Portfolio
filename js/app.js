@@ -1,18 +1,20 @@
-const header = document.querySelector(".header");
-console.log(header.classList);
-window.addEventListener("scroll", (e) => {
+const backgroundClose = document.querySelector(".menu-background-close");
 
-    // console.log(window.innerHeight);
-    // console.log(window.scrollY);
-    // console.log(document.body.offsetHeight);
+const closeMenu = () => {
+  const background = document.querySelector(
+    ".menu-background-close .background"
+  );
+  background.addEventListener("click", (e) => {
+    backgroundClose.classList.remove("menu-background-open");
+  });
+};
 
-    scrollValue = (window.innerHeight + window.scrollY) / (document.body.offsetHeight)
+const openMenu = () => {
+  const hamburger = document.querySelector(".burger-menu");
+  hamburger.addEventListener("click", (e) => {
+    backgroundClose.classList.add("menu-background-open");
+  });
+};
 
-    if(scrollValue > 0.54){
-        header.classList.add("backgroundHeader");
-    } else {
-        header.classList.remove("backgroundHeader")
-    }
-
-    console.log(scrollValue);
-})
+closeMenu();
+openMenu();
