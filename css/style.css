@@ -53,12 +53,12 @@ table {
 }
 
 nav {
-  color: #f7c59f;
   background-color: #704c5e;
   padding: 0.6rem 0;
   position: sticky;
   top: 0;
   width: 100%;
+  box-shadow: 0px 1px 5px 1px #704c5e;
 }
 nav .content {
   width: 80%;
@@ -69,7 +69,7 @@ nav .content {
 }
 nav .content .logo {
   font-size: 1.3rem;
-  color: #f7c59f;
+  color: white;
   display: block;
   width: fit-content;
   text-decoration: none;
@@ -90,7 +90,7 @@ nav .content .burger-menu {
   height: 19px;
 }
 nav .content .burger-menu .hamburger {
-  background-color: #f7c59f;
+  background-color: white;
   transition: 0.3s ease-in-out;
   width: 100%;
   height: 3px;
@@ -133,9 +133,13 @@ nav .menu-background-close .menu {
   width: 300px;
   background-color: #704c5e;
   height: 100%;
+  box-shadow: 1px 0px 5px 1px #704c5e;
 }
-nav .menu-background-close .menu a {
-  color: #f7c59f;
+nav .menu-background-close .menu .menu-content {
+  padding: 1rem;
+}
+nav .menu-background-close .menu .menu-content a {
+  color: white;
   text-decoration: none;
   font-size: 1.3rem;
   display: block;
@@ -152,6 +156,36 @@ nav .menu-background-close .background {
 }
 nav .menu-background-open {
   width: 100vw;
+}
+
+header .background-header {
+  background-color: rgba(112, 76, 94, 0.3);
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  z-index: -1;
+}
+header .header-content {
+  margin: auto;
+  width: 80%;
+}
+header .header-content .photo {
+  width: 400px;
+  margin: auto;
+  display: block;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 2rem 0;
+}
+header .header-content .presentation {
+  text-align: center;
+}
+header .header-content .presentation p:first-child {
+  font-size: 2rem;
+}
+header .header-content .presentation p {
+  font-size: 1.5rem;
 }
 
 body {
