@@ -56,6 +56,9 @@ nav {
   color: #f7c59f;
   background-color: #704c5e;
   padding: 0.6rem 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
 nav .content {
   width: 80%;
@@ -152,9 +155,13 @@ nav .menu-background-open {
 }
 
 body {
-  background-color: #315e52;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+}
+
+.lorem {
+  width: 200px;
+  margin: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
