@@ -4,12 +4,13 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <a href="#">Lucas Detling</a>
+        <div>
+          <RouterLink to="/">A propos</RouterLink>
+          <a href="#projects">Projets</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -17,66 +18,41 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+  position: sticky;
+  top: 0;
+  background-color: #1f1f1f;
+  z-index: 9999;
+  box-shadow: 0 4px 4px hsla(0, 0%, 4%, .3);
 }
 
 nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+  margin: auto;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+  font-size: 1.2rem;
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+  a {
+    text-decoration: none;
+    color: white;
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    &:hover {
+      color: #4A90E2;
+    }
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  div {
+    a {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
   }
 }
 </style>

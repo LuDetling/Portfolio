@@ -1,1 +1,12 @@
-@import './reset.css';
+@import "./reset.css";
+@import "./fonts.css";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1f1f1f;
+    font-family: "MontserratR";
+    color: #eaeaea;
+}
