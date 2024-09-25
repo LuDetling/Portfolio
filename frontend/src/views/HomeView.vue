@@ -9,3 +9,10 @@ import APropos from '../components/APropos.vue'
     <ProjetsHome id="projects" />
   </main>
 </template>
+
+<style scoped lang="scss">
+  main {
+    max-width: 80%;
+    margin: auto;
+  }
+</style>

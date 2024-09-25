@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <a href="#">Lucas Detling</a>
+        <a href="/">Lucas Detling</a>
         <div>
           <RouterLink to="/">A propos</RouterLink>
           <a href="#projects">Projets</a>
@@ -41,6 +41,7 @@ nav {
   a {
     text-decoration: none;
     color: white;
+    transition: .2s;
 
     &:hover {
       color: #4A90E2;
