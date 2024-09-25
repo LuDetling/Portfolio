@@ -13,11 +13,13 @@ class AppFixtures extends Fixture
         $project = new Project();
         $project->setTitle('Green Goodies')
         ->setDescription("Site e-commerce pour acheter des fournitures écolo")
+        ->setShortDescription("Site e-commerce")
         ->setPicture('greengoodies.webp');
         $manager->persist($project);
         $project2 = new Project();
         $project2->setTitle('Tasklinker')
         ->setDescription("Site e-commerce pour acheter des fournitures écolo")
+        ->setShortDescription("Site e-commerce")
         ->setPicture('greengoodies.webp');
         $manager->persist($project2);
 
