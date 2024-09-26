@@ -1,11 +1,12 @@
 <template>
-    <div v-for="project in projects" :key="project.id" class="card-projet">
-        <img :src="urlPictures + project.picture" />
-        <div class="content-project-absolute-background">
-            <div class="content-project-absolute">
-                <div>{{ project.title }}</div>
-                <div>{{ project.shortDescription }}</div>
-                <a :href='"project/" + project.id' class="more">Voir plus</a>
+    <div v-for="projet in projets" :key="projet.id" class="card-projet">
+        <img :src="urlPictures + projet.picture" />
+        <div class="content-projet-absolute-background">
+            <div class="content-projet-absolute">
+                <div>{{ projet.title }}</div>
+                <div>{{ projet.shortDescription }}</div>
+                <a :href='"projet/" + projet.id' class="more">Voir plus</a>
+                <router-link :to="{ name: 'projet', params: { projetId: projet.id } }"></router-link>
             </div>
         </div>
     </div>
@@ -15,7 +16,7 @@
 const urlPictures = 'src/assets/images/';
 
 const props = defineProps({
-    projects: Array
+    projets: Array
 })
 </script>
 
@@ -27,7 +28,7 @@ const props = defineProps({
     position: relative;
 
     &:hover {
-        .content-project-absolute-background {
+        .content-projet-absolute-background {
             height: 100%;
         }
     }
@@ -53,7 +54,7 @@ const props = defineProps({
         display: block;
     }
 
-    .content-project-absolute-background {
+    .content-projet-absolute-background {
         background-color: rgba(0, 0, 0, .7);
         position: absolute;
         overflow: hidden;
@@ -64,7 +65,7 @@ const props = defineProps({
         display: flex;
         align-items: center;
 
-        .content-project-absolute {
+        .content-projet-absolute {
             padding: 1rem;
             width: 100%;
             position: relative;

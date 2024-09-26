@@ -6,10 +6,10 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <a href="/">Lucas Detling</a>
+        <RouterLink to="/">Lucas Detling</RouterLink>
         <div>
           <RouterLink to="/">A propos</RouterLink>
-          <a href="#projects">Projets</a>
+          <RouterLink to="#projects">Projets</RouterLink>
         </div>
       </nav>
     </div>

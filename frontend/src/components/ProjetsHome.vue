@@ -2,35 +2,35 @@
 import { ref, onMounted } from 'vue'
 import Cards from './Cards.vue';
 
-const projects = ref([]);
+const projets = ref([]);
 
-const fetchProjects = async () => {
+const fetchProjets = async () => {
     try {
         const response = await fetch("https://127.0.0.1:8000/api/projects");
-        if (!response.ok) throw new Error('Erreur lors du fetch des projects')
-        projects.value = await response.json();
-        console.log(projects.value);
+        if (!response.ok) throw new Error('Erreur lors du fetch des projets')
+        projets.value = await response.json();
+        console.log(projets.value);
     } catch (error) {
         console.error(error.message)
     }
 }
 
 onMounted(() => {
-    fetchProjects()
+    fetchProjets()
 })
 </script>
 
 <template>
-    <div class="content-projects">
-        <Cards :projects=projects></Cards>
-        <Cards :projects=projects></Cards>
-        <Cards :projects=projects></Cards>
-        <Cards :projects=projects></Cards>
+    <div class="content-projets">
+        <Cards :projets=projets></Cards>
+        <Cards :projets=projets></Cards>
+        <Cards :projets=projets></Cards>
+        <Cards :projets=projets></Cards>
     </div>
 </template>
 
 <style scoped lang="scss">
-.content-projects {
+.content-projets {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem 3%;
@@ -45,7 +45,7 @@ onMounted(() => {
             width: 100%;
         }
 
-        .content-project-absolute {
+        .content-projet-absolute {
             position: absolute;
             bottom: 0;
             left: 0;
