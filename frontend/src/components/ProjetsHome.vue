@@ -7,7 +7,7 @@ const projets = ref([]);
 const fetchProjets = async () => {
     try {
         const response = await fetch("https://127.0.0.1:8000/api/projects");
-        if (!response.ok) throw new Error('Erreur lors du fetch des projets')
+        if (!response.ok) throw new Error('Pas de projets trouvé')
         projets.value = await response.json();
         console.log(projets.value);
     } catch (error) {
