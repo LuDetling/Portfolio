@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted, defineProps } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const projet = ref({});
-const urlPictures = 'src/assets/images/';
+const urlPictures = '/src/assets/images/';
 
 
 const fetchProjet = async () => {

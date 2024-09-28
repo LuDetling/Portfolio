@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
@@ -9,13 +10,15 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/">Lucas Detling</RouterLink>
         <div>
           <RouterLink to="/">A propos</RouterLink>
-          <RouterLink to="#projects">Projets</RouterLink>
+          <a href="#projets">Projets</a>
         </div>
       </nav>
     </div>
   </header>
 
   <RouterView />
+
+  <Footer />
 </template>
 
 <style scoped lang="scss">
@@ -33,7 +36,6 @@ nav {
   align-items: center;
   max-width: 80%;
   margin: auto;
-  margin-bottom: 2rem;
   padding: 2rem 0;
   font-size: 1.2rem;
 

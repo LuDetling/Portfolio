@@ -6,13 +6,16 @@ import APropos from '../components/APropos.vue'
 <template>
   <main>
     <APropos id="apropos" />
-    <ProjetsHome id="projects" />
+    <ProjetsHome id="projets" />
   </main>
 </template>
 
 <style scoped lang="scss">
   main {
     max-width: 80%;
-    margin: auto;
+    margin: 4rem auto;
+    >section {
+      margin: 0 0 10rem;
+    }
   }
 </style>

@@ -21,35 +21,47 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="content-projets">
-        <Cards :projets=projets></Cards>
-        <Cards :projets=projets></Cards>
-        <Cards :projets=projets></Cards>
-        <Cards :projets=projets></Cards>
-    </div>
+    <section class="section-projets">
+        <h2>Projets</h2>
+        <div class="content-projets">
+            <Cards :projets=projets></Cards>
+            <Cards :projets=projets></Cards>
+            <Cards :projets=projets></Cards>
+        </div>
+        <a href="#projets">+</a>
+        <div>Projets en plus qui s'ouvre</div>
+    </section>
 </template>
 
 <style scoped lang="scss">
-.content-projets {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem 3%;
-    margin: 2rem auto;
+.section-projets {
+    h2 {
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 1.5rem;
+    }
 
-    .card-projet {
-        width: 25%;
-        position: relative;
+    .content-projets {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 2rem;
 
-        img {
-            display: block;
-            width: 100%;
+        @media screen and (max-width: 938px) {
+            display: flex;
+            flex-wrap: wrap;
         }
 
-        .content-projet-absolute {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: green;
+        .card-projet {
+            width: 25%;
+            position: relative;
+
+            .content-projet-absolute {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background-color: green;
+            }
         }
     }
 }
