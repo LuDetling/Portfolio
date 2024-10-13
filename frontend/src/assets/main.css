@@ -3,6 +3,7 @@
 
 html {
     scroll-behavior: smooth;
+    /* scroll-padding: 7rem; */
 }
 
 body {
@@ -15,4 +16,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+h1 {
+    font-size: 3rem;
 }

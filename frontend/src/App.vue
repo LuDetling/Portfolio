@@ -7,11 +7,11 @@ import Footer from './components/Footer.vue';
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Lucas Detling</RouterLink>
-        <div>
-          <RouterLink to="/">A propos</RouterLink>
-          <a href="#projets">Projets</a>
-        </div>
+        <a href="#">Accueil</a>
+        <a href="#apropos">A propos</a>
+        <a href="#">LD</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -24,19 +24,22 @@ import Footer from './components/Footer.vue';
 <style scoped lang="scss">
 header {
   position: sticky;
-  top: 0;
-  background-color: #1f1f1f;
+  top: 1rem;
+  background-color: rgba(51, 93, 74, 0.8);
   z-index: 9999;
   box-shadow: 0 4px 4px hsla(0, 0%, 4%, .3);
+  width: fit-content;
+  margin: auto;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  border-radius: 40px;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 80%;
   margin: auto;
-  padding: 2rem 0;
   font-size: 1.2rem;
 
 
@@ -44,17 +47,13 @@ nav {
     text-decoration: none;
     color: white;
     transition: .2s;
+    padding: 1rem;
+    position: relative;
+    display: block;
+    overflow: hidden;
 
     &:hover {
-      color: #4A90E2;
-    }
-  }
-
-  div {
-    a {
-      &:not(:last-child) {
-        margin-right: 2rem;
-      }
+      background-color: #59786a;
     }
   }
 }
