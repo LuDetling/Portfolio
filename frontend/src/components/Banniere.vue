@@ -2,7 +2,7 @@
     <section id="banniere">
         <h1>Lucas Detling</h1>
         <p>
-            Développeur fullstack Symfony - Vuejs
+            Développeur fullstack Symfony - Vue.js
         </p>
         <a href="#contact" class="btn">Me contacter</a>
         <a href="#apropos" class="icone">
