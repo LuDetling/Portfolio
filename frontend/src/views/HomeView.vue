@@ -1,14 +1,16 @@
 <script setup>
-import ProjetsHome from '../components/ProjetsHome.vue'
+import Projets from '../components/Projets.vue'
 import APropos from '../components/APropos.vue'
 import Banniere from '@/components/Banniere.vue';
+import Contact from '@/components/Contact.vue';
 </script>
 
 <template>
   <main>
     <Banniere/>
     <APropos/>
-    <ProjetsHome/>
+    <Projets/>
+    <Contact/>
   </main>
 </template>
 
@@ -17,7 +19,7 @@ import Banniere from '@/components/Banniere.vue';
     max-width: 80%;
     margin: 4rem auto;
     >section {
-      padding: 200px 0;
+      padding: 100px 0;
     }
   }
 </style>

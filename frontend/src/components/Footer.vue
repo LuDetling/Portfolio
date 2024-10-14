@@ -1,13 +1,43 @@
 <template>
     <footer>
-        © Lucas-Detling.com. All rights reserved
+        <div class="rs">
+            <a href="https://github.com/LuDetling" target="_blank">
+                <font-awesome-icon :icon="['fab', 'github']" />
+            </a>
+            <a href="https://www.linkedin.com/in/lucas-detling/" target="_blank">
+                <font-awesome-icon :icon="['fab', 'linkedin']" />
+            </a>
+        </div>
+        <p>
+            © Lucas-Detling.com. All rights reserved
+        </p>
     </footer>
 </template>
 
 <style lang="scss" scoped>
-    footer {
-        margin-top: auto;
-        text-align: center;
-        padding: 1rem;
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem;
+    .rs {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 1rem;
+        a {
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            padding: .5rem;
+            transition: .3s;
+            &:hover {
+                background-color: rgba(51, 93, 74, 0.8);
+            }
+        }
     }
+}
 </style>

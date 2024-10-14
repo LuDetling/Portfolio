@@ -27,7 +27,7 @@ header {
   top: 1rem;
   background-color: rgba(51, 93, 74, 0.8);
   z-index: 9999;
-  box-shadow: 0 4px 4px hsla(0, 0%, 4%, .3);
+  /* box-shadow: 0 4px 4px hsla(0, 0%, 4%, .3); */
   width: fit-content;
   margin: auto;
   backdrop-filter: blur(4px);

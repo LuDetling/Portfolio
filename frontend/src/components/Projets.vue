@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section class="section-projets">
+    <section id="projets" class="section-projets">
         <h2>Projets</h2>
         <div class="content-projets">
             <Cards :projets=projets></Cards>
