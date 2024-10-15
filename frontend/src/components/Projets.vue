@@ -18,6 +18,8 @@ const fetchProjets = async () => {
 onMounted(() => {
     fetchProjets()
 })
+
+
 </script>
 
 <template>
@@ -28,16 +30,15 @@ onMounted(() => {
             <Cards :projets=projets></Cards>
             <Cards :projets=projets></Cards>
         </div>
-        <a href="#projets">+</a>
-        <div>Projets en plus qui s'ouvre</div>
+        <!-- <a href="#projets">+</a>
+        <div>Projets en plus qui s'ouvre</div> -->
     </section>
 </template>
 
 <style scoped lang="scss">
 .section-projets {
     h2 {
-        text-align: center;
-        margin: 2rem 0;
+        margin-bottom: 2rem;
         font-size: 1.5rem;
     }
 

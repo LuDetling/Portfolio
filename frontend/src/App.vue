@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Footer from './components/Footer.vue';
+
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import Footer from './components/Footer.vue';
       <nav>
         <a href="#">Accueil</a>
         <a href="#apropos">A propos</a>
-        <a href="#">LD</a>
+        <!-- <a href="#">LD</a> -->
         <a href="#projets">Projets</a>
         <a href="#contact">Contact</a>
       </nav>
