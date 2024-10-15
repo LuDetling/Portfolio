@@ -16,7 +16,7 @@ class ProjectController extends AbstractController
     public function getProjects(): JsonResponse
     {
         $projects = $this->projectRepository->findAll();
-        return $this->json($projects);
+        return $this->json($projects, context: ['groups' => ['projets']]);
     }
 
     #[Route('/api/project/{id}', name: 'app_project', methods: ['GET'])]
