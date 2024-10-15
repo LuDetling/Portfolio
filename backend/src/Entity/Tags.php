@@ -11,13 +11,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: TagsRepository::class)]
 class Tags
 {
-    #[Groups(['projets'])]
+    #[Groups(['projets', 'tags'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['projets'])]
+    #[Groups(['projets', 'tags'])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
