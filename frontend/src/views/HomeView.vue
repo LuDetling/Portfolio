@@ -3,6 +3,7 @@ import Projets from '../components/Projets.vue'
 import APropos from '../components/APropos.vue'
 import Banniere from '@/components/Banniere.vue';
 import Contact from '@/components/Contact.vue';
+
 </script>
 
 <template>

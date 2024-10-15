@@ -8,9 +8,6 @@
         <a href="#apropos" class="icone">
             <font-awesome-icon :icon="['fas', 'arrow-down-long']" />
         </a>
-        <p>Trouver la position de la section</p>
-        <p>comparer la position du scroll a la section</p>
-        <p>ajouter une classe quand on est au même endroit ou plus </p>
     </section>
 </template>
 

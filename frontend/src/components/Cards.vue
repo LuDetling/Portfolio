@@ -75,7 +75,7 @@ const props = defineProps({
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: .5rem;
             margin-bottom: 1rem;
             .tag {
                 padding: .3rem .5rem;

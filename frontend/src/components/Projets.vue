@@ -23,7 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section id="projets" class="section-projets">
+    <section id="projets">
         <h2>Projets</h2>
         <div class="content-projets">
             <Cards :projets=projets></Cards>
@@ -36,7 +36,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-.section-projets {
+#projets {
     h2 {
         margin-bottom: 2rem;
         font-size: 1.5rem;
