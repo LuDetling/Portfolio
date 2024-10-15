@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import Footer from './components/Footer.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 
@@ -26,16 +26,24 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 
+const route = useRoute()
+console.log(route.path);
+
+
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <nav>
+      <nav v-if="route.path === '/'">
+      <!-- <nav > -->
         <a href="#" :class="{ active: activeSection === 'banniere' }">Accueil</a>
         <a href="#apropos" :class="{ active: activeSection === 'apropos' }">A propos</a>
         <a href="#projets" :class="{ active: activeSection === 'projets' }">Projets</a>
         <a href="#contact" :class="{ active: activeSection === 'contact' }">Contact</a>
+      </nav>
+      <nav v-else>
+        <router-link to="/#projets">Accueil</router-link>
       </nav>
     </div>
   </header>
@@ -53,7 +61,7 @@ header {
   z-index: 9999;
   /* box-shadow: 0 4px 4px hsla(0, 0%, 4%, .3); */
   width: fit-content;
-  margin: auto;
+  margin: 0 auto;
   backdrop-filter: blur(4px);
   overflow: hidden;
   border-radius: 40px;

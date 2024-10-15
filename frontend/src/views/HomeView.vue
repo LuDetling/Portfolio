@@ -20,7 +20,7 @@ import Contact from '@/components/Contact.vue';
     max-width: 90%;
     margin: 4rem auto;
     >section {
-      padding: 100px 0;
+      padding: 120px 0;
     }
   }
 </style>

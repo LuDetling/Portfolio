@@ -26,26 +26,39 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .card-projet {
-    width: 250px;
     margin: auto;
-    overflow: hidden;
-    position: relative;
-    border-radius: 10px;
-    background-color: #2f5041;
+    width: 250px;
 
     a {
         color: white;
+        position: relative;
+        display: block;
+        border-radius: 10px;
+        overflow: hidden;
 
         &:hover {
             .on-card {
                 transform: translateY(0);
             }
         }
+
+        &::after {
+            /* content: ''; */
+            width: 100%;
+            height: 20px;
+            background-color: #2f5041;
+            position: absolute;
+            bottom: 0;
+            z-index: 0;
+        }
     }
 
     img {
         width: 100%;
         display: block;
+        border-radius: inherit;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
     }
 
     .on-card {
@@ -59,6 +72,7 @@ const props = defineProps({
         transform: translateY(calc(100% - 3rem));
         box-sizing: border-box;
         transition: .3s;
+        z-index: 1;
 
         &::before {
             content: '';
@@ -77,6 +91,7 @@ const props = defineProps({
             flex-wrap: wrap;
             gap: .5rem;
             margin-bottom: 1rem;
+
             .tag {
                 padding: .3rem .5rem;
                 background-color: #59786a;
