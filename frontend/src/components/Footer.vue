@@ -14,7 +14,17 @@
     </footer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.darkmode {
+    footer {
+        .rs {
+            a {
+                color: white;
+                border-color: white;
+            }
+        }
+    }
+}
 footer {
     margin-top: auto;
     text-align: center;
@@ -25,15 +35,16 @@ footer {
         justify-content: center;
         margin-bottom: 1rem;
         a {
-            color: white;
+            color: #1f1f1f;
             font-size: 1.2rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid white;
-            padding: .5rem;
+            border: 1px solid #1f1f1f;
             transition: .3s;
+            width: 40px;
+            height: 40px;
             &:hover {
                 background-color: rgba(51, 93, 74, 0.8);
             }

@@ -25,9 +25,10 @@ section {
         width: 300px;
         height: 300px;
         border-radius: 5px;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
+        /* border-top-left-radius: 50%;
+        border-top-right-radius: 50%; */
         object-fit: cover;
+        border: 2px solid #557761;
     }
 
     h2 {

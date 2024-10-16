@@ -35,6 +35,7 @@ const props = defineProps({
         display: block;
         border-radius: 10px;
         overflow: hidden;
+        border: 2px solid #557761;
 
         &:hover {
             .on-card {

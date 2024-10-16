@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import Cards from './Cards.vue';
+import CardsProjets from './CardsProjets.vue';
 
 const projets = ref([]);
 
@@ -26,9 +26,9 @@ onMounted(() => {
     <section id="projets">
         <h2>Projets</h2>
         <div class="content-projets">
-            <Cards :projets=projets></Cards>
-            <Cards :projets=projets></Cards>
-            <Cards :projets=projets></Cards>
+            <CardsProjets :projets=projets />
+            <CardsProjets :projets=projets />
+            <CardsProjets :projets=projets />
         </div>
         <!-- <a href="#projets">+</a>
         <div>Projets en plus qui s'ouvre</div> -->
@@ -37,10 +37,6 @@ onMounted(() => {
 
 <style scoped lang="scss">
 #projets {
-    h2 {
-        margin-bottom: 2rem;
-        font-size: 1.5rem;
-    }
 
     .content-projets {
         display: grid;

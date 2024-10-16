@@ -2,7 +2,7 @@
     <section id="banniere">
         <h1>Lucas Detling</h1>
         <p>
-            Développeur fullstack Symfony - Vue.js
+            Développeur web
         </p>
         <a href="#contact" class="btn">Me contacter</a>
         <a href="#apropos" class="icone">
@@ -11,8 +11,14 @@
     </section>
 </template>
 
-<style scoped lang="scss">
-section {
+<style lang="scss">
+.darkmode .icone {
+    color: white;
+}
+.icone {
+    color: #1f1f1f;
+}
+#banniere {
     text-align: center;
 
     h1 {
@@ -25,7 +31,6 @@ section {
     }
 
     .icone {
-        color: white;
         display: block;
         width: fit-content;
         padding: 2rem;
