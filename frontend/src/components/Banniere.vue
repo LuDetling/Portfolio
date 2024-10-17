@@ -6,7 +6,10 @@
         </p>
         <a href="#contact" class="btn">Me contacter</a>
         <a href="#apropos" class="icone">
-            <font-awesome-icon :icon="['fas', 'arrow-down-long']" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3" />
+            </svg>
         </a>
     </section>
 </template>
@@ -15,9 +18,15 @@
 .darkmode .icone {
     color: white;
 }
+
 .icone {
     color: #1f1f1f;
+
+    svg {
+        width: 40px;
+    }
 }
+
 #banniere {
     text-align: center;
 
@@ -38,6 +47,7 @@
 
         &:hover {
             animation: none;
+
             svg {
                 transform: translateY(20px);
             }
@@ -52,13 +62,20 @@
 }
 
 @keyframes bounce {
-    0% { transform: translateY(0)  }
-    50% {transform: translateY(20px) }
-    100% { transform: translateY(0) }
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(20px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
 }
 
-.icone {    
+.icone {
     animation: bounce 3s infinite ease-in-out;
 }
-
 </style>

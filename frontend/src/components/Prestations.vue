@@ -1,22 +1,25 @@
 <script setup>
 import CardsPrestations from './CardsPrestations.vue';
 const prestation1 = {
-    title: "Basic Web Development",
-    prices: ['300', '500'],
-    description: "Développement d'un site web vitrine ou d'une application simple en Vue.js ou Symfony.",
-    includes: ["Création d'une interface utilisateur simple (Vue.js)", "Intégration avec un backend léger (Symfony)", "Design basique et responsive", "Livraison sur serveur web"]
+    index: 1,
+    title: "Développement Web Basique",
+    price: 1000,
+    description: "Création d'un site web vitrine ou d'une application simple avec une interface utilisateur intuitive.",
+    includes: ["Conception et développement d'une interface utilisateur simple", "Intégration avec un backend léger pour les fonctionnalités basiques", "Design responsive pour tous les appareils ", "Livraison et mise en ligne"]
 }
 const prestation2 = {
-    title: "Advanced Web Application",
-    prices: ['800', '1500'],
-    description: "Développement d'une application web avancée avec des fonctionnalités complexes (ex : dashboard, API REST, authentification).",
-    includes: ["Frontend en Vue.js avec gestion de l'état (Vuex, Pinia)", "Backend complet avec gestion de base de données (Symfony)", "Authentification et gestion des utilisateurs", "Tests unitaires et fonctionnels", "Déploiement et documentation"]
+    index: 2,
+    title: "Application Web Avancée",
+    price: 1500,
+    description: "Développement d'une application web avec des fonctionnalités avancées telles qu'un tableau de bord, gestion d'utilisateurs, etc.",
+    includes: ["Création d'une interface utilisateur dynamique avec gestion d'états complexes", "Développement de la partie backend avec gestion des données et sécurité", "Authentification et gestion des utilisateurs", "Tests et validation de l'application", "Déploiement et documentation technique"]
 }
 const prestation3 = {
-    title: "Basic Web Development",
-    prices: ['2000', '4000'],
-    description: "Développement d'une plateforme SaaS complète incluant front-end et back-end, gestion d'abonnements, paiement en ligne, et plus.",
-    includes: ["Développement complet (frontend Vue.js + backend Symfony)", "Paiement en ligne avec intégration d'API (Stripe, PayPal, etc.)", "Sécurité renforcée (JWT, OAuth)", "Optimisation des performances et tests", "Maintenance et support initial"]
+    index: 3,
+    title: "Développement Complet d'une Plateforme SaaS",
+    price: 3000,
+    description: "Création d'une plateforme SaaS complète avec gestion d'abonnements, paiement en ligne, et fonctionnalités sur mesure.",
+    includes: ["Développement d'une interface utilisateur fluide et interactive", "Implémentation de fonctionnalités complexes comme la gestion d'abonnements et de paiements en ligne", "Sécurité renforcée et protection des données", "Optimisation des performances et tests rigoureux", "Maintenance initiale et support technique"]
 }
 </script>
 <template>
@@ -32,15 +35,19 @@ const prestation3 = {
 </template>
 
 <style lang="scss">
-.content-prestations {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
+#prestations {
 
-    .cards-prestations {
-        width: 300px;
-        box-sizing: border-box;
+    .content-prestations {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        .cards-prestations {
+            width: 300px;
+            box-sizing: border-box;
+        }
     }
+
 }
 </style>
