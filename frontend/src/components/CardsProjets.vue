@@ -4,12 +4,12 @@
             <img :src="urlPictures + projet.picture" />
             <div class="on-card">
                 <div class="title">{{ projet.title }}</div>
+                <div class="description">{{ projet.shortDescription }}</div>
                 <div class="tags">
                     <div class="tag" v-for="(tag, index) in projet.tags" :key="tag.id">
                         {{ tag.name }}
                     </div>
                 </div>
-                <div>{{ projet.shortDescription }}</div>
                 <!-- <a :href='"projet/" + projet.id' class="more">Voir plus</a> -->
             </div>
         </router-link>
@@ -27,7 +27,7 @@ const props = defineProps({
 <style scoped lang="scss">
 .card-projet {
     margin: auto;
-    width: 250px;
+    width: 300px;
 
     a {
         color: white;
@@ -70,7 +70,7 @@ const props = defineProps({
         background-color: #2f5041;
         width: 100%;
         border-top-left-radius: 25px;
-        transform: translateY(calc(100% - 3rem));
+        transform: translateY(calc(100% - 67px));
         box-sizing: border-box;
         transition: .3s;
         z-index: 1;
@@ -87,22 +87,29 @@ const props = defineProps({
             box-shadow: 0 25px 0 0 #2f5041;
         }
 
+        .description {
+            margin-bottom: 1rem;
+            color: #dde0bd;
+            font-size: 13px;
+        }
+
         .tags {
             display: flex;
             flex-wrap: wrap;
             gap: .5rem;
-            margin-bottom: 1rem;
 
             .tag {
                 padding: .3rem .5rem;
-                background-color: #59786a;
+                border: 1px solid #dde0bd;
+                color: #dde0bd;
                 border-radius: 20px;
+                font-size: 13px;
             }
         }
     }
 
     .title {
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
     }
 
     .more {
