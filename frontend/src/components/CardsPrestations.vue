@@ -13,7 +13,7 @@ const changeFormule = (index) => {
 <template>
     <div class="cards-prestations">
         <h3>{{ prestation.title }}</h3>
-        <div class="price">A partir de <span>/ {{ prestation.price }}€</span></div>
+        <!-- <div class="price">A partir de <span>/ {{ prestation.price }}€</span></div> -->
         <p>{{ prestation.description }}</p>
         <h4>Inclus</h4>
         <ul class="list">

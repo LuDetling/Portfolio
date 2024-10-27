@@ -55,11 +55,11 @@ const route = useRoute()
           <a href="#apropos" :class="{ active: activeSection === 'apropos' }">A propos</a>
           <a href="#projets" :class="{ active: activeSection === 'projets' }">Projets</a>
         </div>
-        <div class="center-nav">
+        <!-- <div class="center-nav">
           <a href="#" class="logo">
             <img src="/src/assets/images/logo-blanc.png" alt="Mon logo">
           </a>
-        </div>
+        </div> -->
         <div class="right-nav">
           <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a>
           <a href="#contact" :class="{ active: activeSection === 'contact' }">Contact</a>
@@ -154,6 +154,7 @@ nav {
   font-size: 1.2rem;
   background-color: rgba(51, 93, 74, 0.8);
   backdrop-filter: blur(4px);
+  height: 50px;
 
   .left-nav,
   .right-nav,
@@ -164,8 +165,8 @@ nav {
   .left-nav,
   .right-nav {
     a {
-      width: 110px;
-      padding: 0 .3rem;
+      // width: 110px;
+      padding: 0 .5rem;
     }
   }
 

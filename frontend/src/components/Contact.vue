@@ -48,10 +48,9 @@ import { useFormuleStore } from '@/stores/formule';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 import { ref } from "vue";
-const WEB3FORMS_ACCESS_KEY = "20ffa503-8922-4884-b1e9-7760f0a16ee8";
 const email = ref("");
 const message = ref("");
-const formuleSelected = ref("")
+const formuleSelected = ref()
 const formule = useFormuleStore()
 const required = "Ce champ est requis";
 
@@ -67,24 +66,26 @@ const submitForm = async (el) => {
         formuleSelected.value = formules[el.formule].textContent;
     }
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
-        body: JSON.stringify({
-            access_key: WEB3FORMS_ACCESS_KEY,
-            email: email.value,
-            message: formuleSelected.value + " ====> " + message.value,
-        }),
-    });
-    const result = await response.json();
-    if (result.success) {
+    try {
+        const response = await fetch('https://127.0.0.1:8000/api/contact', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(el)
+        })
+
+        const result = await response.json();
+
         formuleSelected.value = ""
         message.value = "";
         console.log(result);
+
+    } catch (error) {
+        console.log(error)
     }
+
 }
 
 </script>

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20241015101159 extends AbstractMigration
+final class Version20241018100231 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,9 @@ final class Version20241015101159 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE SEQUENCE project_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE tags_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE TABLE project (id INT NOT NULL, title VARCHAR(255) NOT NULL, picture TEXT NOT NULL, description TEXT NOT NULL, short_description VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE tags (id INT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE tags_project (tags_id INT NOT NULL, project_id INT NOT NULL, PRIMARY KEY(tags_id, project_id))');
         $this->addSql('CREATE INDEX IDX_90F3BFF8D7B4FB4 ON tags_project (tags_id)');
@@ -33,9 +35,11 @@ final class Version20241015101159 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
+        $this->addSql('DROP SEQUENCE project_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE tags_id_seq CASCADE');
         $this->addSql('ALTER TABLE tags_project DROP CONSTRAINT FK_90F3BFF8D7B4FB4');
         $this->addSql('ALTER TABLE tags_project DROP CONSTRAINT FK_90F3BFF166D1F9C');
+        $this->addSql('DROP TABLE project');
         $this->addSql('DROP TABLE tags');
         $this->addSql('DROP TABLE tags_project');
     }
