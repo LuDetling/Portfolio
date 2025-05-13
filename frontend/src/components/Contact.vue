@@ -10,7 +10,7 @@
                         <Field type="email" name="email" v-model="email" required />
                         <ErrorMessage name="email" />
                     </div>
-                    <div class="formule">
+                    <!-- <div class="formule">
                         <label for="formule">Formule : </label>
                         <Field name="formule" as="select" v-model="formule.formule" required>
                             <option value>Choisir une formule</option>
@@ -20,7 +20,7 @@
                             <option value="other">Autres</option>
                         </Field>
                         <ErrorMessage name="formule" />
-                    </div>
+                    </div> -->
                     <div class="message">
                         <label for="message">Message :</label>
                         <Field as="textarea" name="message" v-model="message" required />

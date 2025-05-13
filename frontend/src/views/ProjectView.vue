@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 
+
 const route = useRoute()
 const projet = ref({});
 const urlPictures = '/src/assets/images/';

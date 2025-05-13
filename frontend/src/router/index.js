@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/projet/:projetId',
       name: 'projet',
       component: () => import('../views/ProjectView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {

@@ -61,7 +61,7 @@ const route = useRoute()
           </a>
         </div> -->
         <div class="right-nav">
-          <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a>
+          <!-- <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a> -->
           <a href="#contact" :class="{ active: activeSection === 'contact' }">Contact</a>
         </div>
       </nav>
@@ -162,13 +162,13 @@ nav {
     display: flex;
   }
 
-  .left-nav,
-  .right-nav {
-    a {
-      // width: 110px;
-      padding: 0 .5rem;
-    }
-  }
+  // .left-nav,
+  // .right-nav {
+  // }
+  // a {
+  //   // width: 110px;
+  //   padding: 0 .5rem;
+  // }
 
   a {
     display: flex;
@@ -177,7 +177,7 @@ nav {
     text-decoration: none;
     color: white;
     transition: .2s;
-    padding: 1rem 0;
+    padding: 1rem 0.5rem;
     position: relative;
     overflow: hidden;
 

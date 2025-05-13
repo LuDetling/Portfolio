@@ -12,7 +12,7 @@ import Prestations from '@/components/Prestations.vue';
     <Banniere />
     <APropos />
     <Projets />
-    <Prestations />
+    <!-- <Prestations /> -->
     <Contact />
   </main>
 </template>

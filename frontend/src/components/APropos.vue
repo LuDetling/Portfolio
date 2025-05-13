@@ -7,9 +7,13 @@
                 Symfony et Vue.js.
             </p>
             <p>
-                Je suis en alternance pour préparer un Master 1 chez OpenClassrooms dans l'entreprise Serval Agency.
+                Je suis diplômé d'un Master 1 de la formation Openclassrooms "Développeur d'application PHP/Symfony"
             </p>
-
+            <p>
+                Je suis passionné par le développement web et j'aime créer des applications qui répondent aux besoins
+                des utilisateurs. J'ai une solide expérience dans la création d'applications web, de la conception à la
+                mise en production.
+            </p>
         </div>
     </section>
 </template>

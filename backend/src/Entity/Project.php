@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -20,6 +21,8 @@ class Project
 
     #[Groups(['projets'])]
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
     private ?string $title = null;
 
     #[Groups(['projets'])]
@@ -32,6 +35,7 @@ class Project
 
     #[Groups(['projets'])]
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255)]
     private ?string $shortDescription = null;
 
     /**
