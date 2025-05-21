@@ -18,12 +18,5 @@ import Prestations from '@/components/Prestations.vue';
 </template>
 
 <style scoped lang="scss">
-main {
-  max-width: 90%;
-  margin: 4rem auto;
 
-  >section {
-    padding: 120px 0;
-  }
-}
 </style>

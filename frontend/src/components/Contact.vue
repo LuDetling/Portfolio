@@ -96,6 +96,7 @@ const submitForm = async (el) => {
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 5rem;
 
     .right-contact {
 
