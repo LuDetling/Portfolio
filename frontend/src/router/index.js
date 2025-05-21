@@ -33,6 +33,11 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: () => import('../views/admin/AdminView.vue')
+    },
+    {
+      path: '/admin/tags',
+      name: 'tags',
+      component: () => import('../views/admin/TagsView.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
