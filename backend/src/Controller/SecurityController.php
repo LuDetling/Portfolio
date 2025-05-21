@@ -28,7 +28,6 @@ class SecurityController extends AbstractController
         $token = $request->request->get("token");
 
         return $this->json([
-            'message' => 'Welcome to your new controller!',
             'user' => $user->getUserIdentifier(),
             'token' => $token
         ]);

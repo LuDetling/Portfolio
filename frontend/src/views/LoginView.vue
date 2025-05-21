@@ -1,9 +1,11 @@
 <script setup>
+import router from '@/router';
 import { ref } from 'vue';
+import { useCookies } from "vue3-cookies";
+const { cookies } = useCookies();
 
 let username = ref('');
 let password = ref('');
-
 
 const handleSubmit = async () => {
     try {
@@ -18,8 +20,9 @@ const handleSubmit = async () => {
             })
         });
         if (!response.ok) throw new Error('Connexion échouée');
-        let data = await response.json();
-        Cookies.set('token', data.token, { expires: 7 });
+        let data = await response.json();        
+        cookies.set('token', data.token, 60 * 60);
+        router.push({ name: 'home' });
     } catch (error) {
         console.log(error);
     }
@@ -33,11 +36,11 @@ const handleSubmit = async () => {
             <h1>Login</h1>
             <form @submit.prevent="handleSubmit()">
                 <div>
-                    <label for="username">Username:</label>
+                    <label for="username">Username :</label>
                     <input type="text" id="username" v-model="username" required />
                 </div>
                 <div>
-                    <label for="password">Password:</label>
+                    <label for="password">Mot de passe :</label>
                     <input type="password" id="password" v-model="password" required />
                 </div>
                 <button type="submit">Se connecter</button>

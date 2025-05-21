@@ -2,7 +2,7 @@
     <section id="banniere">
         <h1>Lucas Detling</h1>
         <p>
-            Développeur web
+            Développeur d'applications PHP/Symfony
         </p>
         <a href="#contact" class="btn">Me contacter</a>
         <a href="#apropos" class="icone">
@@ -20,7 +20,7 @@
 }
 
 .icone {
-    color: #1f1f1f;
+    color: #fbfbfb;
 
     svg {
         width: 40px;

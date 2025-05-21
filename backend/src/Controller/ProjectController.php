@@ -23,17 +23,31 @@ class ProjectController extends AbstractController
     }
 
     #[Route('/api/projects', name: 'app_projects', methods: ['GET'])]
-    public function getProjects(): JsonResponse
+    public function getProjects(Request $request): JsonResponse
     {
-        $projects = $this->projectRepository->findAll();
-        return $this->json($projects, context: ['groups' => ['projets']]);
+        $page = $request->query->getInt('page', 1);
+        $total = $this->projectRepository->count();
+
+
+        $projects = $this->projectRepository->findBy(
+            [],
+            ['id' => 'DESC'],
+            6,
+            ($page - 1) * 6
+        );
+
+        return $this->json(data: [
+            'projects' => $projects,
+            'total' => $total,
+            'pages' => ceil($total / 6),
+        ], context: ['groups' => ['projets']]);
     }
 
     #[Route('/api/project/{id}', name: 'app_project', methods: ['GET'])]
     public function getProject(int $id): JsonResponse
     {
         $project = $this->projectRepository->find($id);
-        return $this->json($project);
+        return $this->json($project, context: ['groups' => ['projets']]);
     }
 
     #[Route('api/project/create', name: 'app_project_create', methods: ['POST'])]

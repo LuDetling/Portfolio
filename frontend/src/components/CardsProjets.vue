@@ -28,6 +28,7 @@ const props = defineProps({
 .card-projet {
     margin: auto;
     width: 300px;
+    height: 350px;
 
     a {
         color: white;
@@ -36,6 +37,7 @@ const props = defineProps({
         border-radius: 10px;
         overflow: hidden;
         border: 2px solid #557761;
+        height: 350px;
 
         &:hover {
             .on-card {
@@ -64,7 +66,6 @@ const props = defineProps({
 
     .on-card {
         position: absolute;
-        /* top: calc(100% - 6rem); */
         bottom: 0;
         padding: 1rem;
         background-color: #2f5041;
@@ -90,7 +91,11 @@ const props = defineProps({
         .description {
             margin-bottom: 1rem;
             color: #dde0bd;
-            font-size: 13px;
+            font-size: 14px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 15px;
         }
 
         .tags {
@@ -103,7 +108,7 @@ const props = defineProps({
                 border: 1px solid #dde0bd;
                 color: #dde0bd;
                 border-radius: 20px;
-                font-size: 13px;
+                font-size: 14px;
             }
         }
     }
