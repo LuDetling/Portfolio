@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
     },
     {
       path: '/projet/:projetId',
@@ -36,10 +35,26 @@ const router = createRouter({
     },
     {
       path: '/admin/tags',
-      name: 'tags',
-      component: () => import('../views/admin/TagsView.vue')
+      name: 'adminTags',
+      component: () => import('../views/admin/tags/AdminTagsView.vue')
+    },
+    {
+      path: '/admin/tags/create',
+      name: 'adminTagsCreate',
+      component: () => import('../views/admin/tags/AdminTagsCreateView.vue')
+    },
+    {
+      path: '/admin/tags/:tagId',
+      name: 'adminTagsEdit',
+      component: () => import('../views/admin/tags/AdminTagsUpdateView.vue')
+    },
+    {
+      path: '/admin/projets',
+      name: 'adminProjets',
+      component: () => import('../views/admin/AdminProjectsView.vue')
     }
   ],
+
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {

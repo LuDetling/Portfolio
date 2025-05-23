@@ -1,12 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import CardsProjets from './CardsProjets.vue';
+import { API_URL } from '@/config';
 
 const projets = ref([]);
 
 const fetchProjets = async () => {
     try {
-        const response = await fetch("https://127.0.0.1:8000/api/projects");
+        const response = await fetch(API_URL + "/projects");
         if (!response.ok) throw new Error('Pas de projets trouvé')
 
         let data = await response.json();

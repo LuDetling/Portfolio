@@ -18,9 +18,7 @@ const fetchProjet = async () => {
     }
 }
 
-onMounted(() => {
-    fetchProjet();
-})
+fetchProjet();
 </script>
 
 <template>

@@ -7,17 +7,25 @@ html {
 }
 
 main {
-    max-width: 90%;
     margin: 4rem auto;
 }
-main > section {
+
+main>section {
     padding: 120px 0;
 }
 
 body {
+    max-width: 1400px;
+    padding-inline: 1rem;
     font-family: "MontserratR";
     color: #1f1f1f;
     background-color: #dde0bd;
+    margin-inline: auto;
+}
+
+button {
+    font-family: "MontserratR";
+
 }
 
 body.darkmode {
@@ -53,6 +61,7 @@ h2 {
     cursor: pointer;
     border: none;
 }
+
 .btn:hover {
     background-color: #59786a;
 }

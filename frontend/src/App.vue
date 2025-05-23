@@ -2,6 +2,7 @@
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import Footer from './components/Footer.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
+import { useAuthStore } from './stores/auth';
 
 const activeSection = ref('banniere');
 const sections = ref(['banniere', 'apropos', 'projets', 'contact', 'prestations']);
@@ -27,6 +28,7 @@ onUnmounted(() => {
 });
 
 const route = useRoute()
+const auth = useAuthStore()
 
 </script>
 
@@ -35,10 +37,10 @@ const route = useRoute()
     <div class="wrapper">
       <nav>
         <!-- <div class="left-nav"> -->
-          <!-- <a href="#apropos" :class="{ active: activeSection === 'apropos' }">A propos</a> -->
-          <router-link to="/" activeClass>Accueil</router-link>
-          <!-- <a href="#projets" :class="{ active: activeSection === 'projets' }">Projets</a> -->
-          <router-link to="/projets" activeClass>Projets</router-link>
+        <!-- <a href="#apropos" :class="{ active: activeSection === 'apropos' }">A propos</a> -->
+        <router-link to="/" activeClass>Accueil</router-link>
+        <!-- <a href="#projets" :class="{ active: activeSection === 'projets' }">Projets</a> -->
+        <router-link to="/projets" activeClass>Projets</router-link>
         <!-- </div> -->
         <!-- <div class="center-nav">
           <router-link to="/" class="logo">
@@ -46,9 +48,13 @@ const route = useRoute()
           </router-link>
         </div> -->
         <!-- <div class="right-nav"> -->
-          <!-- <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a> -->
-          <router-link to="/contact" activeClass>Contact</router-link>
-          <router-link to="/login" activeClass>Login</router-link>
+        <!-- <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a> -->
+        <router-link to="/contact" activeClass>Contact</router-link>
+        <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
+        <div class="d-flex" v-else>
+          <router-link to="/admin" activeClass >Admin</router-link>
+          <button @click="auth.logout()">Logout</button>
+        </div>
         <!-- </div> -->
       </nav>
     </div>
@@ -59,7 +65,10 @@ const route = useRoute()
   <Footer />
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+.d-flex {
+  display: flex;
+}
 .logo {
   padding: 0 1rem;
 
@@ -114,11 +123,9 @@ nav {
   justify-content: center;
   align-items: stretch;
   margin: auto;
-  font-size: 1.2rem;
   // background-color: rgba(51, 93, 74, 0.8);
   background-color: rgba($color: #9094ff, $alpha: .8);
   backdrop-filter: blur(4px);
-  height: 50px;
 
   .left-nav,
   .right-nav,
@@ -133,8 +140,9 @@ nav {
   //   // width: 110px;
   //   padding: 0 .5rem;
   // }
-  
-  a {
+
+  a,
+  button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,8 +153,14 @@ nav {
     position: relative;
     overflow: hidden;
     width: 85px;
-    
-    &:hover,&.router-link-exact-active {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    box-sizing: content-box;
+    cursor: pointer;
+
+    &:hover,
+    &.router-link-exact-active {
       background-color: #9094ff;
       // background-color: rgba($color: #2F5041, $alpha: 1);
     }

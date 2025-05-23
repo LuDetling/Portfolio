@@ -1,5 +1,6 @@
 <script setup>
 import CardsProjets from '@/components/CardsProjets.vue';
+import { API_URL } from '@/config';
 import { ref, onMounted } from 'vue';
 
 
@@ -11,7 +12,7 @@ const urlPictures = '/src/assets/images/';
 
 const fetchProjets = async () => {
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/projects?page=${page.value}`);
+        const response = await fetch(API_URL + `/projects?page=${page.value}`);
         if (!response.ok) throw new Error('Pas de projet trouvé')
         let data = await response.json();
         projets.value = data.projects;
@@ -22,9 +23,7 @@ const fetchProjets = async () => {
     }
 }
 
-onMounted(() => {
-    fetchProjets();
-})
+fetchProjets();
 
 const changePage = (newPage) => {
     page.value = newPage;

@@ -1,15 +1,18 @@
 <script setup>
 import router from '@/router';
 import { ref } from 'vue';
+import { useAuthStore } from '@/stores/auth';
 import { useCookies } from "vue3-cookies";
+import { API_URL } from '@/config';
 const { cookies } = useCookies();
 
 let username = ref('');
 let password = ref('');
+const auth = useAuthStore();
 
 const handleSubmit = async () => {
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/login', {
+        const response = await fetch(API_URL + '/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -20,12 +23,16 @@ const handleSubmit = async () => {
             })
         });
         if (!response.ok) throw new Error('Connexion échouée');
-        let data = await response.json();        
+        let data = await response.json();
         cookies.set('token', data.token, 60 * 60);
+        auth.login()
         router.push({ name: 'home' });
     } catch (error) {
         console.log(error);
     }
+}
+if (auth.user) {
+    router.push({ name: 'home' });
 }
 
 </script>

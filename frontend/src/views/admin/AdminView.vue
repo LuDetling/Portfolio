@@ -1,21 +1,11 @@
 <script setup>
-import { useCookies } from "vue3-cookies";
-const { cookies } = useCookies();
-
-import { jwtDecode } from "jwt-decode";
-
-const token = cookies.get('token');
-const decoded = jwtDecode(token);
-
-console.log(decoded);
-
+import NavAdmin from "@/components/admin/NavAdmin.vue";
 </script>
 
 <template>
-    <main>
-
-    </main>
+    <nav>
+        <NavAdmin />
+    </nav>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
