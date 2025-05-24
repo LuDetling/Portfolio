@@ -45,13 +45,23 @@ const router = createRouter({
     },
     {
       path: '/admin/tags/:tagId',
-      name: 'adminTagsEdit',
+      name: 'adminTagsUpdate',
       component: () => import('../views/admin/tags/AdminTagsUpdateView.vue')
     },
     {
       path: '/admin/projets',
       name: 'adminProjets',
-      component: () => import('../views/admin/AdminProjectsView.vue')
+      component: () => import('../views/admin/projets/AdminProjetsView.vue')
+    },
+    {
+      path: '/admin/projets/:projetId',
+      name: 'adminProjetsUpdate',
+      component: () => import('../views/admin/projets/AdminProjetsUpdateView.vue')
+    },
+    {
+      path: '/admin/projets/create',
+      name: 'adminProjetsCreate',
+      component: () => import('../views/admin/projets/AdminProjetsCreateView.vue')
     }
   ],
 

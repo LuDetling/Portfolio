@@ -30,7 +30,7 @@ fetchProjets();
 </script>
 
 <template>
-    <NavAdmin />
+    <NavAdmin name="Ajouter" path="/admin/projets/create"/>
     <main>
         <table>
             <thead>
@@ -38,6 +38,7 @@ fetchProjets();
                     <th>id</th>
                     <th>Titre</th>
                     <th>Description</th>
+                    <th>Modifier / Supprimer</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,18 +46,26 @@ fetchProjets();
                     <td>{{ projet.id }}</td>
                     <td>{{ projet.title }}</td>
                     <td>{{ projet.shortDescription }}</td>
+                    <td>
+                        <router-link :to="{ name: 'adminProjetsUpdate', params: { projetId: projet.id } }">Modifier</router-link>
+                        <button>Supprimer</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
         <ul class="pagination">
-                <!-- <li v-if="page > 2"><button @click="changePage(page = 1)"><<</button></li> -->
-                <li v-if="page > 1"><button @click="changePage(page - 1)"><</button></li>
-                <li v-for="i in totalPages" :key="i" v-if="totalPages > 1">
-                    <button @click="changePage(i)" :class="{ active: i === page }">{{ i }}</button>
-                </li>
-                <li v-if="page < totalPages"><button @click="changePage(page + 1)">></button></li>
-                <!-- <li v-if="page + 1 < totalPages"><button @click="changePage(page = totalPages)">»</button></li> -->
-            </ul>
+            <!-- <li v-if="page > 2"><button @click="changePage(page = 1)"><<</button></li> -->
+            <li v-if="page > 1">
+                <button @click="changePage(page - 1)"><font-awesome-icon :icon="['fas', 'angle-left']" /></button>
+            </li>
+            <li v-for="i in totalPages" :key="i" v-if="totalPages > 1">
+                <button @click="changePage(i)" :class="{ active: i === page }">{{ i }}</button>
+            </li>
+            <li v-if="page < totalPages">
+                <button @click="changePage(page + 1)"><font-awesome-icon :icon="['fas', 'angle-right']" /></button>
+            </li>
+            <!-- <li v-if="page + 1 < totalPages"><button @click="changePage(page = totalPages)">»</button></li> -->
+        </ul>
     </main>
 </template>
 

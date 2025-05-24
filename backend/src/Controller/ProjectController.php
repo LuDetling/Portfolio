@@ -22,12 +22,11 @@ class ProjectController extends AbstractController
     ) {
     }
 
-    #[Route('/api/projects', name: 'app_projects', methods: ['GET'])]
+    #[Route('/api/projects', name: 'api_projects', methods: ['GET'])]
     public function getProjects(Request $request): JsonResponse
     {
         $page = $request->query->getInt('page', 1);
         $total = $this->projectRepository->count();
-
 
         $projects = $this->projectRepository->findBy(
             [],
@@ -43,34 +42,47 @@ class ProjectController extends AbstractController
         ], context: ['groups' => ['projets']]);
     }
 
-    #[Route('/api/project/{id}', name: 'app_project', methods: ['GET'])]
+    #[Route('/api/project/{id}', name: 'api_project', methods: ['GET'])]
     public function getProject(int $id): JsonResponse
     {
         $project = $this->projectRepository->find($id);
         return $this->json($project, context: ['groups' => ['projets']]);
     }
 
-    #[Route('api/project/create', name: 'app_project_create', methods: ['POST'])]
+    #[Route('/api/project/create', name: 'api_project_create', methods: ['POST'])]
     public function createProject(Request $request): JsonResponse
     {
 
-        $data = json_decode($request->getContent(), true);
-        $project = new Project();
-        $form = $this->createForm(ProjectType::class, $project);
-        $form->submit($data);
+        $picture = $request->files->get('picture');
+        $title = $request->request->get('title');
+        $description = $request->request->get('description');
+        $shortDescription = $request->request->get('shortDescription');
 
+        $pictureName = uniqid() . '.' . $picture->guessExtension();
+
+        $project = new Project();
+
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->submit([
+            'title' => $title,
+            'description' => $description,
+            'shortDescription' => $shortDescription,
+            'picture' => $pictureName,
+        ]);
         if (!$form->isSubmitted() || !$form->isValid()) {
-            return new JsonResponse([
+            return $this->json([
                 'errors' => (string) $form->getErrors(true, false),
             ], 400);
         }
-
+        $picture->move('uploads/projects', $pictureName);
         $this->entityManager->persist($project);
         $this->entityManager->flush();
 
         return $this->json([
+            'picture' => $picture,
             'message' => 'Project created successfully',
             'code' => 201,
         ], 201);
+
     }
 }

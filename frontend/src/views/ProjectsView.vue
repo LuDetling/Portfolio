@@ -41,11 +41,15 @@ const changePage = (newPage) => {
             </div>
             <ul class="pagination">
                 <!-- <li v-if="page > 2"><button @click="changePage(page = 1)"><<</button></li> -->
-                <li v-if="page > 1"><button @click="changePage(page - 1)"><</button></li>
+                <li v-if="page > 1">
+                    <button @click="changePage(page - 1)"><font-awesome-icon :icon="['fas', 'angle-left']" /></button>
+                </li>
                 <li v-for="i in totalPages" :key="i" v-if="totalPages > 1">
                     <button @click="changePage(i)" :class="{ active: i === page }">{{ i }}</button>
                 </li>
-                <li v-if="page < totalPages"><button @click="changePage(page + 1)">></button></li>
+                <li v-if="page < totalPages">
+                    <button @click="changePage(page + 1)"><font-awesome-icon :icon="['fas', 'angle-right']" /></button>
+                </li>
                 <!-- <li v-if="page + 1 < totalPages"><button @click="changePage(page = totalPages)">»</button></li> -->
             </ul>
         </section>
@@ -78,6 +82,7 @@ main {
             display: flex;
             justify-content: center;
             gap: .3rem;
+
             li {
                 button {
                     border: none;
@@ -89,7 +94,9 @@ main {
                     border-radius: 5px;
                     cursor: pointer;
                     transition: .3s;
-                    &.active, &:hover {
+
+                    &.active,
+                    &:hover {
                         background-color: green;
                     }
                 }

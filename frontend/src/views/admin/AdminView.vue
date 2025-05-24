@@ -3,9 +3,7 @@ import NavAdmin from "@/components/admin/NavAdmin.vue";
 </script>
 
 <template>
-    <nav>
-        <NavAdmin />
-    </nav>
+    <NavAdmin />
 </template>
 
 <style scoped lang="scss"></style>

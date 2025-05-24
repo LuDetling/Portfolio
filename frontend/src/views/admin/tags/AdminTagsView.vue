@@ -54,7 +54,7 @@ const deleteTag = async (id) => {
                     <td>{{ tag.id }}</td>
                     <td>{{ tag.name }}</td>
                     <td>
-                        <router-link :to="{ name: 'adminTagsEdit', params: { tagId: tag.id } }">Modifier</router-link>
+                        <router-link :to="{ name: 'adminTagsUpdate', params: { tagId: tag.id } }">Modifier</router-link>
                         <button @click="deleteTag(tag.id)">Supprimer</button>
                     </td>
                 </tr>
