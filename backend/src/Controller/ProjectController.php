@@ -7,6 +7,7 @@ use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -58,6 +59,13 @@ class ProjectController extends AbstractController
         $description = $request->request->get('description');
         $shortDescription = $request->request->get('shortDescription');
 
+        $filesystem = new Filesystem();
+        $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/projects';
+
+        if (!$filesystem->exists($uploadDir)) {
+            $filesystem->mkdir($uploadDir, 0755);
+        }
+
         $pictureName = uniqid() . '.' . $picture->guessExtension();
 
         $project = new Project();
@@ -74,12 +82,11 @@ class ProjectController extends AbstractController
                 'errors' => (string) $form->getErrors(true, false),
             ], 400);
         }
-        $picture->move('uploads/projects', $pictureName);
+        $picture->move($uploadDir, $pictureName);
         $this->entityManager->persist($project);
         $this->entityManager->flush();
 
         return $this->json([
-            'picture' => $picture,
             'message' => 'Project created successfully',
             'code' => 201,
         ], 201);

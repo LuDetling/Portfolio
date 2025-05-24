@@ -5,8 +5,7 @@ import { Form, Field, ErrorMessage } from 'vee-validate';
 
 import { ref } from 'vue';
 import * as yup from 'yup';
-import { useRoute } from 'vue-router'
-const route = useRoute();
+import router from '@/router';
 
 const title = ref("");
 const picture = ref("");
@@ -37,7 +36,7 @@ const createProjet = async (el) => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        route.push('/admin/projets');
+        router.push({ name: 'adminProjets' });
         console.log(data);
     } catch (error) {
         console.log(error)
