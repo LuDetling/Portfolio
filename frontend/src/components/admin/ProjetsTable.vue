@@ -2,6 +2,8 @@
 import NavAdmin from '@/components/admin/NavAdmin.vue';
 import { API_URL, IMAGE_URL } from '@/config';
 import { ref } from 'vue';
+import { useCookies } from 'vue3-cookies';
+const { cookies } = useCookies();
 
 const projets = ref([]);
 const page = ref(1);
@@ -15,7 +17,7 @@ const fetchProjets = async () => {
         }
         const data = await response.json();
         projets.value = data.projects;
-        console.log(projets.value);
+        return data;
     } catch (error) {
         console.log(error)
     }
@@ -32,6 +34,9 @@ const deleteProject = async (id) => {
     try {
         const response = await fetch(API_URL + '/project/' + id, {
             method: 'DELETE',
+            headers: {
+                "Authorization": 'Bearer ' + cookies.get('token'),
+            }
         });
         if (!response.ok) {
             throw new Error('Erreur lors de la suppression du projet');
@@ -51,7 +56,8 @@ const getImageUrl = (projet) => {
 <template>
     <div class="flex gap-4 items-center place-content-between">
         <h1>Projets</h1>
-        <router-link to="/admin/projets/create" class="btn btn-soft btn-accent btn-xs"><font-awesome-icon :icon="['fas', 'plus']" /></router-link>
+        <router-link to="/admin/projets/create" class="btn btn-soft btn-accent btn-xs"><font-awesome-icon
+                :icon="['fas', 'plus']" /></router-link>
     </div>
     <div class="table_component">
         <table class="table table-zebra">
@@ -59,6 +65,7 @@ const getImageUrl = (projet) => {
                 <tr>
                     <th>Titre</th>
                     <th>Description</th>
+                    <th>tags</th>
                     <th></th>
                 </tr>
             </thead>
@@ -71,6 +78,12 @@ const getImageUrl = (projet) => {
                         </div>
                     </td>
                     <td>{{ projet.shortDescription }}</td>
+                    <td>
+                        <div class="flex gap-2 flex-wrap">
+                            <span v-for="tag in projet.tags" :key="tag.id" class="badge badge-primary text-xs">{{
+                                tag.name }}</span>
+                        </div>
+                    </td>
                     <td class="actions">
                         <div class="flex gap-2">
 
@@ -85,7 +98,6 @@ const getImageUrl = (projet) => {
             </tbody>
         </table>
         <ul class="pagination">
-            <!-- <li v-if="page > 2"><button @click="changePage(page = 1)"><<</button></li> -->
             <li v-if="page > 1">
                 <button @click="changePage(page - 1)"><font-awesome-icon :icon="['fas', 'angle-left']" /></button>
             </li>
@@ -95,7 +107,6 @@ const getImageUrl = (projet) => {
             <li v-if="page < totalPages">
                 <button @click="changePage(page + 1)"><font-awesome-icon :icon="['fas', 'angle-right']" /></button>
             </li>
-            <!-- <li v-if="page + 1 < totalPages"><button @click="changePage(page = totalPages)">»</button></li> -->
         </ul>
     </div>
 </template>

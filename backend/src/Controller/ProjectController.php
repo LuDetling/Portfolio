@@ -111,4 +111,57 @@ class ProjectController extends AbstractController
 
         return $this->json(['message' => 'Project deleted successfully'], 200);
     }
+
+    #[Route('/api/project/{id}', name: 'api_project_update', methods: ['POST'])]
+    public function updateProject(Request $request, int $id): JsonResponse
+    {
+        $project = $this->projectRepository->find($id);
+        if (!$project) {
+            return $this->json(['message' => 'Project not found'], 404);
+        }
+
+        $picture = $request->files->get('picture');
+        $title = $request->request->get('title');
+        $description = $request->request->get('description');
+        $shortDescription = $request->request->get('shortDescription');
+        $tags = json_decode($request->request->get('tags'), true);
+        $pictureName = $project->getPicture();
+
+        if ($picture) {
+            $filesystem = new Filesystem();
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/projects';
+
+            if (!$filesystem->exists($uploadDir)) {
+                $filesystem->mkdir($uploadDir, 0755);
+            }
+
+            $filesystem->remove($uploadDir . '/' . $project->getPicture());
+            $pictureName = uniqid() . '.' . $picture->guessExtension();
+            $picture->move($uploadDir, $pictureName);
+            $project->setPicture($pictureName);
+        }
+
+
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->submit([
+            'title' => $title,
+            'description' => $description,
+            'shortDescription' => $shortDescription,
+            'tags' => $tags,
+            'picture' => $pictureName
+        ]);
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            return $this->json([
+                'errors' => (string) $form->getErrors(true, false),
+            ], 400);
+        }
+
+        $this->entityManager->flush();
+
+        return $this->json([
+            'message' => 'Project updated successfully',
+            'code' => 200,
+        ], 200);
+    }
 }

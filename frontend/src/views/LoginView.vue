@@ -40,17 +40,15 @@ if (auth.user) {
 <template>
     <main>
         <section>
-            <h1>Login</h1>
             <form @submit.prevent="handleSubmit()">
-                <div>
+                <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                    <legend class="fieldset-legend">Login</legend>
                     <label for="username">Username :</label>
-                    <input type="text" id="username" v-model="username" required />
-                </div>
-                <div>
+                    <input type="text" id="username" v-model="username" required class="input"/>
                     <label for="password">Mot de passe :</label>
-                    <input type="password" id="password" v-model="password" required />
-                </div>
-                <button type="submit">Se connecter</button>
+                    <input type="password" id="password" v-model="password" required class="input"/>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </fieldset>
             </form>
         </section>
     </main>

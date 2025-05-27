@@ -2,31 +2,18 @@
     <section id="contact">
         <h2>Me contacter</h2>
         <div class="content-contact">
-
             <div class="left-contact">
                 <Form @submit="submitForm($event)" :validation-schema="schema">
-                    <div class="email">
+                    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+                        <!-- <legend class="fieldset-legend">Contact</legend> -->
                         <label for="email">Email :</label>
-                        <Field type="email" name="email" v-model="email" required />
+                        <Field type="email" name="email" v-model="email" required class="input"/>
                         <ErrorMessage name="email" />
-                    </div>
-                    <!-- <div class="formule">
-                        <label for="formule">Formule : </label>
-                        <Field name="formule" as="select" v-model="formule.formule" required>
-                            <option value>Choisir une formule</option>
-                            <option value=1>Développement Web Basique</option>
-                            <option value=2>Application Web Avancée</option>
-                            <option value=3>Développement Complet d'une Plateforme SaaS</option>
-                            <option value="other">Autres</option>
-                        </Field>
-                        <ErrorMessage name="formule" />
-                    </div> -->
-                    <div class="message">
                         <label for="message">Message :</label>
-                        <Field as="textarea" name="message" v-model="message" required />
+                        <Field as="textarea" name="message" v-model="message" required class="input"/>
                         <ErrorMessage name="message" />
-                    </div>
-                    <button type="submit" class="btn">Envoyer</button>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </fieldset>
                 </Form>
             </div>
             <div class="right-contact">

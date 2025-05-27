@@ -5,6 +5,9 @@ import { Form, Field, ErrorMessage } from 'vee-validate';
 import { ref } from 'vue';
 import * as yup from 'yup';
 
+import { useCookies } from 'vue3-cookies';
+const { cookies } = useCookies();
+
 const name = ref("");
 
 const schema = yup.object({
@@ -16,7 +19,8 @@ const createTag = async (el) => {
         const response = await fetch(API_URL + '/tags/create', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + cookies.get('token')
             },
             body: JSON.stringify(el)
         });
@@ -26,6 +30,7 @@ const createTag = async (el) => {
             throw new Error('Network response was not ok');
         }
         name.value = "";
+
     } catch (error) {
         console.log(error)
     }
@@ -34,15 +39,17 @@ const createTag = async (el) => {
 </script>
 
 <template>
-    <NavAdmin />
+    <h1 class="text-center mt-12">Ajouter un Tag</h1>
+
     <main>
         <Form @submit="createTag($event)" :validation-schema="schema">
-            <div class="name">
+            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+                <legend class="fieldset-legend">Ajouter un tag</legend>
                 <label for="name">Nom :</label>
-                <Field type="name" name="name" v-model="name" required />
+                <Field type="name" name="name" v-model="name" required class="input" />
                 <ErrorMessage name="name" />
-            </div>
-            <button type="submit" class="btn">Envoyer</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </fieldset>
         </Form>
     </main>
 </template>

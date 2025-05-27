@@ -3,6 +3,9 @@ import NavAdmin from '@/components/admin/NavAdmin.vue';
 import { API_URL } from '@/config';
 import { ref } from 'vue';
 
+import { useCookies } from 'vue3-cookies';
+const { cookies } = useCookies();
+
 const tags = ref([]);
 const fetchTags = async () => {
     try {
@@ -24,7 +27,8 @@ const deleteTag = async (id) => {
         const response = await fetch(API_URL + '/tags/' + id, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + cookies.get('token')
             }
         });
         if (!response.ok) {

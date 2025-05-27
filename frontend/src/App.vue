@@ -29,6 +29,8 @@ onUnmounted(() => {
 
 const route = useRoute()
 const auth = useAuthStore()
+console.log(auth.user);
+
 
 </script>
 

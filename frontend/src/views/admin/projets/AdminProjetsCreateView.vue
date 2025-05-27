@@ -7,6 +7,9 @@ import { ref } from 'vue';
 import * as yup from 'yup';
 import router from '@/router';
 
+import { useCookies } from 'vue3-cookies';
+const { cookies } = useCookies();
+
 const title = ref("");
 const picture = ref("");
 const description = ref("");
@@ -28,8 +31,6 @@ const getTags = async () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
-
         tags.value = data;
         return data;
     } catch (error) {
@@ -50,7 +51,10 @@ const createProjet = async (el) => {
     try {
         const response = await fetch(API_URL + '/project/create', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Authorization': 'Bearer ' + cookies.get('token')
+            }
         });
 
         const data = await response.json();
@@ -88,7 +92,7 @@ const createProjet = async (el) => {
                     {{ tag.name }}
                 </label>
 
-                <button type="submit" class="btn">Envoyer</button>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
             </fieldset>
         </Form>
     </main>
