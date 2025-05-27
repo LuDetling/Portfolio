@@ -26,7 +26,7 @@ onMounted(() => {
 
 <template>
     <section id="projets">
-        <h2>Projets</h2>
+        <h2 class="text-4xl mb-4">Projets</h2>
         <div class="content-projets">
             <CardsProjets :projets=projets />
         </div>
@@ -36,8 +36,8 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-#projets {
 
+#projets {
     .content-projets {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

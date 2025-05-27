@@ -1,5 +1,5 @@
 <template>
-    <section id="apropos">
+    <section id="about">
         <img :src="'/src/assets/images/greengoodies.webp'" alt="Photo de moi, Lucas Detling">
         <div>
             <h2>A propos</h2>

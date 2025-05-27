@@ -35,7 +35,7 @@ const changePage = (newPage) => {
 <template>
     <main>
         <section id="projets">
-            <h1>Projets</h1>
+            <h1 class="text-6xl mb-8">Projets</h1>
             <div class="content-projets">
                 <CardsProjets :projets=projets />
             </div>

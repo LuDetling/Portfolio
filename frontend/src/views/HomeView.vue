@@ -1,6 +1,6 @@
 <script setup>
 import Projets from '../components/Projets.vue'
-import APropos from '../components/APropos.vue'
+import About from '../components/About.vue'
 import Banniere from '@/components/Banniere.vue';
 import Contact from '@/components/Contact.vue';
 import Prestations from '@/components/Prestations.vue';
@@ -10,7 +10,7 @@ import Prestations from '@/components/Prestations.vue';
 <template>
   <main>
     <Banniere />
-    <APropos />
+    <About />
     <Projets />
     <!-- <Prestations /> -->
     <Contact />
