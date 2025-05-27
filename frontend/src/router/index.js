@@ -34,11 +34,6 @@ const router = createRouter({
       component: () => import('../views/admin/AdminView.vue')
     },
     {
-      path: '/admin/tags',
-      name: 'adminTags',
-      component: () => import('../views/admin/tags/AdminTagsView.vue')
-    },
-    {
       path: '/admin/tags/create',
       name: 'adminTagsCreate',
       component: () => import('../views/admin/tags/AdminTagsCreateView.vue')
@@ -47,11 +42,6 @@ const router = createRouter({
       path: '/admin/tags/:tagId',
       name: 'adminTagsUpdate',
       component: () => import('../views/admin/tags/AdminTagsUpdateView.vue')
-    },
-    {
-      path: '/admin/projets',
-      name: 'adminProjets',
-      component: () => import('../views/admin/projets/AdminProjetsView.vue')
     },
     {
       path: '/admin/projets/:projetId',

@@ -11,13 +11,33 @@ const title = ref("");
 const picture = ref("");
 const description = ref("");
 const shortDescription = ref("");
+const tags = ref([]);
 
 const schema = yup.object({
     title: yup.string(),
     picture: yup.mixed(),
     description: yup.string(),
-    shortDescription: yup.string()
+    shortDescription: yup.string(),
+    tagsSelected: yup.array().of(yup.number())
 })
+
+const getTags = async () => {
+    try {
+        const response = await fetch(API_URL + '/tags');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data);
+
+        tags.value = data;
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getTags();
 
 const createProjet = async (el) => {
     const formData = new FormData();
@@ -25,19 +45,19 @@ const createProjet = async (el) => {
     formData.append('picture', picture.value);
     formData.append('description', description.value);
     formData.append('shortDescription', shortDescription.value);
+    formData.append('tags', JSON.stringify(el.tags));
 
     try {
         const response = await fetch(API_URL + '/project/create', {
             method: 'POST',
-            body: formData            
+            body: formData
         });
 
         const data = await response.json();
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        router.push({ name: 'adminProjets' });
-        console.log(data);
+        router.push({ name: 'admin' });
     } catch (error) {
         console.log(error)
     }
@@ -45,35 +65,31 @@ const createProjet = async (el) => {
 </script>
 
 <template>
-    <NavAdmin />
+    <h1 class="text-center mt-8">Projet</h1>
     <main>
         <Form @submit="createProjet($event)" :validation-schema="schema">
-            <div class="title">
+            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                <legend class="fieldset-legend">Créer un projet</legend>
                 <label for="title">Titre :</label>
-                <Field type="text" name="title" v-model="title" required />
+                <Field type="text" name="title" v-model="title" required class="input" />
                 <ErrorMessage name="title" />
-            </div>
-            <div class="picture">
                 <label for="picture">Image :</label>
-                <Field type="file" name="picture" v-model="picture" required rules="image"/>
+                <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
                 <ErrorMessage name="picture" />
-            </div>
-            <div class="description">
                 <label for="description">Description :</label>
-                <Field type="text" name="description" v-model="description" required />
+                <Field type="text" as="textarea" name="description" v-model="description" required class="input" />
                 <ErrorMessage name="description" />
-            </div>
-            <div class="shortDescription">
                 <label for="shortDescription">Description courte :</label>
-                <Field type="text" name="shortDescription" v-model="shortDescription" required />
+                <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
+                    class="input" />
                 <ErrorMessage name="shortDescription" />
-            </div>
-            <!-- <div class="title">
-                <label for="title">Titre :</label>
-                <Field type="title" name="title" v-model="title" required />
-                <ErrorMessage name="title" />
-            </div> -->
-            <button type="submit" class="btn">Envoyer</button>
+                <label class="label" v-for="(tag, index) in tags" :key="index">
+                    <Field name="tags" type="checkbox" class="checkbox" :value="tag.id" />
+                    {{ tag.name }}
+                </label>
+
+                <button type="submit" class="btn">Envoyer</button>
+            </fieldset>
         </Form>
     </main>
 </template>

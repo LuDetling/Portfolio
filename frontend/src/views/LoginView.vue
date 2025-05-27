@@ -26,7 +26,7 @@ const handleSubmit = async () => {
         let data = await response.json();
         cookies.set('token', data.token, 60 * 60);
         auth.login()
-        router.push({ name: 'home' });
+        router.push({ name: 'admin' });
     } catch (error) {
         console.log(error);
     }

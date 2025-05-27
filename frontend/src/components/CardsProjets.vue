@@ -1,7 +1,7 @@
 <template>
     <div v-for="projet in projets" :key="projet.id" class="card-projet">
         <router-link :to="{ name: 'projet', params: { projetId: projet.id } }">
-            <img :src="urlPictures + projet.picture" />
+            <img :src="getImageUrl(projet)" />
             <div class="on-card">
                 <div class="title">{{ projet.title }}</div>
                 <div class="description">{{ projet.shortDescription }}</div>
@@ -17,7 +17,14 @@
 </template>
 
 <script setup>
+import { IMAGE_URL } from '@/config';
+
+
 const urlPictures = '/src/assets/images/';
+
+const getImageUrl = (projet) => {    
+    return IMAGE_URL + '/projects/' + projet.picture;
+}
 
 const props = defineProps({
     projets: Array

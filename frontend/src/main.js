@@ -10,10 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faTrash, faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faGithub, faLinkedin, faAngleLeft, faAngleRight)
+library.add(faGithub, faLinkedin, faAngleLeft, faAngleRight, faTrash, faPenToSquare, faPlus)
 
 import App from './App.vue'
 import router from './router'

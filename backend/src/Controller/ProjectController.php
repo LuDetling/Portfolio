@@ -58,6 +58,7 @@ class ProjectController extends AbstractController
         $title = $request->request->get('title');
         $description = $request->request->get('description');
         $shortDescription = $request->request->get('shortDescription');
+        $tags = json_decode($request->request->get('tags'), true);
 
         $filesystem = new Filesystem();
         $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/projects';
@@ -76,6 +77,7 @@ class ProjectController extends AbstractController
             'description' => $description,
             'shortDescription' => $shortDescription,
             'picture' => $pictureName,
+            'tags' => $tags
         ]);
         if (!$form->isSubmitted() || !$form->isValid()) {
             return $this->json([
@@ -90,6 +92,23 @@ class ProjectController extends AbstractController
             'message' => 'Project created successfully',
             'code' => 201,
         ], 201);
+    }
 
+    #[Route('/api/project/{id}', name: 'api_project_delete', methods: ['DELETE'])]
+    public function deleteProject(int $id): JsonResponse
+    {
+        $project = $this->projectRepository->find($id);
+        if (!$project) {
+            return $this->json(['message' => 'Project not found'], 404);
+        }
+
+        $filesystem = new Filesystem();
+        $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/projects';
+        $filesystem->remove($uploadDir . '/' . $project->getPicture());
+
+        $this->entityManager->remove($project);
+        $this->entityManager->flush();
+
+        return $this->json(['message' => 'Project deleted successfully'], 200);
     }
 }

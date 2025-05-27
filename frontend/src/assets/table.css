@@ -1,0 +1,86 @@
+/* .table_component {
+    overflow: auto;
+    width: 100%;
+}
+
+.table_component table {
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: left;
+}
+
+.table_component caption {
+    caption-side: top;
+    text-align: left;
+}
+
+.table_component th {
+    color: white;
+    padding: 5px;
+}
+
+.table_component td {
+    border: 1px solid #dededf;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px;
+}
+
+.table_component td img {
+    max-width: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    object-fit: cover;
+}
+
+.table_component .img-title img {
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+
+.table_component .actions {
+    text-align: right;
+}
+
+.table_component .actions a,
+.table_component .actions button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: inline-block;
+    transition: .3s;
+}
+
+.table_component .actions a {
+    background-color: #dbf2f8;
+    color: black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+}
+
+.table_component .actions a:hover {
+    background-color: #b0e0e6;
+}
+
+.table_component .actions button {
+    background-color: rgb(255, 157, 157);
+    color: black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.table_component .actions button:hover {
+    background-color: rgb(255, 100, 100);
+} */

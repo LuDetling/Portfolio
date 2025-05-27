@@ -12,8 +12,6 @@ const schema = yup.object({
 })
 
 const createTag = async (el) => {
-    console.log(JSON.stringify(el));
-
     try {
         const response = await fetch(API_URL + '/tags/create', {
             method: 'POST',
@@ -28,7 +26,6 @@ const createTag = async (el) => {
             throw new Error('Network response was not ok');
         }
         name.value = "";
-        console.log(data);
     } catch (error) {
         console.log(error)
     }

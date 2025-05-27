@@ -1,5 +1,5 @@
 <script setup>
-import { API_URL } from '@/config';
+import { API_URL, IMAGE_URL } from '@/config';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 
@@ -20,11 +20,15 @@ const fetchProjet = async () => {
 }
 
 fetchProjet();
+
+const getImageUrl = (projet) => {    
+    return IMAGE_URL + '/projects/' + projet.picture;
+}
 </script>
 
 <template>
     <h1>{{ projet.title }}</h1>
-    <img :src="urlPictures + projet.picture" :alt='projet.title'>
+    <img :src="getImageUrl(projet)" :alt='projet.title'>
     <p>{{ projet.description }}</p>
 </template>
 

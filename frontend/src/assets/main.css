@@ -1,5 +1,8 @@
-@import "./reset.css";
+/* @import "./reset.css"; */
 @import "./fonts.css";
+@import "./table.css";
+@import "tailwindcss";
+@plugin "daisyui";
 
 html {
     scroll-behavior: smooth;
@@ -18,21 +21,12 @@ body {
     max-width: 1400px;
     padding-inline: 1rem;
     font-family: "MontserratR";
-    color: #1f1f1f;
-    background-color: #dde0bd;
     margin-inline: auto;
 }
 
 button {
     font-family: "MontserratR";
 
-}
-
-body.darkmode {
-    /* background-color: #1f1f1f; */
-    color: white;
-    background: rgb(31, 31, 31);
-    /* background: linear-gradient(180deg, rgba(31, 31, 31, 1) 59%, rgba(47, 80, 65, 1) 100%); */
 }
 
 #app {
@@ -47,10 +41,9 @@ h1 {
 
 h2 {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
 }
 
-.btn {
+/* .btn {
     padding: 0.5rem 1.5rem;
     background-color: #557761;
     display: inline-block;
@@ -60,8 +53,8 @@ h2 {
     transition: 0.3s;
     cursor: pointer;
     border: none;
-}
-
+} */
+/* 
 .btn:hover {
     background-color: #59786a;
-}
+} */
