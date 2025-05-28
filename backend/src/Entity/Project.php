@@ -45,6 +45,10 @@ class Project
     #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'project')]
     private Collection $tags;
 
+    #[Groups(['projets'])]
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link = null;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -126,6 +130,18 @@ class Project
         if ($this->tags->removeElement($tag)) {
             $tag->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): static
+    {
+        $this->link = $link;
 
         return $this;
     }

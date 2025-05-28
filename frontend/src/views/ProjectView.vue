@@ -21,15 +21,22 @@ const fetchProjet = async () => {
 
 fetchProjet();
 
-const getImageUrl = (projet) => {    
+const getImageUrl = (projet) => {
     return IMAGE_URL + '/projects/' + projet.picture;
 }
 </script>
 
 <template>
-    <h1>{{ projet.title }}</h1>
-    <img :src="getImageUrl(projet)" :alt='projet.title'>
-    <p>{{ projet.description }}</p>
+    <main class="flex gap-4 flex-wrap justify-between">
+        <div class="w-full md:w-3/6 ">
+            <img :src="getImageUrl(projet)" :alt='projet.title'>
+        </div>
+        <div class="w-full md:w-2/6">
+            <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
+            <p>{{ projet.description }}</p>
+            <a :href="projet.link" class="btn btn-primary" v-if="projet.link" target="_blank">Découvrir</a>
+        </div>
+    </main>
 </template>
 
 <style scoped lang="scss"></style>

@@ -58,6 +58,7 @@ class ProjectController extends AbstractController
         $title = $request->request->get('title');
         $description = $request->request->get('description');
         $shortDescription = $request->request->get('shortDescription');
+        $link = $request->request->get('link');
         $tags = json_decode($request->request->get('tags'), true);
 
         $filesystem = new Filesystem();
@@ -77,6 +78,7 @@ class ProjectController extends AbstractController
             'description' => $description,
             'shortDescription' => $shortDescription,
             'picture' => $pictureName,
+            'link' => $link,
             'tags' => $tags
         ]);
         if (!$form->isSubmitted() || !$form->isValid()) {
@@ -124,6 +126,7 @@ class ProjectController extends AbstractController
         $title = $request->request->get('title');
         $description = $request->request->get('description');
         $shortDescription = $request->request->get('shortDescription');
+        $link = $request->request->get('link');
         $tags = json_decode($request->request->get('tags'), true);
         $pictureName = $project->getPicture();
 
@@ -148,6 +151,7 @@ class ProjectController extends AbstractController
             'description' => $description,
             'shortDescription' => $shortDescription,
             'tags' => $tags,
+            'link' => $link,
             'picture' => $pictureName
         ]);
 

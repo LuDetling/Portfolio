@@ -17,6 +17,7 @@ const title = ref("");
 const picture = ref("");
 const description = ref("");
 const shortDescription = ref("");
+const link = ref("");
 const tags = ref([]);
 const tagsSelected = ref([]);
 
@@ -24,6 +25,7 @@ const schema = yup.object({
     title: yup.string(),
     picture: yup.mixed(),
     description: yup.string(),
+    link: yup.string(),
     shortDescription: yup.string(),
 })
 
@@ -34,12 +36,11 @@ const getProjet = async () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
-
         title.value = data.title;
         picture.value = data.picture;
         description.value = data.description;
         shortDescription.value = data.shortDescription;
+        link.value = data.link;
         tagsSelected.value = data.tags.map(tag => tag.id)
 
         return data;
@@ -75,6 +76,7 @@ const updateProjet = async (el) => {
     formData.append('picture', picture.value);
     formData.append('description', description.value);
     formData.append('shortDescription', shortDescription.value);
+    formData.append('link', link.value);
     formData.append('tags', JSON.stringify(el.tags));
 
     try {
