@@ -1,5 +1,6 @@
 /* @import "./reset.css"; */
 @import "./fonts.css";
+@import "./code.css";
 @import "tailwindcss";
 @plugin "daisyui";
 
@@ -39,25 +40,71 @@
     --noise: 0;
 }
 
-
 html {
     scroll-behavior: smooth;
     scroll-padding: 5rem;
 }
 
 main {
-    margin: 4rem auto;
+    margin: 0 auto 4rem;
 }
 
 main>section {
     padding: 120px 0;
+    max-width: 1200px;
+    margin: auto;
+}
+.over-img {
+    position: relative;
+    overflow: hidden;
+}
+.over-img::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(0, 0, 0, .4); */
 }
 
-body {
+/* body {
     max-width: 1400px;
     padding-inline: 1rem;
     font-family: "MontserratR";
     margin-inline: auto;
+} */
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #d4d4d4;
+    /* color: #00ff41; */
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%);
+    z-index: 0;
+    animation: glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
 }
 
 button {
@@ -69,28 +116,49 @@ button {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
-/* h1 {
-    font-size: 3rem;
+.terminal-window {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff41;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 255, 65, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-h2 {
-    font-size: 1.5rem;
-} */
+.terminal-header {
+    background: linear-gradient(90deg, #00ff41, #00cc33);
+    color: #000;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
 
-/* .btn {
-    padding: 0.5rem 1.5rem;
-    background-color: #557761;
-    display: inline-block;
-    border-radius: 30px;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-    cursor: pointer;
-    border: none;
-} */
+.terminal-body {
+    padding: 20px;
+}
+
+/* Code snippets */
+.code-block {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+    overflow-x: auto;
+}
 /* 
-.btn:hover {
-    background-color: #59786a;
+.code-block::before {
+    content: 'JavaScript';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: #666;
 } */

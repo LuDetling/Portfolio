@@ -1,11 +1,12 @@
 <script setup>
-import { RouterLink, RouterView, useRoute } from 'vue-router'
 import Footer from './components/Footer.vue';
+import Navigation from './components/Navigation.vue';
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useAuthStore } from './stores/auth';
 
 const activeSection = ref('banniere');
-const sections = ref(['banniere', 'apropos', 'projets', 'contact', 'prestations']);
+const sections = ref(['banniere', 'about', 'projets', 'contact', 'prestations']);
 
 const handleScroll = () => {
   sections.value.forEach(section => {
@@ -29,8 +30,6 @@ onUnmounted(() => {
 
 const route = useRoute()
 const auth = useAuthStore()
-console.log(auth.user);
-
 
 </script>
 
@@ -39,10 +38,15 @@ console.log(auth.user);
     <div class="wrapper">
       <nav>
         <!-- <div class="left-nav"> -->
-        <!-- <a href="#apropos" :class="{ active: activeSection === 'apropos' }">A propos</a> -->
-        <router-link to="/" activeClass>Accueil</router-link>
-        <!-- <a href="#projets" :class="{ active: activeSection === 'projets' }">Projets</a> -->
-        <router-link to="/projets" activeClass>Projets</router-link>
+        <div class="show-text">
+          <router-link to="/#about" :class="{ active: activeSection === 'about' }">A propos</router-link>
+        </div>
+        <!-- <router-link to="/" activeClass>Accueil</router-link> -->
+        <div class="show-text">
+          <!-- <a href="#projets" :class="{ active: activeSection == 'projets' }">Projets</a> -->
+          <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
+        </div>
+        <!-- <router-link to="/projets" activeClass>Projets</router-link> -->
         <!-- </div> -->
         <!-- <div class="center-nav">
           <router-link to="/" class="logo">
@@ -54,7 +58,7 @@ console.log(auth.user);
         <router-link to="/contact" activeClass>Contact</router-link>
         <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
         <div class="d-flex" v-else>
-          <router-link to="/admin" activeClass >Admin</router-link>
+          <router-link to="/admin" activeClass>Admin</router-link>
           <button @click="auth.logout()">Logout</button>
         </div>
         <!-- </div> -->
@@ -62,116 +66,44 @@ console.log(auth.user);
     </div>
   </header>
 
-  <RouterView />
+  <div class="content">
+    <!-- <Navigation /> -->
+    <RouterView />
+  </div>
 
   <Footer />
 </template>
 
-<style lang="scss">
-.d-flex {
-  display: flex;
-}
-.logo {
-  padding: 0 1rem;
-
-  img {
-    display: block;
-    width: 50px;
-  }
-}
-
-.mode {
-  cursor: pointer;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-
-  svg {
-    width: 32px;
-  }
-
-  &:hover {
-    animation: rotating 3s linear infinite;
-
-  }
-}
-
-@keyframes rotating {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
+<style lang="scss" scoped>
 header {
-  position: sticky;
-  top: 1rem;
-  z-index: 9999;
-  width: fit-content;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 40px;
+  z-index: 100;
 }
 
 nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  margin: auto;
-  // background-color: rgba(51, 93, 74, 0.8);
-  background-color: rgba($color: #9094ff, $alpha: .8);
-  backdrop-filter: blur(4px);
+  gap: 1rem;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
 
-  .left-nav,
-  .right-nav,
-  .center-nav {
-    display: flex;
-  }
-
-  // .left-nav,
-  // .right-nav {
-  // }
-  // a {
-  //   // width: 110px;
-  //   padding: 0 .5rem;
-  // }
-
-  a,
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #ebfef8;
-    transition: .2s;
-    padding: 1rem 0.5rem;
-    position: relative;
-    overflow: hidden;
-    width: 85px;
-    background-color: transparent;
-    border: none;
-    font-size: 1.2rem;
-    box-sizing: content-box;
-    cursor: pointer;
+  a {
+    transition: .3s;
 
     &:hover,
-    &.router-link-exact-active {
-      background-color: #9094ff;
-      // background-color: rgba($color: #2F5041, $alpha: 1);
-    }
-
-    &.active {
-      /* background-color: rgba(144, 78, 85, .8); */
-      // background-color: rgba($color: #2F5041, $alpha: 1);
-
+    &:active,
+    &:focus {
+      // text-shadow: 0 5px 20px rgba(0, 255, 65, 0.7);
+      text-shadow: 0 5px 20px rgba(212, 212, 212, .7);
     }
   }
+}
+
+.content {
+  z-index: 1;
+  margin: 20px;
 }
 </style>
