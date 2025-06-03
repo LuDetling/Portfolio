@@ -18,7 +18,7 @@ const developer = {
         </div>
         <div class="terminal-window">
             <div class="terminal-body">
-                <div class="code-picture mb-4">
+                <div class="code-picture">
                     <div class="code-block">
                         <pre><code><span class="const">const </span><span class="variable">developer </span><span class="ponctuation">= </span><span class="bracket">{</span>
     <span class="property">name: </span><span class="string">'Lucas Detling'</span><span class="ponctuation">,</span>
@@ -83,6 +83,7 @@ section {
         justify-content: space-around;
         flex-wrap: wrap;
         gap: 1rem;
+        margin-bottom: 36px;
     }
 }
 </style>

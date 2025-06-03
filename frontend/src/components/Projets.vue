@@ -26,17 +26,23 @@ onMounted(() => {
 
 <template>
     <section id="projets">
-        <h2 class="text-4xl mb-4">Projets</h2>
-        <div class="content-projets">
-            <CardsProjets :projets=projets />
+        <div class="terminal-header-project">
+            <h2>
+                ~/Projects.vue
+            </h2>
         </div>
-        <!-- <a href="#projets">+</a>
-        <div>Projets en plus qui s'ouvre</div> -->
+        <div class="terminal-window-project">
+            <div class="terminal-body-project">
+                <div class="content-projets">
+                    <CardsProjets :projets=projets />
+                </div>
+            </div>
+        </div>
+        <router-link to="/projets" class="btn btn-pink">Voir plus</router-link>
     </section>
 </template>
 
 <style scoped lang="scss">
-
 #projets {
     .content-projets {
         display: grid;
@@ -59,6 +65,12 @@ onMounted(() => {
                 background-color: green;
             }
         }
+    }
+    .btn-pink {
+        display: block;
+        width: fit-content;
+        margin-inline: auto;
+        margin-block: 3rem;
     }
 }
 </style>

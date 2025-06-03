@@ -4,7 +4,7 @@ import About from '../components/About.vue'
 import Banniere from '@/components/Banniere.vue';
 import Contact from '@/components/Contact.vue';
 import Prestations from '@/components/Prestations.vue';
-
+import Cv from '@/components/Cv.vue';
 </script>
 
 <template>
@@ -12,6 +12,7 @@ import Prestations from '@/components/Prestations.vue';
     <Banniere />
     <About />
     <Projets />
+    <Cv />
     <!-- <Prestations /> -->
     <Contact />
   </main>

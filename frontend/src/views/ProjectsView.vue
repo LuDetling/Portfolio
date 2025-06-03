@@ -35,9 +35,17 @@ const changePage = (newPage) => {
 <template>
     <main>
         <section id="projets">
-            <h1 class="text-6xl mb-8">Projets</h1>
-            <div class="content-projets">
-                <CardsProjets :projets=projets />
+            <div class="terminal-header-project">
+                <h2>
+                    ~/ProjectsView.vue
+                </h2>
+            </div>
+            <div class="terminal-window-project">
+                <div class="terminal-body-project">
+                    <div class="content-projets">
+                        <CardsProjets :projets=projets />
+                    </div>
+                </div>
             </div>
             <ul class="pagination">
                 <!-- <li v-if="page > 2"><button @click="changePage(page = 1)"><<</button></li> -->
@@ -58,9 +66,6 @@ const changePage = (newPage) => {
 
 <style scoped lang="scss">
 main {
-    max-width: 90%;
-    margin: 4rem auto;
-
     >section#projets {
         padding: 120px 0;
 

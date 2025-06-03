@@ -6,7 +6,7 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import { useAuthStore } from './stores/auth';
 
 const activeSection = ref('banniere');
-const sections = ref(['banniere', 'about', 'projets', 'contact', 'prestations']);
+const sections = ref(['banniere', 'about', 'projets', 'cv', 'contact', 'prestations']);
 
 const handleScroll = () => {
   sections.value.forEach(section => {
@@ -46,6 +46,7 @@ const auth = useAuthStore()
           <!-- <a href="#projets" :class="{ active: activeSection == 'projets' }">Projets</a> -->
           <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
         </div>
+        <router-link to="/#cv" :class="{ active: activeSection === 'projets' }">CV</router-link>
         <!-- <router-link to="/projets" activeClass>Projets</router-link> -->
         <!-- </div> -->
         <!-- <div class="center-nav">
@@ -57,7 +58,7 @@ const auth = useAuthStore()
         <!-- <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a> -->
         <router-link to="/contact" activeClass>Contact</router-link>
         <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
-        <div class="d-flex" v-else>
+        <div class="flex gap-4" v-else>
           <router-link to="/admin" activeClass>Admin</router-link>
           <button @click="auth.logout()">Logout</button>
         </div>
@@ -90,9 +91,11 @@ nav {
   overflow: hidden;
   padding: 10px;
 
-  a {
+  a, button {
     transition: .3s;
-
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace
+    ;
     &:hover,
     &:active,
     &:focus {
