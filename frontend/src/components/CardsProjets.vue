@@ -99,7 +99,7 @@ const props = defineProps({
         width: 100%;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        transform: translateY(calc(100% - 79px));
+        transform: translateY(calc(100% - 78px));
         box-sizing: border-box;
         transition: .3s;
         z-index: 1;
@@ -111,12 +111,22 @@ const props = defineProps({
             white-space: nowrap;
             overflow: hidden;
             line-height: 15px;
+            margin-top: .5rem;
+
+            &::after {
+                content: '';
+                margin-top: 1rem;
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: #142238;
+            }
         }
     }
 
     .title {
         margin-bottom: .5rem;
-        color: #91c4f2;
+        color: #71f79f;
         font-weight: bold;
     }
 

@@ -193,10 +193,15 @@ body::before {
     
 }
 
+input, textarea {
+    border-color: #142238;
+}
+
 /* Code snippets */
 .code-block {
     /* background: rgba(0, 0, 0, 0.9); */
     background: rgba(15, 23, 42, .9);
+    border-color: #142238;
     /* border: 1px solid #333; */
     border-radius: 8px;
     padding: 20px;

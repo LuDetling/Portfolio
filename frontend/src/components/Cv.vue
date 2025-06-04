@@ -4,16 +4,16 @@ import { ref } from 'vue';
 const cv = ref([
     {
         title: 'Développeur applications PHP / Symfony',
-        date: '2023-2025',
+        date: '2025-2023',
         enterprise: 'Serval Agency',
         description: 'Création et maintenance de sites web avec le CMS drupal, développement de modules personnalisés et création de patchs',
         skills: ['Symfony', 'Drupal', 'Jquery', 'Twig', 'Bootstrap'],
     },
     {
-        title: 'Développeur applications PHP / Symfony',
-        date: '2023-2025',
+        title: 'Diplôme développeur applications PHP / Symfony',
+        date: '2025-2023',
         enterprise: 'Openclassrooms',
-        description: 'Formation de 2 ans pour devenir développeur d\'applications PHP / Symfony',
+        description: 'Des projets pratiques, apprentissage des bonnes pratiques de développement, tests unitaires et intégration continue',
         skills: ['Symfony', 'PHP', 'MySQL', 'PostgreSQL', 'API REST', 'PHPUnit', 'PHPStan'],
         certification: 'Diplôme de niveau 6 (bac +3/4)',
     },
@@ -26,14 +26,14 @@ const cv = ref([
     },
     {
         title: 'Développeur web',
-        date: '2021-2022',
+        date: '2022-2021',
         enterprise: 'Serval Agency',
         description: 'Intégration et maintenance de sites web avec le CMS drupal',
         skills: ['Drupal', 'Twig', 'Sass', 'Bootstrap', 'Jquery'],
     },
     {
         title: 'Développeur web',
-        date: '2021-2022',
+        date: '2022-2021',
         enterprise: 'Openclassrooms',
         description: 'Intégration et maintenance de sites web avec le CMS drupal',
         skills: ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'Node.js', 'Git', 'MySQL', 'Prisma.io'],
@@ -52,7 +52,7 @@ const cv = ref([
             <div class="terminal-body-cv terminal-body">
                 <ul class="timeline timeline-vertical gap-8 md:gap-0">
                     <li v-for="(item, index) in cv" :key="index" class="timeline-item">
-                        <hr v-if="cv[index - 1]" class="mx-8" />
+                        <hr v-if="cv[index - 1]" :class="['mx-8', index === 0 ? 'active' : null]" />
                         <div :class="[index % 2 ? 'timeline-end' : 'timeline-start', 'timeline-box']">
                             <p class="date">{{ item.date }}</p>
                             <h3 :class="['title', item.certification ? 'school' : null]">{{ item.title }}</h3>
@@ -65,7 +65,8 @@ const cv = ref([
                             </ul>
                         </div>
                         <div class="timeline-middle"></div>
-                        <hr v-if="cv[index + 1]" class="mx-8" />
+                        <hr v-if="cv[index + 1]" :class="['mx-8', index === 0 ? 'active' : null]" />
+                        <!-- faire une animation  -->
                     </li>
                 </ul>
             </div>
@@ -94,8 +95,13 @@ const cv = ref([
 
     }
 
+    hr.active {
+        background-color: #142238;
+    }
+
     .timeline-box {
         font-size: 1rem;
+        border-color: #142238;
 
         .date {
             font-size: 14px;
@@ -104,6 +110,7 @@ const cv = ref([
 
         .title {
             color: #ce9178;
+            font-weight: bold;
 
             &.school {
                 color: #71f79f;
@@ -116,11 +123,7 @@ const cv = ref([
 
         .certification {
             font-size: 14px;
-        }
-
-        .description {
-            font-size: 14px;
-            margin-block: .5rem;
+            margin-top: .5rem;
 
             &::before {
                 content: '';
@@ -128,8 +131,13 @@ const cv = ref([
                 display: block;
                 width: 100%;
                 height: 1px;
-                background-color: #d4d4d4;
+                background-color: #142238;
             }
+        }
+
+        .description {
+            font-size: 14px;
+            margin-bottom: .5rem;
         }
     }
 }
