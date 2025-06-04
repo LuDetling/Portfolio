@@ -31,14 +31,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    h1 {
-        margin-bottom: 1rem;
-    }
 
-    p {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
+    h1 {}
 
     .icone {
         display: block;
@@ -81,14 +75,14 @@
 }
 
 .glitch {
-    font-size: 4rem;
     font-weight: bold;
     text-transform: uppercase;
     position: relative;
     color: #d4d4d4;
-    // color: #00ff41;
     letter-spacing: 5px;
     animation: glitch 2s infinite;
+    margin-bottom: 1rem;
+    font-size: 5rem;
 }
 
 @keyframes glitch {
@@ -118,15 +112,18 @@
 .subtitle {
     font-size: 1.5rem;
     margin-top: 20px;
+    margin-bottom: 1.5rem;
     opacity: 0.8;
     animation: typewriter 11s steps(110) 1s forwards;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 2px solid #d4d4d4;
+    border-right: 2px solid #71f79f;
     // border-right: 2px solid #00ff41;
     width: 0;
     max-width: fit-content;
     padding-inline: 1rem;
+    font-size: 2rem;
+    color: #71f79f;
 }
 
 @keyframes typewriter {

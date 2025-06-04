@@ -3,16 +3,17 @@
         <router-link :to="{ name: 'projet', params: { projetId: projet.id } }">
             <img :src="getImageUrl(projet)" />
             <div class="blur-card">
-
                 <div class="on-card bg-base-100">
-                    <div class="title">{{ projet.title }}</div>
+                    <div class="title flex justify-between">{{ projet.title }} <div><font-awesome-icon
+                                :icon="['fas', 'plus']" /></div>
+                    </div>
                     <div class="description">{{ projet.shortDescription }}</div>
                     <div class="flex flex-wrap gap-2">
                         <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags" :key="tag.id">
                             {{ tag.name }}
                         </div>
                     </div>
-                    <div class="btn btn-primary mt-4">Accéder</div>
+                    <div class="btn btn-secondary mt-4">Découvrir</div>
                     <!-- <a :href='"projet/" + projet.id' class="more">Voir plus</a> -->
                 </div>
             </div>
@@ -22,6 +23,7 @@
 
 <script setup>
 import { IMAGE_URL } from '@/config';
+import { ref } from 'vue';
 
 const getImageUrl = (projet) => {
     return IMAGE_URL + '/projects/' + projet.picture;
@@ -30,31 +32,34 @@ const getImageUrl = (projet) => {
 const props = defineProps({
     projets: Array
 })
+
 </script>
 
 <style scoped lang="scss">
 .card-projet {
     margin: auto;
-    width: 100%;
-
-    // height: 350px;
-    &:not(:first-child) a {
-        border-radius: 10px;
-    }
+    // width: 100%;
 
     a {
         position: relative;
         display: block;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
+        border-radius: 10px;
         overflow: hidden;
-        height: 379px;
         width: 100%;
-        border: 2px solid #ce70b3;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 15px 35px rgba(206, 112, 179, .1);
+
+        .fa-plus {
+            transition: .5s;
+            // background-color: #142238;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 12px;
+            height: 12px;
+            padding: .2rem;
+            font-size: 1rem;
+            color: #91c4f2;
+        }
 
         &:hover {
             .on-card {
@@ -64,6 +69,11 @@ const props = defineProps({
 
             img {
                 filter: grayscale(0);
+            }
+
+            .fa-plus {
+                opacity: 0;
+                transform: rotate(90deg);
             }
         }
     }
@@ -77,8 +87,9 @@ const props = defineProps({
         border-radius: inherit;
         filter: grayscale(1);
         transition: .3s;
-
-
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        aspect-ratio: 1;
     }
 
     .on-card {
@@ -105,6 +116,8 @@ const props = defineProps({
 
     .title {
         margin-bottom: .5rem;
+        color: #91c4f2;
+        font-weight: bold;
     }
 
     .more {

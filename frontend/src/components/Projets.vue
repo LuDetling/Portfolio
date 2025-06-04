@@ -26,51 +26,66 @@ onMounted(() => {
 
 <template>
     <section id="projets">
-        <div class="terminal-header-project">
+        <div class="terminal-header-project terminal-header">
             <h2>
                 ~/Projects.vue
             </h2>
         </div>
-        <div class="terminal-window-project">
-            <div class="terminal-body-project">
-                <div class="content-projets">
+        <div class="terminal-window-project terminal-window">
+            <div class="terminal-body terminal-body-project ">
+                <div class="content-projets grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <CardsProjets :projets=projets />
                 </div>
+                <router-link to="/projets" class="btn btn-secondary more">Voir plus</router-link>
             </div>
         </div>
-        <router-link to="/projets" class="btn btn-pink">Voir plus</router-link>
     </section>
 </template>
 
 <style scoped lang="scss">
 #projets {
-    .content-projets {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-
-        @media screen and (max-width: 938px) {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .card-projet {
-            width: 25%;
-            position: relative;
-
-            .content-projet-absolute {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                background-color: green;
-            }
-        }
+    .terminal-header-project {
+        /* background: linear-gradient(90deg, #00ff41, #00cc33); */
+        background-color: #71F79F;
+        color: #000;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        width: fit-content;
     }
-    .btn-pink {
+
+    .content-projets {
+        // display: grid;
+        // grid-template-columns: repeat(3, 1fr);
+        // gap: 2rem;
+
+        // @media screen and (max-width: 938px) {
+        //     display: flex;
+        //     flex-wrap: wrap;
+        // }
+
+        // .card-projet {
+        //     width: 25%;
+        //     position: relative;
+
+        //     .content-projet-absolute {
+        //         position: absolute;
+        //         bottom: 0;
+        //         left: 0;
+        //         background-color: green;
+        //     }
+        // }
+    }
+
+    .btn-secondary {
         display: block;
         width: fit-content;
         margin-inline: auto;
-        margin-block: 3rem;
+        margin-top: 3rem;
+    }
+    .more {
+        font-size: 1rem;
     }
 }
 </style>

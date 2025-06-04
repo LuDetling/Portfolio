@@ -29,24 +29,43 @@ const developer = {
 <span class="bracket">}</span></code></pre>
                     </div>
                     <div class="over-img">
-                        <img :src="'/src/assets/images/greengoodies.webp'" alt="Photo de moi, Lucas Detling">
+                        <img :src="'/src/assets/images/moi-bleu.png'" alt="Photo de moi, Lucas Detling">
                     </div>
                 </div>
-                <div>
-                    <p>Je suis développeur web fullstack, les technologies que j'utilise principalement sont Symfony et
-                        Vue.js.
-                    </p>
-                    <p>
-                        Je suis diplômé d'un Master 1 de la formation Openclassrooms "Développeur d'application
-                        PHP/Symfony".
-                    </p>
-                    <p>
-                        J'aime créer des applications qui répondent aux besoins des utilisateurs. J'ai une solide
-                        expérience
-                        dans
-                        la création d'applications web, de la conceptionà la
-                        mise en production.
-                    </p>
+                <div class="description flex gap-8 justify-between">
+                    <div class="left w-1/2">
+                        <p>
+                            Bonjour, moi c’est Lucas Detling, <strong>développeur web fullstack passionné</strong>,
+                            spécialisé en
+                            <strong>PHP/Symfony</strong> côté backend et <strong>Vue.js</strong> côté frontend.
+                        </p>
+                        <p>
+                            Je conçois des applications web sur-mesure, robustes et performantes. Qu’il s’agisse d’un
+                            outil métier complexe ou d’une interface intuitive, je
+                            m’attache toujours à créer des solutions utiles, évolutives et bien construites.
+                        </p>
+                        <p>
+                            <strong>Diplômé d'un Master "Développeur d’application PHP/Symfony"</strong> j’ai développé une véritable
+                            passion
+                            pour la création d’applications web modernes,
+                            performantes et centrées sur l’utilisateur.
+                        </p>
+                    </div>
+                    <div class="right w-1/2">
+                        <p>
+                            Grâce à mes expériences en alternance, en freelance et à travers divers projets personnels,
+                            j’ai
+                            acquis une vision complète du cycle de développement, de l’architecture technique à la mise
+                            en
+                            production.
+                        </p>
+                        <p>
+                            Curieux, rigoureux et toujours motivé à relever de nouveaux défis, je mets un point
+                            d’honneur à
+                            écrire un code propre, maintenable et bien documenté.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -61,29 +80,29 @@ section {
     flex-wrap: wrap;
 
     img {
-        width: 300px;
-        height: 300px;
-        border-radius: 5px;
-        /* border-top-left-radius: 50%;
-        border-top-right-radius: 50%; */
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
         object-fit: cover;
-        border: 2px solid #fbfbfb;
     }
 
     div {
         p {
-            line-height: 1.5;
-            margin-bottom: .5rem;
+            margin-bottom: 1rem;
         }
     }
 
     .code-picture {
         display: flex;
-        align-items: center;
-        justify-content: space-around;
+        align-items: self-start;
+        justify-content: space-between;
         flex-wrap: wrap;
         gap: 1rem;
         margin-bottom: 36px;
+    }
+
+    .description {
+        flex: 1;
     }
 }
 </style>

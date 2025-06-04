@@ -56,7 +56,7 @@ const auth = useAuthStore()
         </div> -->
         <!-- <div class="right-nav"> -->
         <!-- <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a> -->
-        <router-link to="/contact" activeClass>Contact</router-link>
+        <router-link to="/#contact" activeClass>Contact</router-link>
         <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
         <div class="flex gap-4" v-else>
           <router-link to="/admin" activeClass>Admin</router-link>
