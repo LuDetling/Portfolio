@@ -1,5 +1,5 @@
 <script setup>
-import Projets from '../components/Projets.vue'
+import Projects from '../components/Projects.vue'
 import About from '../components/About.vue'
 import Banniere from '@/components/Banniere.vue';
 import Contact from '@/components/Contact.vue';
@@ -11,7 +11,7 @@ import Cv from '@/components/Cv.vue';
   <main>
     <Banniere />
     <About />
-    <Projets />
+    <Projects />
     <Cv />
     <!-- <Prestations /> -->
     <Contact />

@@ -13,9 +13,9 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')
     },
     {
-      path: '/projet/:projetId',
+      path: '/projets/:projetId',
       name: 'projet',
-      component: () => import('../views/ProjectView.vue')
+      component: () => import('../views/ProjectView.vue'),
     },
     {
       path: '/projets',
@@ -27,11 +27,11 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginView.vue')
     },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: () => import('../views/ContactView.vue')
-    },
+    // {
+    //   path: '/contact',
+    //   name: 'contact',
+    //   component: () => import('../views/ContactView.vue')
+    // },
     {
       path: '/admin',
       name: 'admin',

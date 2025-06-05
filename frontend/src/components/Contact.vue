@@ -13,7 +13,7 @@
                             Si vous êtes à la recherche d’un développeur impliqué, prêt à s’investir dans une dynamique
                             d’équipe et à relever des défis techniques, je serais ravi d’échanger avec vous.
                         </p>
-                        <div class="code-block">
+                        <div :class="[animationCode ? 'animation-code' : null, 'code-block' ,'code-block-contact']">
                             <pre><code><span class="const">const </span><span class="variable">contact </span><span class="ponctuation">= </span><span class="bracket">{</span>
 <span class="property">Email: </span><span class="string"><a href="mailto:lucas.detling@gmail.com">'lucas.detling@gmail.com'</a></span><span class="ponctuation">,</span>
 <span class="property">Téléphone: </span><span class="string"><a href="tel:+33668372876">'+33 6 68 37 28 76'</a></span><span class="ponctuation">,</span>
@@ -60,7 +60,7 @@
 import { useFormuleStore } from '@/stores/formule';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 const email = ref("");
 const message = ref("");
 const firstname = ref("");
@@ -107,9 +107,57 @@ const submitForm = async (el) => {
 
 }
 
+const animationCode = ref(false);
+const handleScroll = () => {
+    const codeBlock = document.querySelector('.code-block-contact');
+    if (codeBlock) {
+        const rect = codeBlock.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            animationCode.value = true;
+        }
+    }
+};
+window.addEventListener('scroll', handleScroll);
+onMounted(() => {
+    handleScroll(); // Vérifie la position initiale lors du chargement
+});
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
+
 </script>
 
 <style lang="scss" scoped>
+.code-block {
+
+    span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    &.animation-code {
+        span {
+            animation: appear 0.3s ease-out forwards;
+        }
+
+        // Génère un délai croissant pour chaque span
+    }
+
+    @for $i from 1 through 50 {
+        span:nth-child(#{$i}) {
+            animation-delay: #{.2 * $i}s;
+        }
+    }
+
+    @keyframes appear {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
 .terminal-header-contact {
     background: #91c4f2;
 }

@@ -5,13 +5,13 @@ import TagsList from "@/components/admin/TagsList.vue";
 </script>
 
 <template>
-    <main class="flex gap-12 p-4">
-        <div class="w-4/5">
+    <main class="flex gap-12 p-4 flex-wrap lg:flex-nowrap">
+        <section class="lg:w-4/5">
             <ProjetsTable/>
-        </div>
-        <div class="w-1/5 p-4">
+        </section>
+        <section class="lg:w-1/5 p-4">
             <TagsList/>
-        </div>
+        </section>
     </main>
 </template>
 

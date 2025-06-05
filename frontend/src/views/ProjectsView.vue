@@ -1,4 +1,5 @@
 <script setup>
+import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import CardsProjets from '@/components/CardsProjets.vue';
 import { API_URL } from '@/config';
 import { ref, onMounted } from 'vue';
@@ -35,13 +36,14 @@ const changePage = (newPage) => {
 <template>
     <main>
         <section id="projets">
-            <div class="terminal-header-project">
+            <Breadcrumbs :items="[{ name: 'Projets', link: '/projets' }]" />
+            <div class="terminal-header-project terminal-header">
                 <h2>
                     ~/ProjectsView.vue
                 </h2>
             </div>
-            <div class="terminal-window-project">
-                <div class="terminal-body-project">
+            <div class="terminal-window-project terminal-window">
+                <div class="terminal-body-project terminal-body">
                     <div class="content-projets">
                         <CardsProjets :projets=projets />
                     </div>

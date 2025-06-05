@@ -1,4 +1,5 @@
 <script setup>
+import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import { API_URL, IMAGE_URL } from '@/config';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
@@ -27,15 +28,20 @@ const getImageUrl = (projet) => {
 </script>
 
 <template>
-    <main class="flex gap-4 flex-wrap justify-between">
-        <div class="w-full md:w-3/6 ">
-            <img :src="getImageUrl(projet)" :alt='projet.title'>
-        </div>
-        <div class="w-full md:w-2/6">
-            <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
-            <p>{{ projet.description }}</p>
-            <a :href="projet.link" class="btn btn-primary" v-if="projet.link" target="_blank">Découvrir</a>
-        </div>
+    <main>
+        <section>
+            <Breadcrumbs :items="[{ name: 'Projets', link: '/projets' }, { name: projet.title, link: '' }]" />
+            <div class="flex gap-4 flex-wrap justify-between project">
+                <div class="w-full md:w-3/6 ">
+                    <img :src="getImageUrl(projet)" :alt='projet.title'>
+                </div>
+                <div class="w-full md:w-2/6">
+                    <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
+                    <p>{{ projet.description }}</p>
+                    <a :href="projet.link" class="btn btn-primary mt-8" v-if="projet.link != 'null'" target="_blank">Visiter le site</a>
+                </div>
+            </div>
+        </section>
     </main>
 </template>
 

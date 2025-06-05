@@ -44,46 +44,13 @@ onMounted(() => {
 
 <style scoped lang="scss">
 #projets {
-    .terminal-header-project {
-        /* background: linear-gradient(90deg, #00ff41, #00cc33); */
-        background-color: #71F79F;
-        color: #000;
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        width: fit-content;
-    }
-
-    .content-projets {
-        // display: grid;
-        // grid-template-columns: repeat(3, 1fr);
-        // gap: 2rem;
-
-        // @media screen and (max-width: 938px) {
-        //     display: flex;
-        //     flex-wrap: wrap;
-        // }
-
-        // .card-projet {
-        //     width: 25%;
-        //     position: relative;
-
-        //     .content-projet-absolute {
-        //         position: absolute;
-        //         bottom: 0;
-        //         left: 0;
-        //         background-color: green;
-        //     }
-        // }
-    }
-
     .btn-secondary {
         display: block;
         width: fit-content;
         margin-inline: auto;
         margin-top: 3rem;
     }
+
     .more {
         font-size: 1rem;
     }

@@ -37,32 +37,19 @@ const auth = useAuthStore()
   <header>
     <div class="wrapper">
       <nav>
-        <!-- <div class="left-nav"> -->
         <div class="show-text">
           <router-link to="/#about" :class="{ active: activeSection === 'about' }">A propos</router-link>
         </div>
-        <!-- <router-link to="/" activeClass>Accueil</router-link> -->
         <div class="show-text">
-          <!-- <a href="#projets" :class="{ active: activeSection == 'projets' }">Projets</a> -->
           <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
         </div>
-        <router-link to="/#cv" :class="{ active: activeSection === 'projets' }">CV</router-link>
-        <!-- <router-link to="/projets" activeClass>Projets</router-link> -->
-        <!-- </div> -->
-        <!-- <div class="center-nav">
-          <router-link to="/" class="logo">
-            <img src="/src/assets/images/logo-blanc.png" alt="Mon logo">
-          </router-link>
-        </div> -->
-        <!-- <div class="right-nav"> -->
-        <!-- <a href="#prestations" :class="{ active: activeSection === 'prestations' }">Prestations</a> -->
+        <router-link to="/#cv" :class="{ active: activeSection === 'cv' }">CV</router-link>
         <router-link to="/#contact" activeClass>Contact</router-link>
         <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
         <div class="flex gap-4" v-else>
           <router-link to="/admin" activeClass>Admin</router-link>
           <button @click="auth.logout()">Logout</button>
         </div>
-        <!-- </div> -->
       </nav>
     </div>
   </header>
@@ -91,11 +78,12 @@ nav {
   overflow: hidden;
   padding: 10px;
 
-  a, button {
+  a,
+  button {
     transition: .3s;
     cursor: pointer;
-    font-family: 'Courier New', Courier, monospace
-    ;
+    font-family: 'Courier New', Courier, monospace;
+
     &:hover,
     &:active,
     &:focus {

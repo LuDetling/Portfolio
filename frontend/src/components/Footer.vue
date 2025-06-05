@@ -9,7 +9,7 @@
             </a>
         </div>
         <p>
-            © Lucas-Detling.com. All rights reserved
+            © lucas-detling.com. All rights reserved.
         </p>
     </footer>
 </template>

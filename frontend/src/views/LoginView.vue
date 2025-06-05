@@ -40,14 +40,14 @@ if (auth.user) {
 <template>
     <main>
         <section>
-            <form @submit.prevent="handleSubmit()">
+            <form @submit.prevent="handleSubmit()" class="w-fit mx-auto">
                 <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                     <legend class="fieldset-legend">Login</legend>
                     <label for="username">Username :</label>
-                    <input type="text" id="username" v-model="username" required class="input"/>
+                    <input type="text" id="username" v-model="username" required class="input mb-4"/>
                     <label for="password">Mot de passe :</label>
-                    <input type="password" id="password" v-model="password" required class="input"/>
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <input type="password" id="password" v-model="password" required class="input mb-4"/>
+                    <button type="submit" class="btn btn-primary mt-4">Se connecter</button>
                 </fieldset>
             </form>
         </section>
@@ -55,12 +55,4 @@ if (auth.user) {
 </template>
 
 <style scoped lang="scss">
-main {
-    max-width: 90%;
-    margin: 4rem auto;
-
-    >section {
-        padding: 120px 0;
-    }
-}
 </style>

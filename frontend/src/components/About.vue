@@ -1,12 +1,22 @@
 <script setup>
-const developer = {
-    name: 'Lucas Detling',
-    role: 'Développeur web fullstack',
-    skills: ['Symfony', 'Vue.js', 'PHP', 'JavaScript'],
-    education: 'Master 1 Développeur d\'application PHP/Symfony',
-    experience: 'Création d\'applications web de la conception à la mise en production'
-}
-
+import { ref, onMounted, onUnmounted } from 'vue';
+const animationCode = ref(false);
+const handleScroll = () => {
+    const codeBlock = document.querySelector('.code-block');
+    if (codeBlock) {
+        const rect = codeBlock.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            animationCode.value = true;
+        }
+    }
+};
+onMounted(() => {
+    handleScroll(); // Vérifie la position initiale lors du chargement
+    window.addEventListener('scroll', handleScroll);
+});
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
@@ -19,12 +29,12 @@ const developer = {
         <div class="terminal-window">
             <div class="terminal-body">
                 <div class="code-picture">
-                    <div class="code-block">
-                        <pre><code><span class="const">const </span><span class="variable">developer </span><span class="ponctuation">= </span><span class="bracket">{</span>
+                    <div :class="[animationCode ? 'animation-code' : null, 'code-block']">
+                        <pre><code id="typewriter"><span class="const">const </span><span class="variable">developer </span><span class="ponctuation">= </span><span class="bracket">{</span>
     <span class="property">name: </span><span class="string">'Lucas Detling'</span><span class="ponctuation">,</span>
     <span class="property">role: </span><span class="string">'Développeur web fullstack'</span><span class="ponctuation">,</span>
-    <span class="property">skills: </span><span class="string"><span class="array">[</span>'Symfony', 'Vue.js', 'PHP', 'JavaScript'<span class="array">]</span><span class="ponctuation">,</span></span>
-    <span class="property">education: </span><span class="string">'Master 1 Développeur d'application PHP/Symfony'<span class="ponctuation">,</span></span>
+    <span class="property">skills: </span><span class="string"><span class="array">[</span>'Symfony', 'Vue.js', 'PHP', 'JavaScript', 'PostgreSQL'<span class="array">]</span><span class="ponctuation">,</span></span>
+    <span class="property">education: </span><span class="string">'Master Développeur d'application PHP/Symfony'<span class="ponctuation">,</span></span>
     <span class="property">experience: </span><span class="string">'Création d'applications web de la conception à la mise en production'</span>
 <span class="bracket">}</span></code></pre>
                     </div>
@@ -45,7 +55,8 @@ const developer = {
                             m’attache toujours à créer des solutions utiles, évolutives et bien construites.
                         </p>
                         <p>
-                            <strong>Diplômé d'un Master "Développeur d’application PHP/Symfony"</strong> j’ai développé une véritable
+                            <strong>Diplômé d'un Master "Développeur d’application PHP/Symfony"</strong> j’ai développé
+                            une véritable
                             passion
                             pour la création d’applications web modernes,
                             performantes et centrées sur l’utilisateur.
@@ -73,6 +84,37 @@ const developer = {
 </template>
 
 <style scoped lang="scss">
+.code-block {
+
+    span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    &.animation-code {
+        span {
+            animation: appear 0.3s ease-out forwards;
+        }
+
+        // Génère un délai croissant pour chaque span
+    }
+
+    @for $i from 1 through 50 {
+        span:nth-child(#{$i}) {
+            animation-delay: #{.2 * $i}s;
+        }
+    }
+
+    @keyframes appear {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+
 section {
     display: flex;
     align-items: center;

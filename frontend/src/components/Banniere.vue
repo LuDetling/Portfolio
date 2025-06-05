@@ -32,8 +32,6 @@
     align-items: center;
     justify-content: center;
 
-    h1 {}
-
     .icone {
         display: block;
         width: fit-content;
@@ -114,7 +112,7 @@
     margin-top: 20px;
     margin-bottom: 1.5rem;
     opacity: 0.8;
-    animation: typewriter 11s steps(110) 1s forwards;
+    animation: typewriter 7s steps(53) 1s forwards;
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid #71f79f;

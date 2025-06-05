@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const cv = ref([
     {
@@ -40,9 +40,29 @@ const cv = ref([
         certification: 'Diplôme de niveau 5 (bac +2)',
     },
 ])
+
+const animationCv = ref(false);
+const handleScroll = () => {
+    const cvSection = document.querySelector('#cv');
+    if (cvSection) {
+        const rect = cvSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            animationCv.value = true;
+        }
+    }
+};
+
+onMounted(() => {
+    handleScroll(); // Vérifie la position initiale lors du chargement
+    window.addEventListener('scroll', handleScroll);
+});
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
+
 </script>
 <template>
-    <section id="cv">
+    <section id="cv" :class="[animationCv ? 'animation-cv' : null]">
         <div class="terminal-header terminal-header-cv">
             <h2>
                 ~/CV.vue
@@ -86,9 +106,30 @@ const cv = ref([
     border-color: #ce9178;
 }
 
+.animation-cv {
+    .timeline-item {
+        animation: appear 1s ease-out forwards;
+    }
+
+    @for $i from 1 through 50 {
+        .timeline-item:nth-child(#{$i}) {
+            animation-delay: #{.5 * $i}s;
+        }
+    }
+
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .timeline-item {
     // width: 80%;
     margin: auto;
+    opacity: 0;
 
     @media screen and (max-width: 768px) {
         display: block;

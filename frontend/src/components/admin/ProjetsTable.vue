@@ -80,7 +80,7 @@ const getImageUrl = (projet) => {
                     <td>{{ projet.shortDescription }}</td>
                     <td>
                         <div class="flex gap-2 flex-wrap">
-                            <span v-for="tag in projet.tags" :key="tag.id" class="badge badge-primary text-xs">{{
+                            <span v-for="tag in projet.tags" :key="tag.id" class="badge badge-soft badge-primary text-xs">{{
                                 tag.name }}</span>
                         </div>
                     </td>
