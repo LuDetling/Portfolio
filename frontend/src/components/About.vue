@@ -38,12 +38,12 @@ onUnmounted(() => {
     <span class="property">experience: </span><span class="string">'Création d'applications web de la conception à la mise en production'</span>
 <span class="bracket">}</span></code></pre>
                     </div>
-                    <div class="over-img">
+                    <div class="over-img mx-auto">
                         <img :src="'/src/assets/images/moi-bleu.png'" alt="Photo de moi, Lucas Detling">
                     </div>
                 </div>
-                <div class="description flex gap-8 justify-between">
-                    <div class="left w-1/2">
+                <div class="description md:flex md:gap-8 justify-between">
+                    <div class="left md:w-1/2">
                         <p>
                             Bonjour, moi c’est Lucas Detling, <strong>développeur web fullstack passionné</strong>,
                             spécialisé en
@@ -62,7 +62,7 @@ onUnmounted(() => {
                             performantes et centrées sur l’utilisateur.
                         </p>
                     </div>
-                    <div class="right w-1/2">
+                    <div class="right md:w-1/2">
                         <p>
                             Grâce à mes expériences en alternance, en freelance et à travers divers projets personnels,
                             j’ai

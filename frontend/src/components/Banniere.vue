@@ -81,6 +81,9 @@
     animation: glitch 2s infinite;
     margin-bottom: 1rem;
     font-size: 5rem;
+    @media screen and (max-width: 500px) {
+        font-size: 3.5rem;
+    }
 }
 
 @keyframes glitch {
@@ -122,7 +125,14 @@
     padding-inline: 1rem;
     font-size: 2rem;
     color: #71f79f;
+    @media screen and (max-width: 500px) {
+        animation: none;
+        white-space: initial;
+        width: 100%;
+        border-right: none;
+    }
 }
+
 
 @keyframes typewriter {
     to {

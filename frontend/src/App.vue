@@ -30,19 +30,16 @@ onUnmounted(() => {
 
 const route = useRoute()
 const auth = useAuthStore()
+const open = ref(false)
 
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <nav>
-        <div class="show-text">
-          <router-link to="/#about" :class="{ active: activeSection === 'about' }">A propos</router-link>
-        </div>
-        <div class="show-text">
-          <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
-        </div>
+      <nav id="desktop">
+        <router-link to="/#about" :class="{ active: activeSection === 'about' }">A propos</router-link>
+        <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
         <router-link to="/#cv" :class="{ active: activeSection === 'cv' }">CV</router-link>
         <router-link to="/#contact" activeClass>Contact</router-link>
         <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
@@ -51,11 +48,29 @@ const auth = useAuthStore()
           <button @click="auth.logout()">Logout</button>
         </div>
       </nav>
+      <button class="icone-burger" @click="open = !open">
+        <font-awesome-icon :icon="['fas', 'bars']" />
+      </button>
+      <nav id="burger" :class="open ? 'open' : null">
+        <ul>
+          <li>
+            <router-link to="/#about" :class="{ active: activeSection === 'about' }">A propos</router-link>
+          </li>
+          <li>
+            <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
+          </li>
+          <li>
+            <router-link to="/#cv" :class="{ active: activeSection === 'cv' }">CV</router-link>
+          </li>
+          <li>
+            <router-link to="/#contact" activeClass>Contact</router-link>
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <div class="content">
-    <!-- <Navigation /> -->
     <RouterView />
   </div>
 
@@ -63,20 +78,55 @@ const auth = useAuthStore()
 </template>
 
 <style lang="scss" scoped>
+#desktop {
+  @media screen and (max-width: 499px) {
+    display: none;
+  }
+}
+
+
+.icone-burger {
+  margin-left: auto;
+  display: block;
+}
+#burger,
+.icone-burger {
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+}
+
+#burger {
+  max-height: 0;
+  transition: .5s;
+  background: rgba($color: #0f172a, $alpha: .5);
+  padding: 0;
+  backdrop-filter: blur(10px);
+
+  &.open {
+    max-height: 120px;
+    padding: 10px;
+  }
+}
+
 header {
   z-index: 100;
 }
 
-nav {
+.wrapper {
   position: fixed;
   top: 20px;
   right: 20px;
-  display: flex;
-  gap: 1rem;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 10px;
+
+  nav {
+    display: flex;
+    gap: 1rem;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+
+  }
 
   a,
   button {

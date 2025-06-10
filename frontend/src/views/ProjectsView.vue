@@ -44,8 +44,8 @@ const changePage = (newPage) => {
             </div>
             <div class="terminal-window-project terminal-window">
                 <div class="terminal-body-project terminal-body">
-                    <div class="content-projets">
-                        <CardsProjets :projets=projets />
+                    <div class="content-projets grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <CardsProjets :projets=projets class=""/>
                     </div>
                 </div>
             </div>
@@ -71,17 +71,11 @@ main {
     >section#projets {
         padding: 120px 0;
 
-        .content-projets {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(3, 1fr);
-
-            .card-projet {
-                img {
-                    width: 100%;
-                    height: auto;
-                    object-fit: cover;
-                }
+        .card-projet {
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
             }
         }
 

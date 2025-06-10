@@ -6,15 +6,11 @@
                 <span class="mx-2">/</span>
             </li>
             <li v-for="(crumb, index) in breadcrumbs" :key="index">
-                <template v-if="index !== breadcrumbs.length - 1">
+                <div v-if="index !== breadcrumbs.length - 1">
                     <RouterLink :to="crumb.path" class="text-blue-500 hover:underline">
                         {{ crumb.label }}
                     </RouterLink>
-                    <span class="mx-2">/</span>
-                </template>
-                <template v-else>
-                    <span class="text-gray-500">{{ crumb.label }}</span>
-                </template>
+                </div>
             </li>
         </ol>
     </nav>

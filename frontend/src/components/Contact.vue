@@ -7,22 +7,22 @@
         </div>
         <div class="terminal-window terminal-window-contact">
             <div class="terminal-body terminal-window-contact">
-                <div class="content-contact flex flex-col xl:flex-row gap-12">
-                    <div class="left-contact w-full xl:w-2/3">
+                <div class="content-contact flex flex-col lg:flex-row gap-12">
+                    <div class="left-contact w-full lg:w-2/3">
                         <p class="mb-8">
                             Si vous êtes à la recherche d’un développeur impliqué, prêt à s’investir dans une dynamique
                             d’équipe et à relever des défis techniques, je serais ravi d’échanger avec vous.
                         </p>
-                        <div :class="[animationCode ? 'animation-code' : null, 'code-block' ,'code-block-contact']">
+                        <div :class="[animationCode ? 'animation-code' : null, 'code-block', 'code-block-contact']">
                             <pre><code><span class="const">const </span><span class="variable">contact </span><span class="ponctuation">= </span><span class="bracket">{</span>
 <span class="property">Email: </span><span class="string"><a href="mailto:lucas.detling@gmail.com">'lucas.detling@gmail.com'</a></span><span class="ponctuation">,</span>
 <span class="property">Téléphone: </span><span class="string"><a href="tel:+33668372876">'+33 6 68 37 28 76'</a></span><span class="ponctuation">,</span>
 <span class="bracket">}</span></code></pre>
                         </div>
                     </div>
-                    <div class="right-contact w-full xl:w-1/3">
-                        <Form @submit="submitForm($event)" :validation-schema="schema">
-                            <div class="flex gap-4">
+                    <div class="right-contact w-full lg:w-1/3">
+                        <Form @submit="submitForm($event)" :validation-schema="schema" class="mx-auto">
+                            <div class="sm:flex gap-4">
                                 <div class="name">
                                     <label for="lastname" class="block mt-4 mb-2">Nom :</label>
                                     <Field type="text" name="lastname" v-model="lastname" required class="input" />
@@ -177,8 +177,8 @@ onUnmounted(() => {
 }
 
 form {
-    width: fit-content;
     // margin-left: auto;
+    max-width: 350px;
 
     span {
         display: block;
@@ -193,8 +193,9 @@ form {
 }
 
 input,
-select {
+select, textarea {
     // width: 350px;
+    width: 100%;
     border-radius: 5px;
     padding: .5rem;
     box-sizing: border-box;
@@ -204,8 +205,8 @@ select {
 textarea {
     box-sizing: border-box;
     padding: .5rem;
-    min-width: 350px;
-    max-width: 350px;
+    // min-width: 350px;
+    // max-width: 350px;
     height: 100px;
     border-radius: 5px;
     font-size: 1rem;

@@ -31,14 +31,23 @@ const getImageUrl = (projet) => {
     <main>
         <section>
             <Breadcrumbs :items="[{ name: 'Projets', link: '/projets' }, { name: projet.title, link: '' }]" />
-            <div class="flex gap-4 flex-wrap justify-between project">
-                <div class="w-full md:w-3/6 ">
-                    <img :src="getImageUrl(projet)" :alt='projet.title'>
-                </div>
-                <div class="w-full md:w-2/6">
-                    <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
-                    <p>{{ projet.description }}</p>
-                    <a :href="projet.link" class="btn btn-primary mt-8" v-if="projet.link != 'null'" target="_blank">Visiter le site</a>
+            <div class="terminal-header-project terminal-header">
+                <h2> ~/Projects.vue </h2>
+            </div>
+            <div class="terminal-window-project terminal-window">
+                <div class="terminal-body-project terminal-body">
+
+                    <div class="flex gap-4 flex-wrap justify-between project">
+                        <div class="w-full md:w-3/6 ">
+                            <img :src="getImageUrl(projet)" :alt='projet.title'>
+                        </div>
+                        <div class="w-full md:w-2/6">
+                            <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
+                            <p>{{ projet.description }}</p>
+                            <a :href="projet.link" class="btn btn-primary mt-8" v-if="projet.link != 'null'"
+                                target="_blank">Visiter le site</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
