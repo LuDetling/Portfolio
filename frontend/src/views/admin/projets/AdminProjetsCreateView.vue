@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 import { ref } from 'vue';
@@ -29,7 +29,7 @@ const schema = yup.object({
 
 const getTags = async () => {
     try {
-        const response = await fetch(API_URL + '/tags');
+        const response = await fetch(VITE_API_URL + '/tags');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -53,7 +53,7 @@ const createProjet = async (el) => {
     formData.append('tags', JSON.stringify(el.tags));
 
     try {
-        const response = await fetch(API_URL + '/project/create', {
+        const response = await fetch(VITE_API_URL + '/project/create', {
             method: 'POST',
             body: formData,
             headers: {

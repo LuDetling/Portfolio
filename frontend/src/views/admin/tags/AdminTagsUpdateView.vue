@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import { ref } from 'vue';
 import * as yup from 'yup';
@@ -37,7 +37,7 @@ fetchTag();
 
 const updateTag = async (el) => {
     try {
-        const response = await fetch(API_URL + '/tags/' + route.params.tagId, {
+        const response = await fetch(VITE_API_URL + '/tags/' + route.params.tagId, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

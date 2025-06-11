@@ -190,6 +190,10 @@ body::before {
 }
 
 @media screen and (max-width: 640px) {
+    .terminal-header {
+        font-size: 1.2rem;
+        padding: 5px 10px;
+    }
     .terminal-body {
         padding: 1rem;
     }
@@ -221,10 +225,4 @@ strong {
 .terminal-header-project {
     /* background: linear-gradient(90deg, #00ff41, #00cc33); */
     background-color: #71F79F;
-    color: #000;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    width: fit-content;
-    }
+}

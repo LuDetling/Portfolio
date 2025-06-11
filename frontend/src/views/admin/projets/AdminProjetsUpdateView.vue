@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import { useRoute } from 'vue-router';
 
@@ -31,7 +31,7 @@ const schema = yup.object({
 
 const getProjet = async () => {
     try {
-        const response = await fetch(API_URL + '/project/' + route.params.projetId);
+        const response = await fetch(VITE_API_URL + '/project/' + route.params.projetId);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -53,7 +53,7 @@ getProjet();
 
 const getTags = async () => {
     try {
-        const response = await fetch(API_URL + '/tags');
+        const response = await fetch(VITE_API_URL + '/tags');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -80,7 +80,7 @@ const updateProjet = async (el) => {
     formData.append('tags', JSON.stringify(el.tags));
 
     try {
-        const response = await fetch(API_URL + '/project/' + route.params.projetId, {
+        const response = await fetch(VITE_API_URL + '/project/' + route.params.projetId, {
             method: 'POST',
             body: formData,
             headers: {

@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 import { ref } from 'vue';
 
 import { useCookies } from 'vue3-cookies';
@@ -9,7 +9,7 @@ const { cookies } = useCookies();
 const tags = ref([]);
 const fetchTags = async () => {
     try {
-        const response = await fetch(API_URL + '/tags');
+        const response = await fetch(VITE_API_URL + '/tags');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -24,7 +24,7 @@ fetchTags();
 
 const deleteTag = async (id) => {
     try {
-        const response = await fetch(API_URL + '/tags/' + id, {
+        const response = await fetch(VITE_API_URL + '/tags/' + id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

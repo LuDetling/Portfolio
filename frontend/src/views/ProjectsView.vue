@@ -1,7 +1,7 @@
 <script setup>
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import CardsProjets from '@/components/CardsProjets.vue';
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 import { ref, onMounted } from 'vue';
 
 
@@ -13,7 +13,7 @@ const urlPictures = '/src/assets/images/';
 
 const fetchProjets = async () => {
     try {
-        const response = await fetch(API_URL + `/projects?page=${page.value}`);
+        const response = await fetch(VITE_API_URL + `/projects?page=${page.value}`);
         if (!response.ok) throw new Error('Pas de projet trouvé')
         let data = await response.json();
         projets.value = data.projects;

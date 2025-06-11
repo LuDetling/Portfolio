@@ -3,7 +3,7 @@ import router from '@/router';
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { useCookies } from "vue3-cookies";
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 const { cookies } = useCookies();
 
 let username = ref('');
@@ -12,7 +12,7 @@ const auth = useAuthStore();
 
 const handleSubmit = async () => {
     try {
-        const response = await fetch(API_URL + '/login', {
+        const response = await fetch(VITE_API_URL + '/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

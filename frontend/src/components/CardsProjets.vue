@@ -22,11 +22,11 @@
 </template>
 
 <script setup>
-import { IMAGE_URL } from '@/config';
+import { VITE_IMAGE_URL } from '@/config';
 import { ref } from 'vue';
 
 const getImageUrl = (projet) => {
-    return IMAGE_URL + '/projects/' + projet.picture;
+    return VITE_IMAGE_URL + '/projects/' + projet.picture;
 }
 
 const props = defineProps({

@@ -42,11 +42,11 @@ const open = ref(false)
         <router-link to="/#projets" :class="{ active: activeSection === 'projets' }">Projets</router-link>
         <router-link to="/#cv" :class="{ active: activeSection === 'cv' }">CV</router-link>
         <router-link to="/#contact" activeClass>Contact</router-link>
-        <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
+        <!-- <router-link to="/login" activeClass v-if="!auth.user">Login</router-link>
         <div class="flex gap-4" v-else>
           <router-link to="/admin" activeClass>Admin</router-link>
           <button @click="auth.logout()">Logout</button>
-        </div>
+        </div> -->
       </nav>
       <button class="icone-burger" @click="open = !open">
         <font-awesome-icon :icon="['fas', 'bars']" />

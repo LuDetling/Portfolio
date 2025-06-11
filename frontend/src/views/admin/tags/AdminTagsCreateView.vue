@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { API_URL } from '@/config';
+import { VITE_API_URL } from '@/config';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import { ref } from 'vue';
 import * as yup from 'yup';
@@ -16,7 +16,7 @@ const schema = yup.object({
 
 const createTag = async (el) => {
     try {
-        const response = await fetch(API_URL + '/tags/create', {
+        const response = await fetch(VITE_API_URL + '/tags/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

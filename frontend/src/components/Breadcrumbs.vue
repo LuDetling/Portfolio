@@ -2,12 +2,12 @@
     <nav aria-label="Breadcrumb" class="text-sm text-gray-600">
         <ol class="flex space-x-1">
             <li>
-                <RouterLink to="/" class="text-blue-500 hover:underline">Accueil</RouterLink>
+                <RouterLink to="/" class="bread-link hover:underline">Accueil</RouterLink>
                 <span class="mx-2">/</span>
             </li>
             <li v-for="(crumb, index) in breadcrumbs" :key="index">
                 <div v-if="index !== breadcrumbs.length - 1">
-                    <RouterLink :to="crumb.path" class="text-blue-500 hover:underline">
+                    <RouterLink :to="crumb.path" class="bread-link hover:underline">
                         {{ crumb.label }}
                     </RouterLink>
                 </div>
@@ -45,5 +45,8 @@ const breadcrumbs = computed(() => {
 <style scoped lang="scss">
 nav {
     margin-bottom: 1rem;
+}
+.bread-link {
+    color: #d4d4d4;
 }
 </style>

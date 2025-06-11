@@ -39,7 +39,7 @@ onUnmounted(() => {
 <span class="bracket">}</span></code></pre>
                     </div>
                     <div class="over-img mx-auto">
-                        <img :src="'/src/assets/images/moi-bleu.png'" alt="Photo de moi, Lucas Detling">
+                        <img src="@/assets/images/moi-bleu.png" alt="Photo de moi, Lucas Detling">
                     </div>
                 </div>
                 <div class="description md:flex md:gap-8 justify-between">

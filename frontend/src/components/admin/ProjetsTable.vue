@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { API_URL, IMAGE_URL } from '@/config';
+import { VITE_API_URL, VITE_IMAGE_URL } from '@/config';
 import { ref } from 'vue';
 import { useCookies } from 'vue3-cookies';
 const { cookies } = useCookies();
@@ -11,7 +11,7 @@ const totalPages = ref(0);
 
 const fetchProjets = async () => {
     try {
-        const response = await fetch(API_URL + '/projects');
+        const response = await fetch(VITE_API_URL + '/projects');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -32,7 +32,7 @@ fetchProjets();
 
 const deleteProject = async (id) => {
     try {
-        const response = await fetch(API_URL + '/project/' + id, {
+        const response = await fetch(VITE_API_URL + '/project/' + id, {
             method: 'DELETE',
             headers: {
                 "Authorization": 'Bearer ' + cookies.get('token'),
@@ -48,7 +48,7 @@ const deleteProject = async (id) => {
 }
 
 const getImageUrl = (projet) => {
-    return IMAGE_URL + '/projects/' + projet.picture;
+    return VITE_IMAGE_URL + '/projects/' + projet.picture;
 }
 
 </script>

@@ -1,6 +1,6 @@
 <script setup>
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
-import { API_URL, IMAGE_URL } from '@/config';
+import { VITE_API_URL, VITE_IMAGE_URL } from '@/config';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 
@@ -12,7 +12,7 @@ const urlPictures = '/src/assets/images/';
 
 const fetchProjet = async () => {
     try {
-        const response = await fetch(API_URL + '/project/' + route.params.projetId);
+        const response = await fetch(VITE_API_URL + '/project/' + route.params.projetId);
         if (!response.ok) throw new Error('Pas de projet trouvé')
         projet.value = await response.json();
     } catch (error) {
@@ -23,7 +23,7 @@ const fetchProjet = async () => {
 fetchProjet();
 
 const getImageUrl = (projet) => {
-    return IMAGE_URL + '/projects/' + projet.picture;
+    return VITE_IMAGE_URL + '/projects/' + projet.picture;
 }
 </script>
 
