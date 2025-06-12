@@ -1,4 +1,3 @@
-/* @import "./reset.css"; */
 @import "./fonts.css";
 @import "./code.css";
 @import "tailwindcss";
@@ -78,7 +77,6 @@ body {
     font-family: 'Courier New', monospace;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
     color: #d4d4d4;
-    /* color: #00ff41; */
     overflow-x: hidden;
     min-height: 100vh;
 }

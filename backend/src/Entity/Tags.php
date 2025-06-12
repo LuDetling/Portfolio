@@ -22,9 +22,9 @@ class Tags
     private ?string $name = null;
 
     /**
-     * @var Collection<int, project>
+     * @var Collection<int, Project>
      */
-    #[ORM\ManyToMany(targetEntity: project::class, inversedBy: 'tags')]
+    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'tags')]
     private Collection $project;
 
     public function __construct()
@@ -50,14 +50,14 @@ class Tags
     }
 
     /**
-     * @return Collection<int, project>
+     * @return Collection<int, Project>
      */
     public function getProject(): Collection
     {
         return $this->project;
     }
 
-    public function addProject(project $project): static
+    public function addProject(Project $project): static
     {
         if (!$this->project->contains($project)) {
             $this->project->add($project);
@@ -66,7 +66,7 @@ class Tags
         return $this;
     }
 
-    public function removeProject(project $project): static
+    public function removeProject(Project $project): static
     {
         $this->project->removeElement($project);
 
