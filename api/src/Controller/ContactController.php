@@ -37,23 +37,50 @@ class ContactController extends AbstractController
             return $this->json(['Erreur dans le formulaire'] + $errors, Response::HTTP_BAD_REQUEST);
         }
 
+        $firstname = $data['firstname'];
+        $lastname = $data['lastname'];
+        $phone = $data['phone'];
+        $email = $data['email'];
+        $message = $data['message'];
+        // $formule = $this->formuleRepository->find($data['formule']);
+
+        // ajouter dans contact dans la bdd
+        $contact = (new Contact())
+            ->setEmail($data['email'])
+            // ->setFormule($formule)
+            ->setFirstname($firstname)
+            ->setLastname($lastname)
+            ->setPhone($phone)
+            ->setMessage($message);
+        $this->em->persist($contact);
+        $this->em->flush();
+
+        $txt = "
+                <html>
+                    <head>
+                        <title>Portfolio</title>
+                    </head>
+                    <body>
+                        <h1>" . $firstname ." ". $lastname . "</h1>
+                        <p>" . $email . "</p>
+                        <p>" . $phone . "</p>
+                        <p>" . $message . "</p>
+                    </body>
+                </html>
+                ";
+                
+        //mail
         $email = (new Email())
-            ->from($data['email'])
-            ->to('lucas.detling@gmail.com')
+            ->from("lucas.detling@lucas-detling.com")
+            ->to("lucas.detling@lucas-detling.com")
+            ->replyTo($data["email"])
             ->subject('Nouveau message de contact')
-            ->text($data['message']);
+            ->text(strip_tags($txt))
+            ->html($txt);
 
         $this->mailer->send($email);
 
-        $formule = $this->formuleRepository->find($data['formule']);
 
-        // ajouter dans contact
-        $contact = (new Contact())
-            ->setEmail($data['email'])
-            ->setFormule($formule)
-            ->setMessage($data['message']);
-        $this->em->persist($contact);
-        $this->em->flush();
 
         return $this->json('Votre message a bien été envoyé', Response::HTTP_OK);
     }

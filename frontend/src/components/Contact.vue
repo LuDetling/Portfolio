@@ -24,14 +24,14 @@
                         <Form @submit="submitForm($event)" :validation-schema="schema" class="mx-auto">
                             <div class="sm:flex gap-4">
                                 <div class="name">
-                                    <label for="lastname" class="block mt-4 mb-2">Nom :</label>
-                                    <Field type="text" name="lastname" v-model="lastname" required class="input" />
-                                    <ErrorMessage name="lastname" />
-                                </div>
-                                <div class="name">
                                     <label for="firstname" class="block mt-4 mb-2">Prénom :</label>
                                     <Field type="text" name="firstname" v-model="firstname" required class="input" />
                                     <ErrorMessage name="firstname" />
+                                </div>
+                                <div class="name">
+                                    <label for="lastname" class="block mt-4 mb-2">Nom :</label>
+                                    <Field type="text" name="lastname" v-model="lastname" required class="input" />
+                                    <ErrorMessage name="lastname" />
                                 </div>
                             </div>
                             <label for="email" class="block mt-4 mb-2">Email :</label>
@@ -41,7 +41,7 @@
                             <Field type="phone" name="phone" v-model="phone" required class="input" />
                             <ErrorMessage name="phone" />
                             <label for="message" class="block mt-4 mb-2">Message :</label>
-                            <Field as="textarea" name="message" v-model="message" required class="input" />
+                            <Field as="textarea" name="message" v-model="message" required class="textarea" />
                             <ErrorMessage name="message" />
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -61,6 +61,7 @@ import { useFormuleStore } from '@/stores/formule';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 import { ref, onMounted, onUnmounted } from "vue";
+import { VITE_API_URL } from '@/config';
 const email = ref("");
 const message = ref("");
 const firstname = ref("");
@@ -70,23 +71,24 @@ const formuleSelected = ref()
 const formule = useFormuleStore()
 const required = "Ce champ est requis";
 
+
 const schema = yup.object({
     email: yup.string().required(required).email("Ceci n'est pas une adresse email"),
     phone: yup.string().matches(/^\+?[0-9\s]+$/, "Le numéro de téléphone doit contenir uniquement des chiffres et des espaces").min(10, "Le numéro de téléphone doit faire au moins 10 caractères"),
     firstname: yup.string().required(required),
     lastname: yup.string().required(required),
     message: yup.string().required(required).min(5, "Votre message dois faire minimum 5 caractères"),
-    formule: yup.string().required(required)
+    // formule: yup.string().required(required)
 })
 
 const submitForm = async (el) => {
-    const formules = document.querySelectorAll('select option')
-    if (parseInt(el.formule)) {
-        formuleSelected.value = formules[el.formule].textContent;
-    }
+    // const formules = document.querySelectorAll('select option')
+    // if (parseInt(el.formule)) {
+    //     formuleSelected.value = formules[el.formule].textContent;
+    // }
 
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/contact', {
+        const response = await fetch(VITE_API_URL + '/contact', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -193,7 +195,8 @@ form {
 }
 
 input,
-select, textarea {
+select,
+textarea {
     // width: 350px;
     width: 100%;
     border-radius: 5px;
