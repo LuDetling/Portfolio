@@ -60,15 +60,16 @@ const updateTag = async (el) => {
 </script>
 
 <template>
+    <router-link to="/admin">admin</router-link>
     <h1 class="text-center mt-12">Modifier un Tag</h1>
     <main>
         <Form @submit="updateTag($event)" :validation-schema="schema">
-            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 w-fit mx-auto my-8">
                 <legend class="fieldset-legend">Modifier un tag</legend>
                 <label for="name">Nom :</label>
                 <Field type="name" name="name" v-model="name" required class="input" />
                 <ErrorMessage name="name" />
-                <button type="submit" class="btn btn-primary">Modifier</button>
+                <button type="submit" class="btn btn-primary mt-4">Modifier</button>
             </fieldset>
         </Form>
     </main>

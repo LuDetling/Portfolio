@@ -2,7 +2,7 @@
     <section id="banniere">
         <h1 class="glitch">Lucas Detling</h1>
         <p class="subtitle">
-            Développeur Web Full-Stack
+            Développeur Full Stack
         </p>
         <!-- <a href="#contact" class="btn btn-secondary">Me contacter</a> -->
         <a href="#about" class="icone">
@@ -111,7 +111,6 @@
 }
 
 .subtitle {
-    font-size: 1.5rem;
     margin-top: 20px;
     margin-bottom: 1.5rem;
     opacity: 0.8;
@@ -123,6 +122,7 @@
     width: 0;
     max-width: fit-content;
     padding-inline: 1rem;
+    line-height: 2rem;
     font-size: 2rem;
     color: #71f79f;
     @media screen and (max-width: 500px) {

@@ -73,9 +73,10 @@ const createProjet = async (el) => {
 </script>
 
 <template>
-    <h1 class="text-center mt-8">Projet</h1>
     <main>
-        <Form @submit="createProjet($event)" :validation-schema="schema">
+        <router-link to="/admin">admin</router-link>
+        <h1 class="text-center mt-8">Projet</h1>
+        <Form @submit="createProjet($event)" :validation-schema="schema" class="mx-auto w-fit mt-8">
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend class="fieldset-legend">Créer un projet</legend>
                 <label for="title">Titre :</label>
@@ -89,7 +90,7 @@ const createProjet = async (el) => {
                 <ErrorMessage name="description" />
                 <label for="shortDescription">Description courte :</label>
                 <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
-                class="textarea" />
+                    class="textarea" />
                 <ErrorMessage name="shortDescription" />
                 <label for="link">Lien :</label>
                 <Field type="text" name="link" v-model="link" required class="input" />

@@ -39,16 +39,17 @@ const createTag = async (el) => {
 </script>
 
 <template>
-    <h1 class="text-center mt-12">Ajouter un Tag</h1>
-
+    
     <main>
-        <Form @submit="createTag($event)" :validation-schema="schema">
+        <router-link to="/admin">admin</router-link>
+        <h1 class="text-center mt-12">Ajouter un Tag</h1>
+        <Form @submit="createTag($event)" :validation-schema="schema" class="w-fit mx-auto mt-8">
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                 <legend class="fieldset-legend">Ajouter un tag</legend>
                 <label for="name">Nom :</label>
                 <Field type="name" name="name" v-model="name" required class="input" />
                 <ErrorMessage name="name" />
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button type="submit" class="btn btn-primary mt-4">Ajouter</button>
             </fieldset>
         </Form>
     </main>

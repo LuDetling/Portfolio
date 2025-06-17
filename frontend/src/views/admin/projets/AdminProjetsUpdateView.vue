@@ -100,9 +100,10 @@ const updateProjet = async (el) => {
 </script>
 
 <template>
-    <h1 class="text-center mt-12">Modifier un projet</h1>
     <main>
-        <Form @submit="updateProjet($event)" :validation-schema="schema">
+        <h1 class="text-center mt-12">Modifier un projet</h1>
+        <router-link to="/admin">admin</router-link>
+        <Form @submit="updateProjet($event)" :validation-schema="schema" class="mx-auto w-fit">
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                 <legend class="fieldset-legend">Modifier un projet</legend>
                 <label for="title">Titre :</label>
