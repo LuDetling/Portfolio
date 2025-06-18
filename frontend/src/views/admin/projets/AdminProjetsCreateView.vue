@@ -16,6 +16,8 @@ const description = ref("");
 const shortDescription = ref("");
 const link = ref("");
 const tags = ref([]);
+const tagsSelected = ref([])
+const t = ref(false)
 
 
 const schema = yup.object({
@@ -50,7 +52,13 @@ const createProjet = async (el) => {
     formData.append('description', description.value);
     formData.append('shortDescription', shortDescription.value);
     formData.append('link', link.value);
-    formData.append('tags', JSON.stringify(el.tags));
+    tagsSelected.value = el.tags
+
+    if (!Array.isArray(tagsSelected.value) && tagsSelected.value) {
+        formData.append('tags', JSON.stringify([tagsSelected.value]))
+    } else {
+        formData.append('tags', JSON.stringify(tagsSelected.value))
+    }
 
     try {
         const response = await fetch(VITE_API_URL + '/project/create', {
