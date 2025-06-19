@@ -101,8 +101,8 @@ const updateProjet = async (el) => {
 
 <template>
     <main>
-        <h1 class="text-center mt-12">Modifier un projet</h1>
         <router-link to="/admin">admin</router-link>
+        <h1 class="text-center mt-12">Projet</h1>
         <Form @submit="updateProjet($event)" :validation-schema="schema" class="mx-auto w-fit">
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                 <legend class="fieldset-legend">Modifier un projet</legend>
@@ -113,11 +113,11 @@ const updateProjet = async (el) => {
                 <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
                 <ErrorMessage name="picture" />
                 <label for="description">Description :</label>
-                <Field type="text" as="textarea" name="description" v-model="description" required class="input" />
+                <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" />
                 <ErrorMessage name="description" />
                 <label for="shortDescription">Description courte :</label>
                 <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
-                    class="input" />
+                    class="textarea" />
                 <ErrorMessage name="shortDescription" />
                 <label class="label" v-for="(tag, index) in tags" :key="index">
                     <Field name="tags" type="checkbox" class="checkbox" :value="tag.id" v-model="tagsSelected" />
@@ -130,4 +130,5 @@ const updateProjet = async (el) => {
     </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>

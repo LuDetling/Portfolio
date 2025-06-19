@@ -1,23 +1,24 @@
 <template>
-    <div v-for="projet in projets" :key="projet.id" class="card-projet">
-        <router-link :to="{ name: 'projet', params: { projetId: projet.id } }">
-            <img :src="getImageUrl(projet)" />
-            <div class="blur-card">
-                <div class="on-card bg-base-100">
-                    <div class="title flex justify-between">{{ projet.title }} <div><font-awesome-icon
-                                :icon="['fas', 'plus']" /></div>
-                    </div>
-                    <div class="description">{{ projet.shortDescription }}</div>
-                    <div class="flex flex-wrap gap-2">
-                        <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags" :key="tag.id">
-                            {{ tag.name }}
-                        </div>
-                    </div>
-                    <div class="btn btn-secondary mt-4">Découvrir</div>
-                    <!-- <a :href='"projet/" + projet.id' class="more">Voir plus</a> -->
+    <div v-for="projet in projets" :key="projet.id"
+        :class="['card-projet', projet.id == openInfo ? 'open-info' : null]">
+        <img :src="getImageUrl(projet)" />
+        <div class="blur-card">
+            <div class="on-card bg-base-100">
+                <div class="title flex justify-between">{{ projet.title }} <button @click="toggle(projet.id)"
+                        class="cursor-pointer"><font-awesome-icon :icon="['fas', 'plus']" /></button>
                 </div>
+                <div class="description">{{ projet.shortDescription }}</div>
+                <div class="flex flex-wrap gap-2">
+                    <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags" :key="tag.id">
+                        {{ tag.name }}
+                    </div>
+                </div>
+                <router-link :to="{ name: 'projet', params: { projetId: projet.id } }">
+                    <div class="btn btn-secondary mt-4">Découvrir</div>
+                </router-link>
+                <!-- <a :href='"projet/" + projet.id' class="more">Voir plus</a> -->
             </div>
-        </router-link>
+        </div>
     </div>
 </template>
 
@@ -29,52 +30,58 @@ const getImageUrl = (projet) => {
     return VITE_IMAGE_URL + '/projects/' + projet.picture;
 }
 
+const openInfo = ref(null)
+
 const props = defineProps({
     projets: Array
 })
+
+const toggle = (id) => {
+    openInfo.value = openInfo.value === id ? null : id
+}
 
 </script>
 
 <style scoped lang="scss">
 .card-projet {
     margin: auto;
-    // width: 100%;
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    // cursor: pointer;
 
-    a {
-        position: relative;
-        display: block;
-        border-radius: 10px;
-        overflow: hidden;
-        width: 100%;
+    .fa-plus {
+        transition: .5s;
+        // background-color: #142238;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 12px;
+        height: 12px;
+        padding: .2rem;
+        font-size: 1rem;
+        color: #91c4f2;
+    }
 
-        .fa-plus {
-            transition: .5s;
-            // background-color: #142238;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 12px;
-            height: 12px;
-            padding: .2rem;
-            font-size: 1rem;
-            color: #91c4f2;
+    &:hover,
+    &.open-info {
+        .on-card {
+            transform: translateY(0);
         }
 
-        &:hover {
-            .on-card {
-                transform: translateY(0);
+        img {
+            filter: grayscale(0);
+        }
 
-            }
+    }
 
-            img {
-                filter: grayscale(0);
-            }
-
-            .fa-plus {
-                opacity: 0;
-                transform: rotate(90deg);
-            }
+    &.open-info {
+        .fa-plus {
+            opacity: 0;
+            transform: rotate(90deg);
         }
     }
 

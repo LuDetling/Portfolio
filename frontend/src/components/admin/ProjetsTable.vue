@@ -72,16 +72,16 @@ const getImageUrl = (projet) => {
             <tbody>
                 <tr v-for="projet in projets" :key="projet.id">
                     <td class="img-title">
-                        <div class="flex items-center gap-2">
+                        <router-link :to="'/projets/' + projet.id" class="flex items-center gap-2">
                             <img :src="getImageUrl(projet)" :alt="projet.title" class="mask h-12 w-12">
                             <span>{{ projet.title }}</span>
-                        </div>
+                        </router-link>
                     </td>
                     <td>{{ projet.shortDescription }}</td>
                     <td>
                         <div class="flex gap-2 flex-wrap">
-                            <span v-for="tag in projet.tags" :key="tag.id" class="badge badge-soft badge-primary text-xs">{{
-                                tag.name }}</span>
+                            <span v-for="tag in projet.tags" :key="tag.id"
+                                class="badge badge-soft badge-primary text-xs">{{ tag.name }}</span>
                         </div>
                     </td>
                     <td class="actions">

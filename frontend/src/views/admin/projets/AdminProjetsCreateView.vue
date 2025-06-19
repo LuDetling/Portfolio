@@ -114,4 +114,8 @@ const createProjet = async (el) => {
     </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+textarea {
+    min-height: 100px;
+}
+</style>

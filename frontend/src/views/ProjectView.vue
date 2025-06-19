@@ -38,12 +38,19 @@ const getImageUrl = (projet) => {
                 <div class="terminal-body-project terminal-body">
 
                     <div class="flex gap-4 flex-wrap justify-between project">
-                        <div class="w-full md:w-3/6 ">
+                        <div class="w-full md:w-3/6">
                             <img :src="getImageUrl(projet)" :alt='projet.title'>
+                            <div class="trait my-4"></div>
+                            <div class="flex flex-wrap gap-2 ">
+                                <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags"
+                                    :key="tag.id">
+                                    {{ tag.name }}
+                                </div>
+                            </div>
                         </div>
                         <div class="w-full md:w-2/6">
                             <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
-                            <p>{{ projet.description }}</p>
+                            <p class="description">{{ projet.description }}</p>
                             <a :href="projet.link" class="btn btn-primary mt-8" v-if="projet.link != 'null'"
                                 target="_blank">Visiter le site</a>
                         </div>
@@ -54,4 +61,15 @@ const getImageUrl = (projet) => {
     </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.description {
+    white-space: pre-line;
+}
+
+.trait {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #142238;
+}
+</style>
