@@ -39,7 +39,10 @@ onUnmounted(() => {
 <span class="bracket">}</span></code></pre>
                     </div>
                     <div class="over-img mx-auto">
-                        <img src="@/assets/images/moi-bleu.png" alt="Photo de moi, Lucas Detling">
+                        <a href="https://www.youtube.com/watch?v=68ugkg9RePc&list=RD68ugkg9RePc&start_radio=1"
+                            target="_blank" class="blue">
+                            <img src="@/assets/images/moi-bleu.png" alt="Photo de moi, Lucas Detling">
+                        </a>
                     </div>
                 </div>
                 <div class="description md:flex md:gap-8 justify-between">
@@ -121,11 +124,14 @@ section {
     justify-content: space-between;
     flex-wrap: wrap;
 
-    img {
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        object-fit: cover;
+    .blue {
+        cursor: default;
+        img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
     }
 
     div {

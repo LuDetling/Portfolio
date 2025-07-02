@@ -49,6 +49,32 @@ const handleScroll = () => {
         if (rect.top < window.innerHeight && rect.bottom > 0) {
             animationCv.value = true;
         }
+
+        // trouve la position de la div center-active
+        const centerActive = document.querySelector('.center-active');
+        const center = document.querySelector('.center');
+
+        // Hauteur de la div contenant la timeline
+        const centerHeight = center.offsetHeight;
+
+        // Position du haut de la div center par rapport au viewport
+        const centerRect = center.getBoundingClientRect();
+        const scrollTop = window.scrollY || window.pageYOffset;
+        const topOffset = centerRect.top + scrollTop;
+
+        // Position actuelle du "curseur" à placer
+        const newPosition = window.scrollY + window.innerHeight / 2 - topOffset;
+
+        const maxPosition = centerHeight - centerActive.offsetHeight;
+
+        if (newPosition < 0) {
+            centerActive.style.transform = 'translateY(0)';
+        } else if (newPosition > maxPosition) {
+            centerActive.style.transform = `translateY(${maxPosition}px)`;
+        } else {
+            centerActive.style.transform = `translateY(${newPosition}px)`;
+        }
+
     }
 };
 
@@ -71,8 +97,11 @@ onUnmounted(() => {
         <div class="terminal-window terminal-window-cv">
             <div class="terminal-body-cv terminal-body">
                 <ul class="timeline timeline-vertical gap-8 md:gap-0">
+                    <div class="center">
+                        <div class="center-active"></div>
+                    </div>
                     <li v-for="(item, index) in cv" :key="index" class="timeline-item">
-                        <hr v-if="cv[index - 1]" :class="['mx-8', index === 0 ? 'active' : null]" />
+                        <hr v-if="cv[index - 1]" :class="['mx-8']" />
                         <div :class="[index % 2 ? 'timeline-end' : 'timeline-start', 'timeline-box']">
                             <p class="date">{{ item.date }}</p>
                             <h3 :class="['title', item.certification ? 'school' : null]">{{ item.title }}</h3>
@@ -85,7 +114,7 @@ onUnmounted(() => {
                             </ul>
                         </div>
                         <div class="timeline-middle"></div>
-                        <hr v-if="cv[index + 1]" :class="['mx-8', index === 0 ? 'active' : null]" />
+                        <hr v-if="cv[index + 1]" :class="['mx-8']" />
                         <!-- faire une animation  -->
                     </li>
                 </ul>
@@ -95,6 +124,30 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
+@media screen and (min-width: 769px) {
+
+
+    .center {
+        width: 3px;
+        height: 80%;
+        position: absolute;
+        background: var(--color-base-300);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 1rem;
+    }
+
+    .center-active {
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        background: #91c4f2;
+        top: 0;
+        border-radius: 1rem;
+    }
+}
+
 .terminal-header-cv {
     background: #ce9178;
     color: black;
@@ -136,8 +189,12 @@ onUnmounted(() => {
 
     }
 
-    hr.active {
-        background-color: #142238;
+    // hr.active {
+    //     background-color: #142238;
+    // }
+
+    hr {
+        background-color: transparent;
     }
 
     .timeline-box {
