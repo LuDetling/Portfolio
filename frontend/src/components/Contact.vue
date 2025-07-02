@@ -20,23 +20,23 @@
 <span class="bracket">}</span></code></pre>
                         </div>
                     </div>
-                    <div role="alert" class="alert alert-error w-fit mx-auto" v-if="error">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{{ error }}</span>
-                    </div>
-                    <div role="alert" class="alert alert-success w-fit mx-auto" v-if="success">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{{ success }}</span>
-                    </div>
                     <div class="right-contact w-full lg:w-1/3">
+                        <div role="alert" class="alert alert-error w-fit mx-auto" v-if="errorContact">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>{{ errorContact }}</span>
+                        </div>
+                        <div role="alert" class="alert alert-success w-fit mx-auto" v-if="success">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>{{ success }}</span>
+                        </div>
                         <Form @submit="submitForm($event)" :validation-schema="schema" class="mx-auto">
                             <div class="sm:flex gap-4">
                                 <div class="name">
@@ -84,7 +84,7 @@ const firstname = ref("");
 const lastname = ref("");
 const phone = ref("");
 const formuleSelected = ref()
-const error = ref(null);
+const errorContact = ref(null);
 const success = ref(null);
 const formule = useFormuleStore()
 const required = "Ce champ est requis";
@@ -116,20 +116,22 @@ const submitForm = async (el) => {
         })
 
         const result = await response.json();
-        console.log(response)
-        console.log(result)
         if (response.ok) {
             email.value = "";
-            error.value = null
+            errorContact.value = null
             success.value = "Votre message a été envoyé avec succès !";
         } else {
             email.value = "";
-            error.value = "Une erreur est survenue lors de l'envoi du message.";
-            success.value = nll;
+            errorContact.value = "Une erreur est survenue lors de l'envoi du message.";
+            success.value = null;
         }
 
     } catch (error) {
         console.log(error)
+        email.value = "";
+        errorContact.value = "Une erreur est survenue lors de l'envoi du message.";
+        success.value = null;
+
     }
 
 }

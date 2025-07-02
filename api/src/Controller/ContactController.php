@@ -74,7 +74,7 @@ class ContactController extends AbstractController
             ->from("lucas.detling@lucas-detling.com")
             ->to("lucas.detling@lucas-detling.com")
             ->replyTo($data["email"])
-            ->subject('Nouveau message de contact')
+            ->subject($email)
             ->text(strip_tags($txt))
             ->html($txt);
 
