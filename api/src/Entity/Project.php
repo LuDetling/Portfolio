@@ -49,9 +49,16 @@ class Project
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $link = null;
 
+    /**
+     * @var Collection<int, ProjectImage>
+     */
+    #[ORM\OneToMany(targetEntity: ProjectImage::class, mappedBy: 'project')]
+    private Collection $images;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,6 +149,36 @@ class Project
     public function setLink(string $link): static
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProjectImage>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(ProjectImage $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(ProjectImage $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProject() === $this) {
+                $image->setProject(null);
+            }
+        }
 
         return $this;
     }

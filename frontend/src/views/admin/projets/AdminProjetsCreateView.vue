@@ -12,6 +12,7 @@ const { cookies } = useCookies();
 
 const title = ref("");
 const picture = ref("");
+const images = ref([]);
 const description = ref("");
 const shortDescription = ref("");
 const link = ref("");
@@ -23,6 +24,7 @@ const t = ref(false)
 const schema = yup.object({
     title: yup.string(),
     picture: yup.mixed(),
+    images: yup.mixed(),
     description: yup.string(),
     shortDescription: yup.string(),
     link: yup.string(),
@@ -52,6 +54,9 @@ const createProjet = async (el) => {
     formData.append('description', description.value);
     formData.append('shortDescription', shortDescription.value);
     formData.append('link', link.value);
+    images.value.forEach((file) => {
+        formData.append('images[]', file);
+    });
     tagsSelected.value = el.tags
 
     if (!Array.isArray(tagsSelected.value) && tagsSelected.value) {
@@ -78,6 +83,10 @@ const createProjet = async (el) => {
         console.log(error)
     }
 }
+
+const handleFiles = (e) => {
+    images.value = Array.from(e.target.files);
+}
 </script>
 
 <template>
@@ -93,6 +102,10 @@ const createProjet = async (el) => {
                 <label for="picture">Image :</label>
                 <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
                 <ErrorMessage name="picture" />
+                <label for="images">Images :</label>
+                <Field type="file" name="images" v-model="images" required rules="image" class="file-input" multiple
+                    @change="handleFiles" />
+                <ErrorMessage name="images" />
                 <label for="description">Description :</label>
                 <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" />
                 <ErrorMessage name="description" />

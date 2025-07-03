@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Project;
+use App\Entity\ProjectImage;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -60,6 +61,8 @@ class ProjectController extends AbstractController
         $shortDescription = $request->request->get('shortDescription');
         $link = $request->request->get('link');
         $tags = json_decode($request->request->get('tags'), true);
+        $imagesFile = $request->files->get('images');
+
 
         $filesystem = new Filesystem();
         $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/projects';
@@ -69,8 +72,20 @@ class ProjectController extends AbstractController
         }
 
         $pictureName = uniqid() . '.' . $picture->guessExtension();
-
         $project = new Project();
+
+        $images = [];
+        foreach ($imagesFile as $imageFile) {
+            $imageName = uniqid() . '.' . $imageFile->guessExtension();
+            $imageFile->move($uploadDir, $imageName);
+
+            $image = new ProjectImage();
+            $image->setPath($imageName);
+            $image->setProject($project);
+            $this->entityManager->persist($image);
+            $images[] = $image;
+        }
+
 
         $form = $this->createForm(ProjectType::class, $project);
         $form->submit([
@@ -78,6 +93,7 @@ class ProjectController extends AbstractController
             'description' => $description,
             'shortDescription' => $shortDescription,
             'picture' => $pictureName,
+            'images' => $images,
             'link' => $link,
             'tags' => $tags
         ]);
