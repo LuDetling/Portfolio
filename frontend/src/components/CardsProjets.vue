@@ -7,7 +7,7 @@
                 <div class="title flex justify-between">{{ projet.title }} <button @click="toggle(projet.id)"
                         class="cursor-pointer"><font-awesome-icon :icon="['fas', 'plus']" /></button>
                 </div>
-                <div class="description">{{ projet.shortDescription }}</div>
+                <div class="description" v-html="projet.shortDescription"></div>
                 <div class="flex flex-wrap gap-2">
                     <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags" :key="tag.id">
                         {{ tag.name }}

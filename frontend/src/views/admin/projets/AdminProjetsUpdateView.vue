@@ -8,6 +8,8 @@ import { ref } from 'vue';
 import * as yup from 'yup';
 import router from '@/router';
 
+import Editor from 'primevue/editor';
+
 import { useCookies } from 'vue3-cookies';
 const { cookies } = useCookies();
 
@@ -76,7 +78,7 @@ const updateProjet = async (el) => {
     formData.append('picture', picture.value);
     formData.append('description', description.value);
     formData.append('shortDescription', shortDescription.value);
-    formData.append('link', link.value);
+    formData.append('link', link.value || '');
     formData.append('tags', JSON.stringify(el.tags));
 
     try {
@@ -113,12 +115,17 @@ const updateProjet = async (el) => {
                 <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
                 <ErrorMessage name="picture" />
                 <label for="description">Description :</label>
-                <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" />
+                <Editor name="description" editorStyle="height: 200px" required v-model="description" />
+                <!-- <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" /> -->
                 <ErrorMessage name="description" />
                 <label for="shortDescription">Description courte :</label>
-                <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
-                    class="textarea" />
+                <Editor name="shortDescription" editorStyle="height: 100px" required v-model="shortDescription" />
+                <!-- <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
+                    class="textarea" /> -->
                 <ErrorMessage name="shortDescription" />
+                <label for="link">Lien :</label>
+                <Field type="text" name="link" v-model="link" class="input" />
+                <ErrorMessage name="link" />
                 <label class="label" v-for="(tag, index) in tags" :key="index">
                     <Field name="tags" type="checkbox" class="checkbox" :value="tag.id" v-model="tagsSelected" />
                     {{ tag.name }}
@@ -131,4 +138,7 @@ const updateProjet = async (el) => {
 </template>
 
 <style scoped lang="scss">
+.p-editor {
+    width: 500px;
+}
 </style>

@@ -3,6 +3,9 @@ import NavAdmin from '@/components/admin/NavAdmin.vue';
 import { VITE_API_URL } from '@/config';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
+import Editor from 'primevue/editor';
+
+
 import { ref } from 'vue';
 import * as yup from 'yup';
 import router from '@/router';
@@ -107,11 +110,13 @@ const handleFiles = (e) => {
                     @change="handleFiles" />
                 <ErrorMessage name="images" />
                 <label for="description">Description :</label>
-                <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" />
+                <Editor name="description" editorStyle="height: 200px" required v-model="description"/>
+                <!-- <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" /> -->
                 <ErrorMessage name="description" />
                 <label for="shortDescription">Description courte :</label>
-                <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
-                    class="textarea" />
+                <Editor name="shortDescription" editorStyle="height: 100px" required v-model="shortDescription"/>
+                <!-- <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
+                    class="textarea" /> -->
                 <ErrorMessage name="shortDescription" />
                 <label for="link">Lien :</label>
                 <Field type="text" name="link" v-model="link" required class="input" />
@@ -128,7 +133,7 @@ const handleFiles = (e) => {
 </template>
 
 <style scoped lang="scss">
-textarea {
-    min-height: 100px;
+.p-editor {
+    width: 500px;
 }
 </style>

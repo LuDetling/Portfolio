@@ -8,7 +8,6 @@ import { ref, onMounted } from 'vue';
 const projets = ref([]);
 const page = ref(1);
 const totalPages = ref(0);
-const urlPictures = '/src/assets/images/';
 
 
 const fetchProjets = async () => {

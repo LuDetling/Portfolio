@@ -3,18 +3,21 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import { VITE_API_URL, VITE_IMAGE_URL } from '@/config';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores/auth';
 
+const authStore = useAuthStore();
 
 const route = useRoute()
 const projet = ref({});
 const urlPictures = '/src/assets/images/';
-
-
+const cleanedContent = ref('');
 const fetchProjet = async () => {
     try {
         const response = await fetch(VITE_API_URL + '/project/' + route.params.projetId);
         if (!response.ok) throw new Error('Pas de projet trouvé')
         projet.value = await response.json();
+        cleanedContent.value = projet.value.description.replace(/&nbsp;/g, ' ');
+        return projet.value;
     } catch (error) {
         console.log(error);
     }
@@ -37,7 +40,7 @@ const getImageUrl = (projet) => {
             <div class="terminal-window-project terminal-window">
                 <div class="terminal-body-project terminal-body">
 
-                    <div class="flex gap-4 flex-wrap justify-between project">
+                    <div class="flex gap-12 md:flex-wrap lg:flex-nowrap justify-between project">
                         <div class="w-full md:w-3/6">
                             <img :src="getImageUrl(projet)" :alt='projet.title'>
                             <div class="trait my-4"></div>
@@ -48,11 +51,14 @@ const getImageUrl = (projet) => {
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full md:w-2/6">
+                        <div class="w-full md:w-3/6">
                             <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
-                            <p class="description">{{ projet.description }}</p>
-                            <a :href="projet.link" class="btn btn-primary mt-8" v-if="projet.link != 'null'"
+                            <p class="description" v-html="cleanedContent"></p>
+                            <div class="flex mt-8 gap-4">
+                                <a :href="projet.link" class="btn btn-primary " v-if="projet.link"
                                 target="_blank">Visiter le site</a>
+                                <router-link :to="'/admin/projets/' + projet.id" v-if="authStore.user" class="btn btn-secondary">Update</router-link>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -58,6 +58,8 @@ class ProjectController extends AbstractController
         $picture = $request->files->get('picture');
         $title = $request->request->get('title');
         $description = $request->request->get('description');
+        $cleanedContent = str_replace('&nbsp;', ' ', $description);
+
         $shortDescription = $request->request->get('shortDescription');
         $link = $request->request->get('link');
         $tags = json_decode($request->request->get('tags'), true);
@@ -75,15 +77,17 @@ class ProjectController extends AbstractController
         $project = new Project();
 
         $images = [];
-        foreach ($imagesFile as $imageFile) {
-            $imageName = uniqid() . '.' . $imageFile->guessExtension();
-            $imageFile->move($uploadDir, $imageName);
+        if ($imagesFile) {
+            foreach ($imagesFile as $imageFile) {
+                $imageName = uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move($uploadDir, $imageName);
 
-            $image = new ProjectImage();
-            $image->setPath($imageName);
-            $image->setProject($project);
-            $this->entityManager->persist($image);
-            $images[] = $image;
+                $image = new ProjectImage();
+                $image->setPath($imageName);
+                $image->setProject($project);
+                $this->entityManager->persist($image);
+                $images[] = $image;
+            }
         }
 
 
@@ -145,7 +149,6 @@ class ProjectController extends AbstractController
         $link = $request->request->get('link');
         $tags = json_decode($request->request->get('tags'), true);
         $pictureName = $project->getPicture();
-
         if ($picture) {
             $filesystem = new Filesystem();
             $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/projects';

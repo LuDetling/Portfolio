@@ -224,3 +224,8 @@ strong {
     /* background: linear-gradient(90deg, #00ff41, #00cc33); */
     background-color: #71F79F;
 }
+
+ul {
+    list-style: auto;
+    padding-left: 2rem;
+}

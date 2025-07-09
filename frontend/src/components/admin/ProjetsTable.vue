@@ -77,7 +77,7 @@ const getImageUrl = (projet) => {
                             <span>{{ projet.title }}</span>
                         </router-link>
                     </td>
-                    <td>{{ projet.shortDescription }}</td>
+                    <td v-html="projet.shortDescription"></td>
                     <td>
                         <div class="flex gap-2 flex-wrap">
                             <span v-for="tag in projet.tags" :key="tag.id"
