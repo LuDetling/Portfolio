@@ -40,7 +40,7 @@ const getImageUrl = (projet) => {
             <div class="terminal-window-project terminal-window">
                 <div class="terminal-body-project terminal-body">
 
-                    <div class="flex gap-12 md:flex-wrap lg:flex-nowrap justify-between project">
+                    <div class="flex gap-12 flex-wrap md:flex-nowrap justify-between project">
                         <div class="w-full md:w-3/6">
                             <img :src="getImageUrl(projet)" :alt='projet.title'>
                             <div class="trait my-4"></div>
@@ -55,7 +55,7 @@ const getImageUrl = (projet) => {
                             <h1 class="text-5xl mb-4">{{ projet.title }}</h1>
                             <p class="description" v-html="cleanedContent"></p>
                             <div class="flex mt-8 gap-4">
-                                <a :href="projet.link" class="btn btn-primary " v-if="projet.link"
+                                <a :href="projet.link" class="btn btn-primary " v-if="projet.link && projet.link !== 'null'"
                                 target="_blank">Visiter le site</a>
                                 <router-link :to="'/admin/projets/' + projet.id" v-if="authStore.user" class="btn btn-secondary">Update</router-link>
                             </div>
@@ -67,9 +67,12 @@ const getImageUrl = (projet) => {
     </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .description {
     white-space: pre-line;
+    ul {
+        padding-left: 2rem;
+    }
 }
 
 .trait {

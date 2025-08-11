@@ -58,7 +58,6 @@ class ProjectController extends AbstractController
         $picture = $request->files->get('picture');
         $title = $request->request->get('title');
         $description = $request->request->get('description');
-        $cleanedContent = str_replace('&nbsp;', ' ', $description);
 
         $shortDescription = $request->request->get('shortDescription');
         $link = $request->request->get('link');

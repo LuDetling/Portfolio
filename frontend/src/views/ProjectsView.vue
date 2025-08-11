@@ -37,19 +37,19 @@ const changePage = (newPage) => {
         <section id="projets">
             <Breadcrumbs :items="[{ name: 'Projets', link: '/projets' }]" />
             <div class="terminal-header-project terminal-header">
-                <h2>
+                <h1>
                     ~/ProjectsView.vue
-                </h2>
+                </h1>
             </div>
             <div class="terminal-window-project terminal-window">
                 <div class="terminal-body-project terminal-body">
                     <div class="content-projets grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <CardsProjets :projets=projets class=""/>
+                        <CardsProjets :projets=projets :heading="'h2'" />
                     </div>
                 </div>
             </div>
             <ul class="pagination">
-                <!-- <li v-if="page > 2"><button @click="changePage(page = 1)"><<</button></li> -->
+                <li v-if="page > 2"><button @click="changePage(page = 1)">«</button></li>
                 <li v-if="page > 1">
                     <button @click="changePage(page - 1)"><font-awesome-icon :icon="['fas', 'angle-left']" /></button>
                 </li>
@@ -59,7 +59,7 @@ const changePage = (newPage) => {
                 <li v-if="page < totalPages">
                     <button @click="changePage(page + 1)"><font-awesome-icon :icon="['fas', 'angle-right']" /></button>
                 </li>
-                <!-- <li v-if="page + 1 < totalPages"><button @click="changePage(page = totalPages)">»</button></li> -->
+                <li v-if="page + 1 < totalPages"><button @click="changePage(page = totalPages)">»</button></li>
             </ul>
         </section>
     </main>
@@ -82,8 +82,11 @@ main {
             display: flex;
             justify-content: center;
             gap: .3rem;
+            margin-top: 2rem;
 
             li {
+                list-style: none;
+
                 button {
                     border: none;
                     width: 25px;
@@ -97,7 +100,8 @@ main {
 
                     &.active,
                     &:hover {
-                        background-color: green;
+                        background-color: #71f79f;
+                        color: #0f172a;
                     }
                 }
             }

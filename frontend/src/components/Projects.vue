@@ -34,7 +34,7 @@ onMounted(() => {
         <div class="terminal-window-project terminal-window">
             <div class="terminal-body terminal-body-project ">
                 <div class="content-projets grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <CardsProjets :projets=projets />
+                    <CardsProjets :projets=projets  heading="h3"/>
                 </div>
                 <router-link to="/projets" class="btn btn-secondary more">Voir plus</router-link>
             </div>

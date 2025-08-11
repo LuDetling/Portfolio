@@ -4,10 +4,20 @@
         <img :src="getImageUrl(projet)" />
         <div class="blur-card">
             <div class="on-card bg-base-100">
-                <div class="title flex justify-between">{{ projet.title }} <button @click="toggle(projet.id)"
-                        class="cursor-pointer"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+                <div class="title flex justify-between">
+                    <h2 v-if="heading == 'h2'">
+                        {{ projet.title }}
+                    </h2>
+                    <h3 v-if="heading == 'h3'">
+                        {{ projet.title }}
+                    </h3>
+                    <button @click="toggle(projet.id)" class="cursor-pointer">
+                        <font-awesome-icon :icon="['fas', 'plus']" />
+                    </button>
                 </div>
-                <div class="description" v-html="projet.shortDescription"></div>
+                <div class="content-description">
+                    <div class="description" v-html="projet.shortDescription"></div>
+                </div>
                 <div class="flex flex-wrap gap-2">
                     <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags" :key="tag.id">
                         {{ tag.name }}
@@ -33,7 +43,8 @@ const getImageUrl = (projet) => {
 const openInfo = ref(null)
 
 const props = defineProps({
-    projets: Array
+    projets: Array,
+    heading: String
 })
 
 const toggle = (id) => {
@@ -111,12 +122,16 @@ const toggle = (id) => {
         transition: .3s;
         z-index: 1;
 
-        .description {
-            margin-bottom: 1rem;
-            font-size: 14px;
+        .content-description * {
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+
+        }
+
+        .description {
+            margin-bottom: 1rem;
+            font-size: 14px;
             line-height: 15px;
             margin-top: .5rem;
 
@@ -135,6 +150,15 @@ const toggle = (id) => {
         margin-bottom: .5rem;
         color: #71f79f;
         font-weight: bold;
+        gap: 1rem;
+
+        h2,h3 {
+            min-width: 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+
+        }
     }
 
     .more {
