@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProjectImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProjectImageRepository::class)]
 class ProjectImage
@@ -13,6 +14,7 @@ class ProjectImage
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['projets'])]
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 

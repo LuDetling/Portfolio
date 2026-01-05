@@ -106,7 +106,7 @@ const handleFiles = (e) => {
                 <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
                 <ErrorMessage name="picture" />
                 <label for="images">Images :</label>
-                <Field type="file" name="images" v-model="images" required rules="image" class="file-input" multiple
+                <Field type="file" name="images[]" v-model="images" required rules="image" class="file-input" multiple
                     @change="handleFiles" />
                 <ErrorMessage name="images" />
                 <label for="description">Description :</label>

@@ -152,7 +152,8 @@ const toggle = (id) => {
         font-weight: bold;
         gap: 1rem;
 
-        h2,h3 {
+        h2,
+        h3 {
             min-width: 0;
             text-overflow: ellipsis;
             white-space: nowrap;

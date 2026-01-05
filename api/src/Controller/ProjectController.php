@@ -48,6 +48,7 @@ class ProjectController extends AbstractController
     public function getProject(int $id): JsonResponse
     {
         $project = $this->projectRepository->find($id);
+        $images = $project->getImages();
         return $this->json($project, context: ['groups' => ['projets']]);
     }
 
@@ -89,7 +90,6 @@ class ProjectController extends AbstractController
             }
         }
 
-
         $form = $this->createForm(ProjectType::class, $project);
         $form->submit([
             'title' => $title,
@@ -100,6 +100,7 @@ class ProjectController extends AbstractController
             'link' => $link,
             'tags' => $tags
         ]);
+
         if (!$form->isSubmitted() || !$form->isValid()) {
             return $this->json([
                 'errors' => (string) $form->getErrors(true, false),

@@ -52,6 +52,7 @@ class Project
     /**
      * @var Collection<int, ProjectImage>
      */
+    #[Groups(['projets'])]
     #[ORM\OneToMany(targetEntity: ProjectImage::class, mappedBy: 'project')]
     private Collection $images;
 

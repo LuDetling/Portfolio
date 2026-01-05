@@ -59,14 +59,14 @@ const getImageUrl = (projet) => {
         <router-link to="/admin/projets/create" class="btn btn-soft btn-accent btn-xs"><font-awesome-icon
                 :icon="['fas', 'plus']" /></router-link>
     </div>
-    <div class="table_component">
+    <div class="overflow-x-auto">
         <table class="table table-zebra">
             <thead>
                 <tr>
                     <th>Titre</th>
-                    <th>Description</th>
-                    <th>tags</th>
-                    <th></th>
+                    <!-- <th>Description</th> -->
+                    <th>Tags</th>
+                    <th class="options">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,14 +77,14 @@ const getImageUrl = (projet) => {
                             <span>{{ projet.title }}</span>
                         </router-link>
                     </td>
-                    <td v-html="projet.shortDescription"></td>
+                    <!-- <td v-html="projet.shortDescription"></td> -->
                     <td>
                         <div class="flex gap-2 flex-wrap">
                             <span v-for="tag in projet.tags" :key="tag.id"
                                 class="badge badge-soft badge-primary text-xs">{{ tag.name }}</span>
                         </div>
                     </td>
-                    <td class="actions">
+                    <td class="options">
                         <div class="flex gap-2">
 
                             <router-link :to="{ name: 'adminProjetsUpdate', params: { projetId: projet.id } }"
@@ -111,4 +111,5 @@ const getImageUrl = (projet) => {
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
