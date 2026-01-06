@@ -11,15 +11,14 @@ const totalPages = ref(0);
 
 const fetchProjets = async () => {
     try {
-        const response = await fetch(VITE_API_URL + '/projects');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+        const response = await fetch(VITE_API_URL + `/projects?page=${page.value}`);
+        if (!response.ok) throw new Error('Pas de projet trouvé')
+        let data = await response.json();
         projets.value = data.projects;
-        return data;
+        totalPages.value = data.pages;
+        console.log(data);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 

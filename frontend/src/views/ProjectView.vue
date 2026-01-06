@@ -10,13 +10,12 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 // Import required modules
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 // Configurer les modules à utiliser
-const modules = [Navigation, Pagination];
+const modules = [Navigation];
 
 const authStore = useAuthStore();
 
@@ -88,12 +87,21 @@ const onSlideChange = () => {
                         </div>
                     </div>
                     <!-- AJOUTER les images -->
-                    <swiper :modules="modules" :slides-per-view="1" :space-between="30" :loop="true"
-                        :pagination="{ clickable: true }" :navigation="true" class="flex gap-4 mt-16">
-                        <swiper-slide v-for="(image, index) in projet.images" :key="index"> <img :src="getImage(image)"
-                                :alt='projet.title' class="block">
-                        </swiper-slide>
-                    </swiper>
+                    <div class="swiper-container-custom relative mt-16">
+                        <swiper :modules="modules" :slides-per-view="3" :space-between="30" loop :navigation="{
+                            prevEl: '.swiper-btn-prev',
+                            nextEl: '.swiper-btn-next'
+                        }" class="flex gap-4">
+                            <swiper-slide v-for="(image, index) in projet.images" :key="index">
+                                <img :src="getImage(image)" :alt="projet.title" class="block">
+                            </swiper-slide>
+                        </swiper>
+
+                        <!-- Navigation externe -->
+                        <button class="swiper-btn swiper-btn-prev">‹</button>
+                        <button class="swiper-btn swiper-btn-next">›</button>
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -114,5 +122,28 @@ const onSlideChange = () => {
     width: 100%;
     height: 1px;
     background-color: #142238;
+}
+
+.swiper-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-size: 3rem;
+    cursor: pointer;
+    color: #71f79f;
+    transition: .3s;
+
+    &:hover {
+        color: #ce70b3;
+    }
+
+    &.swiper-btn-next {
+        right: -1.5rem;
+    }
+
+    &.swiper-btn-prev {
+        left: -1.5rem;
+    }
 }
 </style>

@@ -96,33 +96,29 @@ const handleFiles = (e) => {
     <main>
         <router-link to="/admin">admin</router-link>
         <h1 class="text-center mt-8">Projet</h1>
-        <Form @submit="createProjet($event)" :validation-schema="schema" class="mx-auto w-fit mt-8">
+        <Form @submit="createProjet($event)":validation-schema="schema" class="mx-auto w-fit mt-8">
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend class="fieldset-legend">Créer un projet</legend>
-                <label for="title">Titre :</label>
+                <label for="title">Titre:</label>
                 <Field type="text" name="title" v-model="title" required class="input" />
                 <ErrorMessage name="title" />
-                <label for="picture">Image :</label>
+                <label for="picture">Image principale:</label>
                 <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
                 <ErrorMessage name="picture" />
-                <label for="images">Images :</label>
+                <label for="images">Images:</label>
                 <Field type="file" name="images[]" v-model="images" required rules="image" class="file-input" multiple
                     @change="handleFiles" />
-                <ErrorMessage name="images" />
-                <label for="description">Description :</label>
-                <Editor name="description" editorStyle="height: 200px" required v-model="description"/>
-                <!-- <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" /> -->
-                <ErrorMessage name="description" />
-                <label for="shortDescription">Description courte :</label>
-                <Editor name="shortDescription" editorStyle="height: 100px" required v-model="shortDescription"/>
-                <!-- <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
-                    class="textarea" /> -->
+                <ErrorMessage name="images[]" />
+                <label for="description">Description:</label>
+                <Editor name="description" editorStyle="height: 200px" required v-model="description" />
+                <label for="shortDescription">Description courte:</label>
+                <Editor name="shortDescription" editorStyle="height: 100px" required v-model="shortDescription" />
                 <ErrorMessage name="shortDescription" />
-                <label for="link">Lien :</label>
+                <label for="link">Lien:</label>
                 <Field type="text" name="link" v-model="link" required class="input" />
                 <ErrorMessage name="link" />
-                <label class="label" v-for="(tag, index) in tags" :key="index">
-                    <Field name="tags" type="checkbox" class="checkbox" :value="tag.id" />
+                <label class="label" v-for="(tag, index) in tags":key="index">
+                    <Field name="tags" type="checkbox" class="checkbox":value="tag.id" />
                     {{ tag.name }}
                 </label>
 

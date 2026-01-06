@@ -76,7 +76,7 @@ const open = ref(false)
   <Footer />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #desktop {
   @media screen and (max-width: 499px) {
     display: none;
@@ -146,5 +146,34 @@ header {
 .content {
   z-index: 1;
   margin: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+  margin-top: 2rem;
+
+  li {
+    list-style: none;
+
+    button {
+      border: none;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: .3s;
+
+      &.active,
+      &:hover {
+        background-color: #71f79f;
+        color: #0f172a;
+      }
+    }
+  }
 }
 </style>

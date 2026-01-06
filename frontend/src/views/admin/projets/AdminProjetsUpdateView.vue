@@ -1,6 +1,6 @@
 <script setup>
 import NavAdmin from '@/components/admin/NavAdmin.vue';
-import { VITE_API_URL } from '@/config';
+import { VITE_API_URL, VITE_IMAGE_URL } from '@/config';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import { useRoute } from 'vue-router';
 
@@ -17,11 +17,14 @@ const route = useRoute();
 
 const title = ref("");
 const picture = ref("");
+const newPicture = ref("");
 const description = ref("");
 const shortDescription = ref("");
 const link = ref("");
 const tags = ref([]);
 const tagsSelected = ref([]);
+const images = ref([]);
+
 
 const schema = yup.object({
     title: yup.string(),
@@ -44,6 +47,7 @@ const getProjet = async () => {
         shortDescription.value = data.shortDescription;
         link.value = data.link;
         tagsSelected.value = data.tags.map(tag => tag.id)
+        console.log(picture.value);
 
         return data;
     } catch (error) {
@@ -99,6 +103,28 @@ const updateProjet = async (el) => {
         console.log(error)
     }
 }
+
+const handleFiles = (e) => {
+    images.value = Array.from(e.target.files);
+}
+const preview = ref(null)
+let objectUrl = null
+const changePicture = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    // Nettoyage de l’ancienne preview
+    if (objectUrl) {
+        URL.revokeObjectURL(objectUrl)
+    }
+
+    objectUrl = URL.createObjectURL(file)
+    preview.value = objectUrl
+}
+
+const getImage = (image) => {
+    return VITE_IMAGE_URL + '/projects/' + image;
+}
 </script>
 
 <template>
@@ -108,28 +134,46 @@ const updateProjet = async (el) => {
         <Form @submit="updateProjet($event)" :validation-schema="schema" class="mx-auto w-fit">
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                 <legend class="fieldset-legend">Modifier un projet</legend>
-                <label for="title">Titre :</label>
-                <Field type="text" name="title" v-model="title" required class="input" />
-                <ErrorMessage name="title" />
-                <label for="picture">Image :</label>
-                <Field type="file" name="picture" v-model="picture" required rules="image" class="file-input" />
-                <ErrorMessage name="picture" />
-                <label for="description">Description :</label>
-                <Editor name="description" editorStyle="height: 200px" required v-model="description" />
-                <!-- <Field type="text" as="textarea" name="description" v-model="description" required class="textarea" /> -->
-                <ErrorMessage name="description" />
-                <label for="shortDescription">Description courte :</label>
-                <Editor name="shortDescription" editorStyle="height: 100px" required v-model="shortDescription" />
-                <!-- <Field as="textarea" type="text" name="shortDescription" v-model="shortDescription" required
-                    class="textarea" /> -->
-                <ErrorMessage name="shortDescription" />
-                <label for="link">Lien :</label>
-                <Field type="text" name="link" v-model="link" class="input" />
-                <ErrorMessage name="link" />
-                <label class="label" v-for="(tag, index) in tags" :key="index">
-                    <Field name="tags" type="checkbox" class="checkbox" :value="tag.id" v-model="tagsSelected" />
-                    {{ tag.name }}
-                </label>
+                <div>
+                    <label for="title">Titre:</label>
+                    <Field type="text" name="title" v-model="title" required class="input" />
+                    <ErrorMessage name="title" />
+                </div>
+                <div>
+                    <label for="picture">Image principale:</label>
+                    <Field id="picture" type="file" name="picture" v-model="picture" required rules="image"
+                        class="file-input" @change="changePicture" />
+                    <img :src="getImage(picture)">
+                    <img v-if="preview" :src="preview" alt="">
+                    <ErrorMessage name="picture" />
+                </div>
+                <div>
+                    <label for="images">Images:</label>
+                    <Field id="images" type="file" name="images[]" v-model="images" required rules="image"
+                        class="file-input" multiple @change="handleFiles" />
+                    <ErrorMessage name="images[]" />
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <Editor name="description" editorStyle="height: 200px" required v-model="description" />
+                    <ErrorMessage name="description" />
+                </div>
+                <div>
+                    <label for="shortDescription">Description courte:</label>
+                    <Editor name="shortDescription" editorStyle="height: 100px" required v-model="shortDescription" />
+                    <ErrorMessage name="shortDescription" />
+                </div>
+                <div>
+                    <label for="link">Lien:</label>
+                    <Field type="text" name="link" v-model="link" class="input" />
+                    <ErrorMessage name="link" />
+                </div>
+                <div>
+                    <label class="label" v-for="(tag, index) in tags" :key="index">
+                        <Field name="tags" type="checkbox" class="checkbox" :value="tag.id" v-model="tagsSelected" />
+                        {{ tag.name }}
+                    </label>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Modifier</button>
             </fieldset>
@@ -140,5 +184,14 @@ const updateProjet = async (el) => {
 <style scoped lang="scss">
 .p-editor {
     width: 500px;
+}
+
+fieldset>div {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
 }
 </style>

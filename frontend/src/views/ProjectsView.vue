@@ -77,35 +77,6 @@ main {
                 object-fit: cover;
             }
         }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: .3rem;
-            margin-top: 2rem;
-
-            li {
-                list-style: none;
-
-                button {
-                    border: none;
-                    width: 25px;
-                    height: 25px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    transition: .3s;
-
-                    &.active,
-                    &:hover {
-                        background-color: #71f79f;
-                        color: #0f172a;
-                    }
-                }
-            }
-        }
     }
 }
 </style>
