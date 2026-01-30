@@ -20,9 +20,6 @@ class Contact
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
-    // #[ORM\ManyToOne(inversedBy: 'contact')]
-    // private ?Formule $formule = null;
-
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
 
@@ -60,18 +57,6 @@ class Contact
 
         return $this;
     }
-
-    // public function getFormule(): ?Formule
-    // {
-    //     return $this->formule;
-    // }
-
-    // public function setFormule(?Formule $formule): static
-    // {
-    //     $this->formule = $formule;
-
-    //     return $this;
-    // }
 
     public function getFirstname(): ?string
     {

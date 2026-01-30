@@ -77,6 +77,7 @@ class ProjectController extends AbstractController
         $project = new Project();
 
         $images = [];
+        $position = 0;
         if ($imagesFile) {
             foreach ($imagesFile as $imageFile) {
                 $imageName = uniqid() . '.' . $imageFile->guessExtension();
@@ -85,6 +86,7 @@ class ProjectController extends AbstractController
                 $image = new ProjectImage();
                 $image->setPath($imageName);
                 $image->setProject($project);
+                $image->setPosition($position++);
                 $this->entityManager->persist($image);
                 $images[] = $image;
             }

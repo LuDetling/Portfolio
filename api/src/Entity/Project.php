@@ -54,6 +54,7 @@ class Project
      */
     #[Groups(['projets'])]
     #[ORM\OneToMany(targetEntity: ProjectImage::class, mappedBy: 'project')]
+    #[ORM\OrderBy(['position' => 'ASC'])]
     private Collection $images;
 
     public function __construct()
