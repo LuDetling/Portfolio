@@ -25,7 +25,7 @@ security:
 
     access_control:
         # - { path: ^/api/project/, roles: PUBLIC_ACCESS  }
-        - { path: ^/api/project/, roles: PUBLIC_ACCESS, methods: [POST, PUT, DELETE]  }
+        - { path: ^/api/project/, roles: IS_AUTHENTICATED_FULLY, methods: [POST, PUT, DELETE]  }
         - { path: ^/api/tags/, roles: IS_AUTHENTICATED_FULLY, methods: [POST, PUT, DELETE]  }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/register, roles: PUBLIC_ACCESS }
