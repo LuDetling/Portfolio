@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\project;
+use App\Entity\Project;
 use App\Entity\Tags;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -16,7 +16,7 @@ class TagsForm extends AbstractType
         $builder
             ->add('name')
             ->add('project', EntityType::class, [
-                'class' => project::class,
+                'class' => Project::class,
                 'choice_label' => 'id',
                 'multiple' => true,
             ])
