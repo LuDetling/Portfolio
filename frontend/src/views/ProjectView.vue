@@ -66,7 +66,7 @@ const onSlideChange = () => {
 
                     <div class="flex gap-12 flex-wrap md:flex-nowrap justify-between project">
                         <div class="w-full md:w-3/6">
-                            <img :src="getPicture(projet)" :alt='projet.title'>
+                            <img :src="projet.picture" :alt='projet.title'>
                             <div class="trait my-4"></div>
                             <div class="flex flex-wrap gap-2 ">
                                 <div class="badge badge-soft badge-primary" v-for="(tag, index) in projet.tags"
@@ -88,12 +88,12 @@ const onSlideChange = () => {
                     </div>
                     <!-- AJOUTER les images -->
                     <div class="swiper-container-custom relative mt-16">
-                        <swiper :modules="modules" :slides-per-view="3" :space-between="30" loop :navigation="{
+                        <swiper :modules="modules" :slides-per-view="2" :space-between="30" loop :navigation="{
                             prevEl: '.swiper-btn-prev',
                             nextEl: '.swiper-btn-next'
                         }" class="flex gap-4">
                             <swiper-slide v-for="(image, index) in projet.images" :key="index">
-                                <img :src="getImage(image)" :alt="projet.title" class="block">
+                                <img :src="image.path" :alt="projet.title" class="block">
                             </swiper-slide>
                         </swiper>
 
@@ -108,7 +108,7 @@ const onSlideChange = () => {
     </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .description {
     white-space: pre-line;
 
@@ -122,6 +122,10 @@ const onSlideChange = () => {
     width: 100%;
     height: 1px;
     background-color: #142238;
+}
+
+img {
+    border-radius: 10px;
 }
 
 .swiper-btn {

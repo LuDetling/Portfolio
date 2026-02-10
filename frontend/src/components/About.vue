@@ -30,9 +30,9 @@ onUnmounted(() => {
             <div class="terminal-body">
                 <div class="code-picture">
                     <div :class="[animationCode ? 'animation-code' : null, 'code-block']">
-                        <pre><code id="typewriter"><span class="const">const </span><span class="variable">developer </span><span class="ponctuation">= </span><span class="bracket">{</span>
-    <span class="property">name: </span><span class="string">'Lucas Detling'</span><span class="ponctuation">,</span>
-    <span class="property">role: </span><span class="string">'Développeur web fullstack'</span><span class="ponctuation">,</span>
+                        <pre><code id="typewriter"><span class="const">const </span><span class="variable">developpeur </span><span class="ponctuation">= </span><span class="bracket">{</span>
+    <span class="property">nom: </span><span class="string">'Lucas Detling'</span><span class="ponctuation">,</span>
+    <span class="property">role: </span><span class="string">'Développeur web'</span><span class="ponctuation">,</span>
     <span class="property">skills: </span><span class="string"><span class="array">[</span>'Symfony', 'Vue.js', 'PHP', 'JavaScript', 'PostgreSQL'<span class="array">]</span><span class="ponctuation">,</span></span>
     <span class="property">education: </span><span class="string">'Master Développeur d'application PHP/Symfony'<span class="ponctuation">,</span></span>
     <span class="property">experience: </span><span class="string">'Création d'applications web de la conception à la mise en production'</span>
@@ -48,7 +48,7 @@ onUnmounted(() => {
                 <div class="description md:flex md:gap-8 justify-between">
                     <div class="left md:w-1/2">
                         <p>
-                            Bonjour, moi c’est Lucas Detling, <strong>développeur web fullstack passionné</strong>,
+                            Bonjour, moi c’est Lucas Detling, <strong>développeur web</strong>,
                             spécialisé en
                             <strong>PHP/Symfony</strong> côté backend et <strong>Vue.js</strong> côté frontend.
                         </p>

@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import router from '@/router';
 
 import Editor from 'primevue/editor';
+import draggable from 'vuedraggable';
 
 import { useCookies } from 'vue3-cookies';
 const { cookies } = useCookies();
@@ -30,7 +31,6 @@ const schema = yup.object({
     title: yup.string(),
     picture: yup.mixed(),
     description: yup.string(),
-    link: yup.string(),
     shortDescription: yup.string(),
 })
 
@@ -41,13 +41,14 @@ const getProjet = async () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        console.log(data);
         title.value = data.title;
         picture.value = data.picture;
         description.value = data.description;
         shortDescription.value = data.shortDescription;
         link.value = data.link;
         tagsSelected.value = data.tags.map(tag => tag.id)
-        console.log(picture.value);
+        images.value = data.images;
 
         return data;
     } catch (error) {
@@ -77,7 +78,7 @@ getTags();
 
 const updateProjet = async (el) => {
     const formData = new FormData();
-    formData.append('_method', 'PUT'); // Use PUT method for update
+    // formData.append('_method', 'PUT'); // Use PUT method for update
     formData.append('title', title.value);
     formData.append('picture', picture.value);
     formData.append('description', description.value);
@@ -125,6 +126,14 @@ const changePicture = (e) => {
 const getImage = (image) => {
     return VITE_IMAGE_URL + '/projects/' + image;
 }
+
+const removeImage = (index, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Important : libérer la mémoire de l'URL créée
+    URL.revokeObjectURL(images.value[index].url);
+    images.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -143,8 +152,8 @@ const getImage = (image) => {
                     <label for="picture">Image principale:</label>
                     <Field id="picture" type="file" name="picture" v-model="picture" required rules="image"
                         class="file-input" @change="changePicture" />
-                    <img :src="getImage(picture)">
                     <img v-if="preview" :src="preview" alt="">
+                    <img v-else :src="picture">
                     <ErrorMessage name="picture" />
                 </div>
                 <div>
@@ -152,6 +161,15 @@ const getImage = (image) => {
                     <Field id="images" type="file" name="images[]" v-model="images" required rules="image"
                         class="file-input" multiple @change="handleFiles" />
                     <ErrorMessage name="images[]" />
+                    <draggable v-model="images" item-key="id" class="preview-list flex gap-4 mt-4 flex-wrap"
+                        ghost-class="ghost" @change="console.log(images)">
+                        <template #item="{ element, index }">
+                            <div class="image-card">
+                                <img :src="element.path" />
+                                <button @click="removeImage(index, $event)">×</button>
+                            </div>
+                        </template>
+                    </draggable>
                 </div>
                 <div>
                     <label for="description">Description:</label>
@@ -193,5 +211,46 @@ fieldset>div {
 label {
     display: block;
     margin-bottom: 0.3rem;
+}
+
+form {
+    img {
+        margin-top: 1rem;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+}
+
+.preview-list {
+
+    .image-card {
+        position: relative;
+
+        img {
+            margin-top: 0;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: rgb(255, 0, 0);
+            background: rgba($color: white, $alpha: .8);
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            width: 1rem;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }
 </style>

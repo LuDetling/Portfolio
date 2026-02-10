@@ -1,7 +1,7 @@
 <template>
     <div v-for="projet in projets" :key="projet.id"
         :class="['card-projet', projet.id == openInfo ? 'open-info' : null]">
-        <img :src="getImageUrl(projet)" />
+        <img :src="projet.picture" />
         <div class="blur-card">
             <div class="on-card bg-base-100">
                 <div class="title flex justify-between">

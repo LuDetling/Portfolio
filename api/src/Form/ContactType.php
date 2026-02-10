@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Contact;
-use App\Entity\Formule;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -17,11 +16,7 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('email', TextType::class)
-            ->add('message', TextareaType::class)
-            ->add('formule', EntityType::class, [
-                'class' => Formule::class,
-                'choice_label' => 'id',
-            ]);
+            ->add('message', TextareaType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

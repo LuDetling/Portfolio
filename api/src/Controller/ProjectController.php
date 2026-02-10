@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Entity\ProjectImage;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
@@ -53,13 +54,12 @@ class ProjectController extends AbstractController
     }
 
     #[Route('/api/project/create', name: 'api_project_create', methods: ['POST'])]
-    public function createProject(Request $request): JsonResponse
+    public function createProject(Request $request, UploaderHelper $uploader): JsonResponse
     {
 
         $picture = $request->files->get('picture');
         $title = $request->request->get('title');
         $description = $request->request->get('description');
-
         $shortDescription = $request->request->get('shortDescription');
         $link = $request->request->get('link');
         $tags = json_decode($request->request->get('tags'), true);
@@ -73,7 +73,7 @@ class ProjectController extends AbstractController
             $filesystem->mkdir($uploadDir, 0755);
         }
 
-        $pictureName = uniqid() . '.' . $picture->guessExtension();
+        // $pictureName = uniqid() . '.' . $picture->guessExtension();
         $project = new Project();
 
         $images = [];
@@ -91,7 +91,8 @@ class ProjectController extends AbstractController
                 $images[] = $image;
             }
         }
-
+        $pictureName = $uploader->uploadImage($picture);
+        $project->setPicture($pictureName);
         $form = $this->createForm(ProjectType::class, $project);
         $form->submit([
             'title' => $title,
@@ -108,7 +109,8 @@ class ProjectController extends AbstractController
                 'errors' => (string) $form->getErrors(true, false),
             ], 400);
         }
-        $picture->move($uploadDir, $pictureName);
+
+        // $picture->move($uploadDir, $pictureName);
         $this->entityManager->persist($project);
         $this->entityManager->flush();
 
