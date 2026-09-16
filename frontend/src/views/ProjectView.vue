@@ -37,21 +37,6 @@ const fetchProjet = async () => {
 
 fetchProjet();
 
-const getPicture = (projet) => {
-    return VITE_IMAGE_URL + '/projects/' + projet.picture;
-}
-
-const getImage = (image) => {
-    return VITE_IMAGE_URL + '/projects/' + image.path;;
-}
-
-const onSwiper = (swiper) => {
-    console.log(swiper);
-};
-const onSlideChange = () => {
-    console.log('slide change');
-};
-
 </script>
 
 <template>

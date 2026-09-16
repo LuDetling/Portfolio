@@ -2,7 +2,7 @@
     <section id="banniere">
         <h1 class="glitch">Lucas Detling</h1>
         <p class="subtitle">
-            Développeur Full Stack
+            Développeur Fullstack
         </p>
         <!-- <a href="#contact" class="btn btn-secondary">Me contacter</a> -->
         <a href="#about" class="icone">

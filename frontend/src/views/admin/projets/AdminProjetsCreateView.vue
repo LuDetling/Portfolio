@@ -68,7 +68,6 @@ const createProjet = async (el) => {
     } else {
         formData.append('tags', JSON.stringify(tagsSelected.value))
     }
-    console.log(formData.getAll('images[]'));
 
     try {
         const response = await fetch(VITE_API_URL + '/project/create', {
@@ -101,7 +100,6 @@ const handleFiles = (event) => {
             url: URL.createObjectURL(file)
         });
     });
-    console.log(images.value);
 
 };
 const removeImage = (index) => {

@@ -25,7 +25,6 @@ const fetchTag = async () => {
         const response = await fetch('https://127.0.0.1:8000/api/tags/' + route.params.tagId);
         if (!response.ok) throw new Error('Pas de projet trouvé')
         tag.value = await response.json();
-        console.log(tag.value);
         name.value = tag.value.name;
 
     } catch (error) {

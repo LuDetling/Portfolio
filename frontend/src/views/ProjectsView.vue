@@ -17,7 +17,6 @@ const fetchProjets = async () => {
         let data = await response.json();
         projets.value = data.projects;
         totalPages.value = data.pages;
-        console.log(data);
     } catch (error) {
         console.log(error);
     }

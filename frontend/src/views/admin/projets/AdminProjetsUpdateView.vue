@@ -41,7 +41,6 @@ const getProjet = async () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
         title.value = data.title;
         picture.value = data.picture;
         description.value = data.description;
@@ -65,7 +64,6 @@ const getTags = async () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
 
         tags.value = data;
         return data;
@@ -162,7 +160,7 @@ const removeImage = (index, e) => {
                         class="file-input" multiple @change="handleFiles" />
                     <ErrorMessage name="images[]" />
                     <draggable v-model="images" item-key="id" class="preview-list flex gap-4 mt-4 flex-wrap"
-                        ghost-class="ghost" @change="console.log(images)">
+                        ghost-class="ghost">
                         <template #item="{ element, index }">
                             <div class="image-card">
                                 <img :src="element.path" />

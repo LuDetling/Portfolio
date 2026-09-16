@@ -15,7 +15,6 @@
 </template>
 
 <style lang="scss">
-
 footer {
     margin-top: auto;
     text-align: center;
@@ -39,6 +38,11 @@ footer {
             transition: .3s;
             width: 40px;
             height: 40px;
+
+            &:hover {
+                color: #71f79f;
+                border-color: #71f79f;
+            }
         }
     }
 }

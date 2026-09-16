@@ -12,7 +12,8 @@
                         {{ projet.title }}
                     </h3>
                     <button @click="toggle(projet.id)" class="cursor-pointer">
-                        <font-awesome-icon :icon="['fas', 'plus']" />
+                        <font-awesome-icon :icon="['fas', 'plus']"/>
+                        <!-- <font-awesome-icon :icon="['fas', 'minus']" v-else/> -->
                     </button>
                 </div>
                 <div class="content-description">
@@ -33,12 +34,7 @@
 </template>
 
 <script setup>
-import { VITE_IMAGE_URL } from '@/config';
 import { ref } from 'vue';
-
-const getImageUrl = (projet) => {
-    return VITE_IMAGE_URL + '/projects/' + projet.picture;
-}
 
 const openInfo = ref(null)
 
